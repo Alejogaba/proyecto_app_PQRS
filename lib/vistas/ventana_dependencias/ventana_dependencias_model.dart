@@ -1,4 +1,4 @@
-import '/components/fila_app_bar_widget.dart';
+import '/vistas/components/fila_app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class VentanaFuncionariosModel extends FlutterFlowModel {
+class VentanaDependenciasModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // Model for Fila_AppBar component.

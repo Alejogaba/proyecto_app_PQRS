@@ -1821,7 +1821,7 @@ class _RegistrarSoporteWidgetState extends State<RegistrarSoporteWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
+                                onPresionado: () {
                                   print('Button pressed ...');
                                 },
                                 text: 'Pay Now',
@@ -1850,7 +1850,7 @@ class _RegistrarSoporteWidgetState extends State<RegistrarSoporteWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     50.0, 0.0, 0.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
+                                  onPresionado: () {
                                     print('Button pressed ...');
                                   },
                                   text: 'Pay Now',

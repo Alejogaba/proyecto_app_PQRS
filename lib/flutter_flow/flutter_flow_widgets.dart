@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -48,7 +50,7 @@ class FFButtonWidget extends StatefulWidget {
   const FFButtonWidget({
     Key? key,
     required this.text,
-    required this.onPressed,
+    required this.onPresionado,
     this.icon,
     this.iconData,
     required this.options,
@@ -58,7 +60,7 @@ class FFButtonWidget extends StatefulWidget {
   final String text;
   final Widget? icon;
   final IconData? iconData;
-  final Function()? onPressed;
+  final Function()? onPresionado;
   final FFButtonOptions options;
   final bool showLoadingIndicator;
 
@@ -90,7 +92,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
             overflow: TextOverflow.ellipsis,
           );
 
-    final onPressed = widget.onPressed != null
+    final onPressed = widget.onPresionado != null
         ? (widget.showLoadingIndicator
             ? () async {
                 if (loading) {
@@ -98,14 +100,14 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
                 }
                 setState(() => loading = true);
                 try {
-                  await widget.onPressed!();
+                  await widget.onPresionado!();
                 } finally {
                   if (mounted) {
                     setState(() => loading = false);
                   }
                 }
               }
-            : () => widget.onPressed!())
+            : () => widget.onPresionado!())
         : null;
 
     ButtonStyle style = ButtonStyle(
@@ -197,7 +199,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
       height: widget.options.height,
       width: widget.options.width,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: widget.onPresionado,
         style: style,
         child: textWidget,
       ),

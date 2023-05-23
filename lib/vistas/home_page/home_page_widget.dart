@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:proyecto_p_q_r_s/index.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -108,9 +110,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const LoginWidget()),
-  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginWidget()),
+                    );
                   },
                   child: Container(
                     width: 150.0,
@@ -238,8 +241,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPresionado: () {
+                                        log('boton peticion');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const RegistrarPeticionWidget()));
                                       },
                                       text: 'Envía una petición',
                                       options: FFButtonOptions(
@@ -329,7 +337,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
+                                      onPresionado: () {
                                         print('Button pressed ...');
                                       },
                                       text: 'Envía una queja',
@@ -419,7 +427,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
+                                      onPresionado: () {
                                         print('Button pressed ...');
                                       },
                                       text: 'Envía un reclamo',
@@ -509,7 +517,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
+                                      onPresionado: () {
                                         print('Button pressed ...');
                                       },
                                       text: 'Envía una sugerencia',
@@ -599,7 +607,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
+                                      onPresionado: () {
                                         print('Button pressed ...');
                                       },
                                       text: 'Envía una petición',
@@ -693,7 +701,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.488,
+                                                0.4,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -750,7 +758,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     fontFamily:
                                                                         'Poppins',
                                                                     fontSize:
-                                                                        20.0,
+                                                                        18.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
@@ -777,7 +785,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     fontFamily:
                                                                         'Poppins',
                                                                     fontSize:
-                                                                        17.0,
+                                                                        15.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
@@ -811,7 +819,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         fontFamily:
                                                                             'Poppins',
                                                                         fontSize:
-                                                                            18.0,
+                                                                            14.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                       ),
@@ -839,7 +847,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         fontFamily:
                                                                             'Poppins',
                                                                         fontSize:
-                                                                            18.0,
+                                                                            14.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -885,7 +893,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                         ),
@@ -913,7 +921,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -960,7 +968,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                         ),
@@ -988,7 +996,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -1035,7 +1043,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                         ),
@@ -1063,7 +1071,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -1110,7 +1118,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontFamily:
                                                                               'Poppins',
                                                                           fontSize:
-                                                                              18.0,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                         ),
@@ -1171,7 +1179,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             fontFamily:
                                                                                 'Poppins',
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -1236,7 +1244,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             fontFamily:
                                                                                 'Poppins',
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -1301,7 +1309,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             fontFamily:
                                                                                 'Poppins',
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -1366,7 +1374,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             fontFamily:
                                                                                 'Poppins',
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -1431,7 +1439,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             fontFamily:
                                                                                 'Poppins',
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -1526,7 +1534,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 18.0,
+                                                                                  fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1592,7 +1600,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 18.0,
+                                                                                  fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1658,7 +1666,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 18.0,
+                                                                                  fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1724,7 +1732,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 18.0,
+                                                                                  fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1787,7 +1795,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     fontFamily:
                                                                         'Poppins',
                                                                     fontSize:
-                                                                        18.0,
+                                                                        14.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
@@ -1814,7 +1822,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     fontFamily:
                                                                         'Poppins',
                                                                     fontSize:
-                                                                        18.0,
+                                                                        14.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,

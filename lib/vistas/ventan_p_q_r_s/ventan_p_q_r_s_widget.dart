@@ -497,7 +497,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () {
+                                onPresionado: () {
                                   print('Button pressed ...');
                                 },
                                 text: 'Buscar',

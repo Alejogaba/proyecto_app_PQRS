@@ -833,7 +833,7 @@ class _DetallesSoporteWidgetState extends State<DetallesSoporteWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 30.0, 16.0),
                               child: FFButtonWidget(
-                                onPressed: () {
+                                onPresionado: () {
                                   print('Button pressed ...');
                                 },
                                 text: 'Ver detalles',

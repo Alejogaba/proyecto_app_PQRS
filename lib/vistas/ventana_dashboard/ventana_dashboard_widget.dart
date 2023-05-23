@@ -515,7 +515,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     ),
                                   ),
                                   FFButtonWidget(
-                                    onPressed: () {
+                                    onPresionado: () {
                                       print('Button pressed ...');
                                     },
                                     text: 'Button',

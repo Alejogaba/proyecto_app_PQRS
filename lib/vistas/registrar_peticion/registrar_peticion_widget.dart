@@ -1829,8 +1829,8 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                   Icons.attach_file,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
-                                                  size: 24.0,
+                                                      .tertiary,
+                                                  size: 35.0,
                                                 ),
                                               ),
                                               Column(
@@ -1996,7 +1996,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             FFButtonWidget(
-                                              onPressed: () async {
+                                              onPresionado: () async {
                                                 await launchURL(
                                                     'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-de-Privacidad-y-Condiciones-de-Uso.aspx');
                                               },
@@ -2053,7 +2053,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 FFButtonWidget(
-                                  onPressed: () {
+                                  onPresionado: () {
                                     print('Button pressed ...');
                                   },
                                   text: 'Enviar [PQR]',

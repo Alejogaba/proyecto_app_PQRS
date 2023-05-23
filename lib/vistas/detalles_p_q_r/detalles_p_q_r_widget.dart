@@ -468,7 +468,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
-                      onPressed: () {
+                      onPresionado: () {
                         print('Button pressed ...');
                       },
                       text: 'Responder',
@@ -502,7 +502,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
-                      onPressed: () {
+                      onPresionado: () {
                         print('Button pressed ...');
                       },
                       text: 'Delegar',
@@ -536,7 +536,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
-                      onPressed: () {
+                      onPresionado: () {
                         print('Button pressed ...');
                       },
                       text: 'Marcar como finalizado',
