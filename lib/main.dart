@@ -18,7 +18,6 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 
-
 import 'index.dart';
 
 void main() async {
@@ -62,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       initialRoute: 'login',
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
