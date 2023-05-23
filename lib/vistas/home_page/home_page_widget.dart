@@ -646,1210 +646,1217 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               0.0, 40.0, 0.0, 0.0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 1.0,
-                            height: MediaQuery.of(context).size.height * 0.6,
+                            height: MediaQuery.of(context).size.height * 0.68,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primary,
                             ),
-                            child: Stack(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 0.0,
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          1.0,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.12,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        shape: BoxShape.rectangle,
-                                        border: Border.all(
-                                          color: Colors.transparent,
-                                          width: 0.0,
-                                        ),
-                                      ),
-                                      alignment: AlignmentDirectional(
-                                          0.050000000000000044, 0.55),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom:2.0),
+                                  child: Stack(
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 20.0, 20.0, 20.0),
+                                      Align(
+                                        alignment: AlignmentDirectional(0.0, -1.0),
                                         child: Material(
                                           color: Colors.transparent,
-                                          elevation: 3.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                          ),
+                                          elevation: 0.0,
                                           child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.805,
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.4,
+                                            width: MediaQuery.of(context).size.width *
+                                                1.0,
+                                            height:
+                                                MediaQuery.of(context).size.height *
+                                                    0.12,
                                             decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(20.0),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 40.0, 0.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  30.0,
-                                                                  0.0,
-                                                                  30.0,
-                                                                  0.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              'Alcaldia de la paz Robles-Cesar',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    fontSize:
-                                                                        18.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              'Sede Principal',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20.0,
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child:
-                                                                    SelectionArea(
-                                                                        child:
-                                                                            AutoSizeText(
-                                                                  'Dirección: ',
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        fontSize:
-                                                                            14.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                      ),
-                                                                )),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child:
-                                                                    SelectionArea(
-                                                                        child:
-                                                                            AutoSizeText(
-                                                                  'Carrera 7 N° 8A - 09, Palacio Municipal, La Paz Robles - Cesar.',
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        fontSize:
-                                                                            14.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                )),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    'Horario de Atención:',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    'Lunes a viernes de 8:00 a.m. a 12:30 p.m. y de 2:30 \np.m. a 6:00 p.m',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    'Conmutador:',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    '(+57) 5 5771240',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    'Línea Fax:',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    '(+57) 5 5771240',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                    'Línea Anticorrupción: (+57) 018000919748',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {},
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      'Correo Electrónico: contactenos@lapazrobles-cesar.gov.co',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            fontSize:
-                                                                                14.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      await launchURL(
-                                                                          'https://www.lapazrobles-cesar.gov.co/Paginas/Mapa-del-Sitio.aspx');
-                                                                    },
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      'Mapa del Sitio',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            fontSize:
-                                                                                14.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      await launchURL(
-                                                                          'https://www.lapazrobles-cesar.gov.co/Paginas/Notificaciones-Judiciales.aspx');
-                                                                    },
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      'Notificaciones Judiciales',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            fontSize:
-                                                                                14.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      await launchURL(
-                                                                          'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-de-Privacidad-y-Condiciones-de-Uso.aspx');
-                                                                    },
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      'Políticas de Privacidad y condiciones de uso',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            fontSize:
-                                                                                14.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      await launchURL(
-                                                                          'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-Editoriales-y-de-Actualizacion.aspx');
-                                                                    },
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      'Políticas Editoriales y de Actualización',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            fontSize:
-                                                                                14.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Wrap(
-                                                              spacing: 42.0,
-                                                              runSpacing: 0.0,
-                                                              alignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              crossAxisAlignment:
-                                                                  WrapCrossAlignment
-                                                                      .start,
-                                                              direction: Axis
-                                                                  .horizontal,
-                                                              runAlignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              verticalDirection:
-                                                                  VerticalDirection
-                                                                      .down,
-                                                              clipBehavior:
-                                                                  Clip.none,
-                                                              children: [
-                                                                InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await launchURL(
-                                                                        'https://www.facebook.com/Alcald%C3%ADa-de-La-Paz-109905557335570/');
-                                                                  },
-                                                                  child:
-                                                                      Container(
-                                                                    width:
-                                                                        140.0,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .facebook,
-                                                                          color:
-                                                                              Color(0xFF0A5D8F),
-                                                                          size:
-                                                                              24.0,
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              3.0),
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                            '@Facebook',
-                                                                            textAlign:
-                                                                                TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 14.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await launchURL(
-                                                                        'https://twitter.com/AlcaldiaDeLaPaz');
-                                                                  },
-                                                                  child:
-                                                                      Container(
-                                                                    width:
-                                                                        120.0,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .twitter,
-                                                                          color:
-                                                                              Color(0xFF0A5D8F),
-                                                                          size:
-                                                                              24.0,
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              3.0),
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                            '@Twitter',
-                                                                            textAlign:
-                                                                                TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 14.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await launchURL(
-                                                                        'https://www.youtube.com/channel/UCA4g6lLWKSSXqhnlNK63WiA');
-                                                                  },
-                                                                  child:
-                                                                      Container(
-                                                                    width:
-                                                                        140.0,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .youtube,
-                                                                          color:
-                                                                              Color(0xFF0A5D8F),
-                                                                          size:
-                                                                              24.0,
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              3.0),
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                            '@Youtube',
-                                                                            textAlign:
-                                                                                TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 14.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await launchURL(
-                                                                        'https://www.instagram.com/p/CKM7B1HnIc3/?utm_source=ig_embed&utm_campaign=loading');
-                                                                  },
-                                                                  child:
-                                                                      Container(
-                                                                    width:
-                                                                        140.0,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .instagram,
-                                                                          color:
-                                                                              Color(0xFF0A5D8F),
-                                                                          size:
-                                                                              24.0,
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              3.0),
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                            '@Instagram',
-                                                                            textAlign:
-                                                                                TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  color: Color(0xFF0A5D8F),
-                                                                                  fontSize: 14.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  30.0,
-                                                                  20.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Image.asset(
-                                                            'assets/images/Captura_de_pantalla_2023-05-06_174803-removebg-preview.png',
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                0.182,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.172,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        15.0),
-                                                            child: Text(
-                                                              'Para una correcta visualización y  navegación en el sitio, se recomienda usar las últimas versiones de los siguientes navegadores: Internet Explorer, Mozilla FireFox, Google Chrome.',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    fontSize:
-                                                                        14.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              'Si su equipo no cuenta con esta versión, por favor realice la actualización.',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    fontSize:
-                                                                        14.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
+                                              color: FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
+                                              shape: BoxShape.rectangle,
+                                              border: Border.all(
+                                                color: Colors.transparent,
+                                                width: 0.0,
                                               ),
                                             ),
+                                            alignment: AlignmentDirectional(
+                                                0.050000000000000044, 0.55),
                                           ),
                                         ),
                                       ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 20.0, 20.0, 20.0),
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 3.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20.0),
+                                                ),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.805,
+                                                  
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        FlutterFlowTheme.of(context)
+                                                            .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(20.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 40.0, 0.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceAround,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30.0,
+                                                                        0.0,
+                                                                        30.0,
+                                                                        0.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize.max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              20.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Text(
+                                                                    'Alcaldia de la paz Robles-Cesar',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme
+                                                                            .of(context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              18.0,
+                                                                          fontWeight:
+                                                                              FontWeight
+                                                                                  .w600,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              20.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Text(
+                                                                    'Sede Principal',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme
+                                                                            .of(context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight
+                                                                                  .w600,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              20.0,
+                                                                              10.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          SelectionArea(
+                                                                              child:
+                                                                                  AutoSizeText(
+                                                                        'Dirección: ',
+                                                                        textAlign:
+                                                                            TextAlign
+                                                                                .start,
+                                                                        style: FlutterFlowTheme.of(
+                                                                                context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily:
+                                                                                  'Poppins',
+                                                                              fontSize:
+                                                                                  14.0,
+                                                                              fontWeight:
+                                                                                  FontWeight.w600,
+                                                                            ),
+                                                                      )),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              10.0,
+                                                                              10.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          SelectionArea(
+                                                                              child:
+                                                                                  AutoSizeText(
+                                                                        'Carrera 7 N° 8A - 09, Palacio Municipal, La Paz Robles - Cesar.',
+                                                                        textAlign:
+                                                                            TextAlign
+                                                                                .start,
+                                                                        style: FlutterFlowTheme.of(
+                                                                                context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily:
+                                                                                  'Poppins',
+                                                                              fontSize:
+                                                                                  14.0,
+                                                                              fontWeight:
+                                                                                  FontWeight.w500,
+                                                                            ),
+                                                                      )),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          'Horario de Atención:',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w600,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                10.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          'Lunes a viernes de 8:00 a.m. a 12:30 p.m. y de 2:30 \np.m. a 6:00 p.m',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w500,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          'Conmutador:',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w600,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                10.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          '(+57) 5 5771240',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w500,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          'Línea Fax:',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w600,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                10.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          '(+57) 5 5771240',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w500,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            SelectionArea(
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                          'Línea Anticorrupción: (+57) 018000919748',
+                                                                          textAlign:
+                                                                              TextAlign
+                                                                                  .start,
+                                                                          style: FlutterFlowTheme.of(
+                                                                                  context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily:
+                                                                                    'Poppins',
+                                                                                fontSize:
+                                                                                    14.0,
+                                                                                fontWeight:
+                                                                                    FontWeight.w600,
+                                                                              ),
+                                                                        )),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          onTap:
+                                                                              () async {},
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Correo Electrónico: contactenos@lapazrobles-cesar.gov.co',
+                                                                            textAlign:
+                                                                                TextAlign
+                                                                                    .start,
+                                                                            style: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .bodyMedium
+                                                                                .override(
+                                                                                  fontFamily:
+                                                                                      'Poppins',
+                                                                                  fontSize:
+                                                                                      14.0,
+                                                                                  fontWeight:
+                                                                                      FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchURL(
+                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Mapa-del-Sitio.aspx');
+                                                                          },
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Mapa del Sitio',
+                                                                            textAlign:
+                                                                                TextAlign
+                                                                                    .start,
+                                                                            style: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .bodyMedium
+                                                                                .override(
+                                                                                  fontFamily:
+                                                                                      'Poppins',
+                                                                                  fontSize:
+                                                                                      14.0,
+                                                                                  fontWeight:
+                                                                                      FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchURL(
+                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Notificaciones-Judiciales.aspx');
+                                                                          },
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Notificaciones Judiciales',
+                                                                            textAlign:
+                                                                                TextAlign
+                                                                                    .start,
+                                                                            style: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .bodyMedium
+                                                                                .override(
+                                                                                  fontFamily:
+                                                                                      'Poppins',
+                                                                                  fontSize:
+                                                                                      14.0,
+                                                                                  fontWeight:
+                                                                                      FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchURL(
+                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-de-Privacidad-y-Condiciones-de-Uso.aspx');
+                                                                          },
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Políticas de Privacidad y condiciones de uso',
+                                                                            textAlign:
+                                                                                TextAlign
+                                                                                    .start,
+                                                                            style: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .bodyMedium
+                                                                                .override(
+                                                                                  fontFamily:
+                                                                                      'Poppins',
+                                                                                  fontSize:
+                                                                                      14.0,
+                                                                                  fontWeight:
+                                                                                      FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchURL(
+                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-Editoriales-y-de-Actualizacion.aspx');
+                                                                          },
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Políticas Editoriales y de Actualización',
+                                                                            textAlign:
+                                                                                TextAlign
+                                                                                    .start,
+                                                                            style: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .bodyMedium
+                                                                                .override(
+                                                                                  fontFamily:
+                                                                                      'Poppins',
+                                                                                  fontSize:
+                                                                                      14.0,
+                                                                                  fontWeight:
+                                                                                      FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              20.0,
+                                                                              2.0,
+                                                                              0.0,
+                                                                              10.0),
+                                                                  child: Wrap(
+                                                                    spacing: 42.0,
+                                                                    runSpacing: 0.0,
+                                                                    alignment:
+                                                                        WrapAlignment
+                                                                            .start,
+                                                                    crossAxisAlignment:
+                                                                        WrapCrossAlignment
+                                                                            .start,
+                                                                    direction: Axis
+                                                                        .horizontal,
+                                                                    runAlignment:
+                                                                        WrapAlignment
+                                                                            .start,
+                                                                    verticalDirection:
+                                                                        VerticalDirection
+                                                                            .down,
+                                                                    clipBehavior:
+                                                                        Clip.none,
+                                                                    children: [
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        focusColor: Colors
+                                                                            .transparent,
+                                                                        hoverColor: Colors
+                                                                            .transparent,
+                                                                        highlightColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchURL(
+                                                                              'https://www.facebook.com/Alcald%C3%ADa-de-La-Paz-109905557335570/');
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              140.0,
+                                                                          height: MediaQuery.of(context)
+                                                                                  .size
+                                                                                  .height *
+                                                                              0.04,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .secondaryBackground,
+                                                                          ),
+                                                                          child: Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize
+                                                                                    .max,
+                                                                            children: [
+                                                                              FaIcon(
+                                                                                FontAwesomeIcons
+                                                                                    .facebook,
+                                                                                color:
+                                                                                    Color(0xFF0A5D8F),
+                                                                                size:
+                                                                                    24.0,
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                    2.0,
+                                                                                    0.0,
+                                                                                    0.0,
+                                                                                    3.0),
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                                  '@Facebook',
+                                                                                  textAlign:
+                                                                                      TextAlign.start,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Poppins',
+                                                                                        color: Color(0xFF0A5D8F),
+                                                                                        fontSize: 14.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        focusColor: Colors
+                                                                            .transparent,
+                                                                        hoverColor: Colors
+                                                                            .transparent,
+                                                                        highlightColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchURL(
+                                                                              'https://twitter.com/AlcaldiaDeLaPaz');
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              120.0,
+                                                                          height: MediaQuery.of(context)
+                                                                                  .size
+                                                                                  .height *
+                                                                              0.04,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .secondaryBackground,
+                                                                          ),
+                                                                          child: Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize
+                                                                                    .max,
+                                                                            children: [
+                                                                              FaIcon(
+                                                                                FontAwesomeIcons
+                                                                                    .twitter,
+                                                                                color:
+                                                                                    Color(0xFF0A5D8F),
+                                                                                size:
+                                                                                    24.0,
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                    2.0,
+                                                                                    0.0,
+                                                                                    0.0,
+                                                                                    3.0),
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                                  '@Twitter',
+                                                                                  textAlign:
+                                                                                      TextAlign.start,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Poppins',
+                                                                                        color: Color(0xFF0A5D8F),
+                                                                                        fontSize: 14.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        focusColor: Colors
+                                                                            .transparent,
+                                                                        hoverColor: Colors
+                                                                            .transparent,
+                                                                        highlightColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchURL(
+                                                                              'https://www.youtube.com/channel/UCA4g6lLWKSSXqhnlNK63WiA');
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              140.0,
+                                                                          height: MediaQuery.of(context)
+                                                                                  .size
+                                                                                  .height *
+                                                                              0.04,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .secondaryBackground,
+                                                                          ),
+                                                                          child: Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize
+                                                                                    .max,
+                                                                            children: [
+                                                                              FaIcon(
+                                                                                FontAwesomeIcons
+                                                                                    .youtube,
+                                                                                color:
+                                                                                    Color(0xFF0A5D8F),
+                                                                                size:
+                                                                                    24.0,
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                    2.0,
+                                                                                    0.0,
+                                                                                    0.0,
+                                                                                    3.0),
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                                  '@Youtube',
+                                                                                  textAlign:
+                                                                                      TextAlign.start,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Poppins',
+                                                                                        color: Color(0xFF0A5D8F),
+                                                                                        fontSize: 14.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        focusColor: Colors
+                                                                            .transparent,
+                                                                        hoverColor: Colors
+                                                                            .transparent,
+                                                                        highlightColor:
+                                                                            Colors
+                                                                                .transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchURL(
+                                                                              'https://www.instagram.com/p/CKM7B1HnIc3/?utm_source=ig_embed&utm_campaign=loading');
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              140.0,
+                                                                          height: MediaQuery.of(context)
+                                                                                  .size
+                                                                                  .height *
+                                                                              0.04,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color: FlutterFlowTheme.of(
+                                                                                    context)
+                                                                                .secondaryBackground,
+                                                                          ),
+                                                                          child: Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize
+                                                                                    .max,
+                                                                            children: [
+                                                                              FaIcon(
+                                                                                FontAwesomeIcons
+                                                                                    .instagram,
+                                                                                color:
+                                                                                    Color(0xFF0A5D8F),
+                                                                                size:
+                                                                                    24.0,
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                    2.0,
+                                                                                    0.0,
+                                                                                    0.0,
+                                                                                    3.0),
+                                                                                child:
+                                                                                    AutoSizeText(
+                                                                                  '@Instagram',
+                                                                                  textAlign:
+                                                                                      TextAlign.start,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Poppins',
+                                                                                        color: Color(0xFF0A5D8F),
+                                                                                        fontSize: 14.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        30.0,
+                                                                        20.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize.max,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/Captura_de_pantalla_2023-05-06_174803-removebg-preview.png',
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.182,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.172,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              10.0,
+                                                                              10.0,
+                                                                              15.0),
+                                                                  child: Text(
+                                                                    'Para una correcta visualización y  navegación en el sitio, se recomienda usar las últimas versiones de los siguientes navegadores: Internet Explorer, Mozilla FireFox, Google Chrome.',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme
+                                                                            .of(context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          fontWeight:
+                                                                              FontWeight
+                                                                                  .normal,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0),
+                                                                  child: Text(
+                                                                    'Si su equipo no cuenta con esta versión, por favor realice la actualización.',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme
+                                                                            .of(context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          fontWeight:
+                                                                              FontWeight
+                                                                                  .normal,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      
                                     ],
                                   ),
                                 ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 0.95),
+                                Padding(
+                                  padding: const EdgeInsets.only(top:0.0),
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            280.0, 0.0, 0.0, 0.0),
+                                            0.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Diseñado,Desarollado e Implementado por:',
                                           style: FlutterFlowTheme.of(context)
