@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:proyecto_p_q_r_s/rutas.dart';
+
 import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/detalles_p_q_r_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/detalles_soporte/detalles_soporte_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/home_page/home_page_widget.dart';
@@ -15,15 +15,15 @@ import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/ventana_dashboard_widg
 import 'package:proyecto_p_q_r_s/vistas/ventana_dependencias/ventana_dependencias_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_funcionarios/ventana_funcionarios_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_soporte/ventana_soporte_widget.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'flutter_flow/flutter_flow_util.dart';
+import 'firebase_options.dart';
+
 import 'flutter_flow/internationalization.dart';
 
 import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+   Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
@@ -33,13 +33,16 @@ class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
-
+  
   static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   late FluroRouter _router;
   @override
@@ -69,7 +72,19 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      home: HomePageWidget(),
+      home: FutureBuilder(
+        future: _initialization,
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasError) {
+            print("Error initializing");
+          }
+          if (snapshot.connectionState == ConnectionState.done) {
+            return HomePageWidget();
+          } else {
+            return Container();
+          }
+        },
+      ),
     );
   }
 

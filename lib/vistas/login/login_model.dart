@@ -12,10 +12,10 @@ class LoginModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for emailAddress widget.
-  TextEditingController? emailAddressController;
+  TextEditingController emailAddressController=TextEditingController();
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
   // State field(s) for password widget.
-  TextEditingController? passwordController;
+  TextEditingController passwordController = TextEditingController();
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
 
@@ -26,8 +26,8 @@ class LoginModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    emailAddressController?.dispose();
-    passwordController?.dispose();
+    emailAddressController.dispose();
+    passwordController.dispose();
   }
 
   /// Additional helper methods are added here.

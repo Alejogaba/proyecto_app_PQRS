@@ -1,6 +1,3 @@
-import 'package:fluro/fluro.dart';
-import 'package:flutter/material.dart';
-import 'package:proyecto_p_q_r_s/index.dart';
 
 class Rutas {
 
