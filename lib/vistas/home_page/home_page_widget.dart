@@ -646,16 +646,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               0.0, 40.0, 0.0, 0.0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 1.0,
-                            height: MediaQuery.of(context).size.height * 0.68,
+                            height: 500,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primary,
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom:2.0),
-                                  child: Stack(
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom:8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Stack(
                                     children: [
                                       Align(
                                         alignment: AlignmentDirectional(0.0, -1.0),
@@ -1847,26 +1847,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       
                                     ],
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top:0.0),
-                                  child: Row(
+                                  Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Diseñado,Desarollado e Implementado por:',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                              ),
+                                        child: Container(
+                
+                                          child: Text(
+                                            'Diseñado,Desarollado e Implementado por:',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color:
+                                                      FlutterFlowTheme.of(context)
+                                                          .primaryBtnText,
+                                                ),
+                                          ),
                                         ),
                                       ),
                                       Padding(
@@ -1947,8 +1947,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

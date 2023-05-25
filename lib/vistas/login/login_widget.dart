@@ -430,11 +430,11 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 SmartSnackBars
                                                     .showTemplatedSnackbar(
                                                         context: context);
-                                                /*Navigator.push(
+                                                Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            const VentanaDashboardWidget()));*/
+                                                            const VentanaDashboardWidget()));
                                               }
                                              
                                             } on FirebaseException catch (e) {
