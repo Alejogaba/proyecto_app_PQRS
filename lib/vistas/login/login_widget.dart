@@ -2,8 +2,9 @@
 
 import 'dart:developer';
 
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
+import 'package:proyecto_p_q_r_s/flutter_flow/custom_snackbars.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -17,6 +18,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
+import 'package:smart_snackbars/smart_snackbars.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -356,10 +358,11 @@ class _LoginWidgetState extends State<LoginWidget>
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
-                                          validator: (value) {if (value!.isEmpty) {
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
                                               return 'Por favor ingrese su contraseña';
                                             }
-                                            
+
                                             return null;
                                           },
                                         ),
@@ -408,22 +411,52 @@ class _LoginWidgetState extends State<LoginWidget>
                                           if (_formKey.currentState!
                                               .validate()) {
                                             try {
-                                              var user = await AuthHelper.signInWithEmail(
-                                              email: _model.emailAddressController.text
-                                                  .toLowerCase(),
-                                              password: _model.passwordController.text);
-                                        if (user != null) {
-                                          print("Ingreso Exitoso");
-                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const VentanaDashboardWidget()));
-                                        }
-                                              log('iniciar session presionado');
-                                            } on Exception catch (e) {
+                                              var user = await AuthHelper
+                                                  .signInWithEmail(
+                                                      email: _model
+                                                          .emailAddressController
+                                                          .text
+                                                          .toLowerCase(),
+                                                      password: _model
+                                                          .passwordController
+                                                          .text);
+                                              if (user != null) {
+                                                 log('user: $user');
+                                                print("Ingreso Exitoso");
+                                                CustomSnackBars().snackBarOk(
+                                                    context,
+                                                    'Ingreso exitoso',
+                                                    'Ha iniciado sesión corectamente');
+                                                SmartSnackBars
+                                                    .showTemplatedSnackbar(
+                                                        context: context);
+                                                /*Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const VentanaDashboardWidget()));*/
+                                              }
+                                             
+                                            } on FirebaseException catch (e) {
+                                              CustomSnackBars().snackBarError(
+                                                    context,
+                                                    'Error al iniciar sesión',
+                                                    e.message.toString());
+                                                SmartSnackBars
+                                                    .showTemplatedSnackbar(
+                                                        context: context);
+                                                
                                               log(e.toString());
                                             } catch (e) {
+                                              
+                                              CustomSnackBars().snackBarError(
+                                                    context,
+                                                    'Error al iniciar sesión',
+                                                    e.toString());
+                                                SmartSnackBars
+                                                    .showTemplatedSnackbar(
+                                                        context: context);
+                                               
                                               log(e.toString());
                                             }
                                           }

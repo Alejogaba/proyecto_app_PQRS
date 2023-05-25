@@ -52,6 +52,7 @@ dependencies:
   firebase_auth: ^4.6.1
   firebase_database: ^10.2.1
   cloud_firestore: ^4.7.1
+  smart_snackbars: ^1.0.0
  
 
 

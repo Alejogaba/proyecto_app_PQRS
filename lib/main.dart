@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
 
 import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/detalles_p_q_r_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/detalles_soporte/detalles_soporte_widget.dart';
@@ -23,7 +24,7 @@ import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   Firebase.initializeApp(
+  Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
-  
+
   static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
 }
@@ -67,7 +68,7 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       initialRoute: 'login',
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
@@ -79,7 +80,11 @@ class _MyAppState extends State<MyApp> {
             print("Error initializing");
           }
           if (snapshot.connectionState == ConnectionState.done) {
-            return HomePageWidget();
+            if (AuthHelper.estaLogeado()) {
+              return VentanaDashboardWidget();
+            } else {
+              return HomePageWidget();
+            }
           } else {
             return Container();
           }

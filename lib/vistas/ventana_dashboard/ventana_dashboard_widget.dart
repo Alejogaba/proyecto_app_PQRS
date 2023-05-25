@@ -1,3 +1,6 @@
+import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
+import 'package:proyecto_p_q_r_s/index.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -69,16 +72,26 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          width: 50.0,
-                          height: 50.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/967/600',
-                            fit: BoxFit.cover,
+                        InkWell(
+                          onTap: () {
+                            AuthHelper.handleSignOut();
+                            Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const HomePageWidget()));
+                          },
+                          child: Container(
+                            width: 50.0,
+                            height: 50.0,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.network(
+                              'https://picsum.photos/seed/967/600',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ],
