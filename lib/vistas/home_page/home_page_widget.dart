@@ -247,7 +247,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const LoginWidget()));
+                                                    const RegistrarPeticionWidget()));
                                       },
                                       text: 'Envía una petición',
                                       options: FFButtonOptions(

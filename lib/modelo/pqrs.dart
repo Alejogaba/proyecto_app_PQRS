@@ -1,61 +1,57 @@
-class PQRS {
+class pqrs {
   String? id;
   String? nombreDependencia;
-  String? nombreSolicitante;
-  String? apellidoSolicitante;
+  String? primerNombreSolicitante;
+  String? segundoNombreSolicitante;
+  String? primerApellidoSolicitante;
+  String? segundoApellidoSolicitante;
   String? tipoIdSolicitante;
   String? idSolicitante;
   String? tipoPQRS;
   String? tipoMedioContacto;
   String? numTelefono;
-  String? correo;
+  String? medioContacto;
   String? direccion;
   String? descripcion;
+  String? respuesta;
+  String? nombreArchivoAdjunto;
 
-  PQRS({
+  pqrs({
     this.id,
     this.nombreDependencia,
-    this.nombreSolicitante,
-    this.apellidoSolicitante,
+    this.primerNombreSolicitante,
+    this.segundoNombreSolicitante,
+    this.primerApellidoSolicitante,
+    this.segundoApellidoSolicitante,
     this.tipoIdSolicitante,
     this.idSolicitante,
     this.tipoPQRS,
     this.tipoMedioContacto,
     this.numTelefono,
-    this.correo,
+    this.medioContacto,
     this.direccion,
     this.descripcion,
+    this.respuesta,
+    this.nombreArchivoAdjunto,
   });
 
-  PQRS.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    nombreDependencia = json['nombreDependencia'];
-    nombreSolicitante = json['nombreSolicitante'];
-    apellidoSolicitante = json['apellidoSolicitante'];
-    tipoIdSolicitante = json['tipoIdSolicitante'];
-    idSolicitante = json['idSolicitante'];
-    tipoPQRS = json['tipoPQRS'];
-    tipoMedioContacto = json['tipoMedioContacto'];
-    numTelefono = json['numTelefono'];
-    correo = json['correo'];
-    direccion = json['direccion'];
-    descripcion = json['descripcion'];
-  }
-
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'nombreDependencia': nombreDependencia,
-      'nombreSolicitante': nombreSolicitante,
-      'apellidoSolicitante': apellidoSolicitante,
+      'primerNombreSolicitante': primerNombreSolicitante,
+      'segundoNombreSolicitante': segundoNombreSolicitante,
+      'primerApellidoSolicitante': primerApellidoSolicitante,
+      'segundoApellidoSolicitante': segundoApellidoSolicitante,
       'tipoIdSolicitante': tipoIdSolicitante,
       'idSolicitante': idSolicitante,
       'tipoPQRS': tipoPQRS,
       'tipoMedioContacto': tipoMedioContacto,
       'numTelefono': numTelefono,
-      'correo': correo,
+      'correo': medioContacto,
       'direccion': direccion,
       'descripcion': descripcion,
+      'respuesta': respuesta,
+      'nombreArchivoAdjunto': nombreArchivoAdjunto,
     };
   }
 }
