@@ -8,7 +8,7 @@ class pqrs {
   String? tipoIdSolicitante;
   String? idSolicitante;
   String? tipoPQRS;
-  String? tipoMedioContacto;
+  int tipoMedioContacto;
   String? numTelefono;
   String? medioContacto;
   String? direccion;
@@ -26,7 +26,7 @@ class pqrs {
     this.tipoIdSolicitante,
     this.idSolicitante,
     this.tipoPQRS,
-    this.tipoMedioContacto,
+    required this.tipoMedioContacto,
     this.numTelefono,
     this.medioContacto,
     this.direccion,

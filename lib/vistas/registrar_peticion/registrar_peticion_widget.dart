@@ -2461,7 +2461,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                   FFButtonWidget(
                                     onPresionado: () async {
                                       if (_formKey.currentState!.validate()) {
-                                        if (_opcionenvioEmail ||
+                                        if (_opcionenvioDireccion ||
                                             _opcionenvioVentanilla ||
                                             _opcionenvioWhatsapp ||
                                             _opcionenvioEmail) {
@@ -2578,7 +2578,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
       tipoIdSolicitante: tipoIdentificacion,
       idSolicitante: numeroIdentificacion,
       tipoPQRS: this.nombreTipoPQR,
-      tipoMedioContacto: tipomedioContacto,
+      tipoMedioContacto: int.parse(tipomedioContacto),
       numTelefono: telefono,
       medioContacto: medioContacto,
       direccion: '',

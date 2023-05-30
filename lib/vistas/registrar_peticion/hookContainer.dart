@@ -162,15 +162,18 @@ class HoverContainer extends HookWidget {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 25.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              nombreArchivo,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 19.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.25,
+                              child: Text(
+                                nombreArchivo,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 19.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
                             ),
                           ),
                         ],
