@@ -15,25 +15,33 @@ class pqrs {
   String? descripcion;
   String? respuesta;
   String? nombreArchivoAdjunto;
+  String fechaString;
+  int fechaInt;
+  bool esAnonimo;
 
-  pqrs({
-    this.id,
-    this.nombreDependencia,
-    this.primerNombreSolicitante,
-    this.segundoNombreSolicitante,
-    this.primerApellidoSolicitante,
-    this.segundoApellidoSolicitante,
-    this.tipoIdSolicitante,
-    this.idSolicitante,
-    this.tipoPQRS,
-    required this.tipoMedioContacto,
-    this.numTelefono,
-    this.medioContacto,
-    this.direccion,
-    this.descripcion,
-    this.respuesta,
-    this.nombreArchivoAdjunto,
-  });
+  int estado = 1;
+
+  pqrs(
+      {this.id,
+      this.nombreDependencia,
+      this.primerNombreSolicitante,
+      this.segundoNombreSolicitante,
+      this.primerApellidoSolicitante,
+      this.segundoApellidoSolicitante,
+      this.tipoIdSolicitante,
+      this.idSolicitante,
+      this.tipoPQRS,
+      required this.tipoMedioContacto,
+      this.numTelefono,
+      this.medioContacto,
+      this.direccion,
+      this.descripcion,
+      this.respuesta,
+      this.nombreArchivoAdjunto,
+      this.estado = 1,
+      this.fechaString = '',
+      this.fechaInt = 0,
+      this.esAnonimo=false});
 
   Map<String, dynamic> toMap() {
     return {
@@ -52,6 +60,10 @@ class pqrs {
       'descripcion': descripcion,
       'respuesta': respuesta,
       'nombreArchivoAdjunto': nombreArchivoAdjunto,
+      'estado': estado,
+      'fechaInt': fechaInt,
+      'fechaString': fechaString,
+      'esAnonimo': esAnonimo, 
     };
   }
 }

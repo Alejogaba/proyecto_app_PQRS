@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'dart:io';
+import 'package:intl/intl.dart';
 
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
@@ -2547,7 +2548,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
     String tipoIdentificacion = _model.dropDownTipoIdentificacion ?? '';
     String numeroIdentificacion =
         _model.textControllerNumeroIdentificacion?.text ?? '';
-    bool esAnonima = _model.radioButtonValueEsAnonima?.value == 'Sí';
+    bool esAnonima = _model.radioButtonValueEsAnonima?.value == 'Anónima';
     String respuesta = '';
     String tipomedioContacto = '';
     String medioContacto = '';
@@ -2585,6 +2586,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
       descripcion: descripcion,
       respuesta: respuesta,
       nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
+      fechaInt: DateTime.now().millisecondsSinceEpoch,
+      fechaString: DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()),
+      esAnonimo: esAnonima
     );
 
     AlertPQRS(pqr: peticion).showConfirmationAlert(context);

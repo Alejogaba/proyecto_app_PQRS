@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
             if (AuthHelper.estaLogeado()) {
               return VentanaDashboardWidget();
             } else {
-              return RegistrarPeticionWidget();
+              return VentanaFuncionariosWidget();
             }
           } else {
             return Container();

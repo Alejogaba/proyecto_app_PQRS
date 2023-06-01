@@ -1,5 +1,7 @@
 import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
+import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/grafico_circular.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ventana_dashboard_model.dart';
 export 'ventana_dashboard_model.dart';
+import 'package:graphic/graphic.dart';
 
 class VentanaDashboardWidget extends StatefulWidget {
   const VentanaDashboardWidget({Key? key}) : super(key: key);
@@ -76,10 +79,10 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                           onTap: () {
                             AuthHelper.handleSignOut();
                             Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const HomePageWidget()));
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const HomePageWidget()));
                           },
                           child: Container(
                             width: 50.0,
@@ -151,8 +154,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     10.0, 0.0, 0.0, 5.0),
                                 child: Icon(
                                   Icons.home,
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryText,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 20.0,
                                 ),
                               ),
@@ -462,26 +465,24 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
                                     child: TextFormField(
                                       controller: _model.textController,
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Consultar Ticket',
-                                        hintStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: 18.0,
-                                                ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 18.0,
+                                            ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryText,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                             width: 1.0,
                                           ),
                                           borderRadius:
@@ -503,8 +504,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                           borderRadius:
                                               BorderRadius.circular(15.0),
                                         ),
-                                        focusedErrorBorder:
-                                            OutlineInputBorder(
+                                        focusedErrorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
@@ -519,8 +519,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             fontFamily: 'Poppins',
                                             fontSize: 18.0,
                                           ),
-                                      validator: _model
-                                          .textControllerValidator
+                                      validator: _model.textControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -535,9 +534,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).info,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
@@ -603,13 +601,11 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     color: Colors.transparent,
                                     elevation: 1.0,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     child: Container(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                              0.45,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.45,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -620,8 +616,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional
-                                                .fromSTEB(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 15.0, 8.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -635,8 +631,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding:
@@ -661,21 +656,23 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'PQRS',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondaryText,
-                                                              fontSize: 18.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
+                                                        'Total PQRS',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
@@ -684,8 +681,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional
-                                                .fromSTEB(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 15.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -696,27 +693,58 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(10.0, 0.0,
-                                                              0.0, 0.0),
-                                                  child: Text(
-                                                    '170',
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondaryText,
-                                                              fontSize: 26.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: FutureBuilder(
+                                                    future: ControladorPQRS()
+                                                        .getTotalPqrsCount(),
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot
+                                                              .connectionState ==
+                                                          ConnectionState
+                                                              .done) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 26.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 26.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        );
+                                                      }
+                                                    },
                                                   ),
                                                 ),
                                               ],
@@ -735,13 +763,11 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     color: Colors.transparent,
                                     elevation: 1.0,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     child: Container(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                              0.45,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.45,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -752,8 +778,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional
-                                                .fromSTEB(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 15.0, 8.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -767,8 +793,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding:
@@ -793,21 +818,23 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'PQRS',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondaryText,
-                                                              fontSize: 18.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
+                                                        'Total PQRS Pendientes',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
@@ -816,8 +843,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional
-                                                .fromSTEB(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 15.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -828,27 +855,58 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(10.0, 0.0,
-                                                              0.0, 0.0),
-                                                  child: Text(
-                                                    '170',
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondaryText,
-                                                              fontSize: 26.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: FutureBuilder(
+                                                    future: ControladorPQRS()
+                                                        .getTotalPqrsPendiente(),
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot
+                                                              .connectionState ==
+                                                          ConnectionState
+                                                              .done) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 26.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 26.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        );
+                                                      }
+                                                    },
                                                   ),
                                                 ),
                                               ],
@@ -867,8 +925,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                 0.0, 20.0, 0.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -881,10 +938,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -899,8 +955,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -937,7 +992,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: Text(
-                                                          'PQRS',
+                                                          'Total PQRS En Proceso',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -947,8 +1002,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
-                                                                fontSize:
-                                                                    18.0,
+                                                                fontSize: 18.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
@@ -965,8 +1019,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 0.0, 8.0, 15.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -976,29 +1029,59 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10.0,
-                                                                0.0,
-                                                                0.0,
-                                                                0.0),
-                                                    child: Text(
-                                                      '170',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                fontSize:
-                                                                    26.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: FutureBuilder(
+                                                      future: ControladorPQRS()
+                                                          .getTotalPqrsEnProceso(),
+                                                      builder: (BuildContext
+                                                              context,
+                                                          AsyncSnapshot<dynamic>
+                                                              snapshot) {
+                                                        if (snapshot
+                                                                .connectionState ==
+                                                            ConnectionState
+                                                                .done) {
+                                                          return Text(
+                                                            snapshot.data
+                                                                .toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      26.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          );
+                                                        } else {
+                                                          return Text(
+                                                            '0',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      26.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          );
+                                                        }
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -1021,10 +1104,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -1039,8 +1121,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -1077,7 +1158,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: Text(
-                                                          'PQRS',
+                                                          'Total PQRS Finalizados',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1087,8 +1168,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
-                                                                fontSize:
-                                                                    18.0,
+                                                                fontSize: 18.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
@@ -1105,8 +1185,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 0.0, 8.0, 15.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -1116,29 +1195,59 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10.0,
-                                                                0.0,
-                                                                0.0,
-                                                                0.0),
-                                                    child: Text(
-                                                      '170',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                fontSize:
-                                                                    26.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: FutureBuilder(
+                                                      future: ControladorPQRS()
+                                                          .getTotalPqrsFinalizado(),
+                                                      builder: (BuildContext
+                                                              context,
+                                                          AsyncSnapshot<dynamic>
+                                                              snapshot) {
+                                                        if (snapshot
+                                                                .connectionState ==
+                                                            ConnectionState
+                                                                .done) {
+                                                          return Text(
+                                                            snapshot.data
+                                                                .toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      26.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          );
+                                                        } else {
+                                                          return Text(
+                                                            '0',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      26.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          );
+                                                        }
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -1158,8 +1267,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                 0.0, 30.0, 0.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -1172,10 +1280,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -1190,8 +1297,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -1215,7 +1321,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       0.0,
                                                                       0.0),
                                                           child: Text(
-                                                            'PQRS',
+                                                            'PQRS Identificación',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1250,8 +1356,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 20.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -1261,11 +1366,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                5.0,
-                                                                0.0,
-                                                                5.0,
-                                                                0.0),
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1294,7 +1396,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
-                                                                        110.0,
+                                                                        123.0,
                                                                         0.0),
                                                                 child: Text(
                                                                   'Total solicitudes',
@@ -1304,8 +1406,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -1314,27 +1416,53 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FutureBuilder(
+                                                                  future: ControladorPQRS()
+                                                                      .getTotalPqrsCountIdentificacion(),
+                                                                  builder: (BuildContext
+                                                                          context,
+                                                                      AsyncSnapshot<
+                                                                              dynamic>
+                                                                          snapshot) {
+                                                                    if (snapshot
+                                                                            .connectionState ==
+                                                                        ConnectionState
+                                                                            .done) {
+                                                                      return Text(
+                                                                        snapshot
+                                                                            .data
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15.0,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    } else {
+                                                                      return Text(
+                                                                        '0',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    }
+                                                                  },
                                                                 ),
                                                               ),
                                                             ],
@@ -1342,8 +1470,116 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
+                                                            thickness: 2.0,
+                                                            indent: 10.0,
+                                                            endIndent: 20.0,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent2,
+                                                            lineStyle:
+                                                                DividerLineStyle
+                                                                    .dotted,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      4.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            45,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'Total solicitudes sin iniciar',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FutureBuilder(
+                                                                  future: ControladorPQRS()
+                                                                      .getTotalPqrsPendienteIdentificacion(),
+                                                                  builder: (BuildContext
+                                                                          context,
+                                                                      AsyncSnapshot<
+                                                                              dynamic>
+                                                                          snapshot) {
+                                                                    if (snapshot.connectionState ==
+                                                                            ConnectionState
+                                                                                .done &&
+                                                                        snapshot.data !=
+                                                                            null) {
+                                                                      return Text(
+                                                                        snapshot
+                                                                            .data
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15.0,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    } else {
+                                                                      return Text(
+                                                                        '0',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    }
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 300.0,
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -1376,18 +1612,18 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
-                                                                        110.0,
+                                                                        38.0,
                                                                         0.0),
                                                                 child: Text(
-                                                                  'Total solicitudes',
+                                                                  'Total solicitudes en proceso',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -1396,27 +1632,54 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FutureBuilder(
+                                                                  future: ControladorPQRS()
+                                                                      .getTotalPqrsEnProcesoIdentificaion(),
+                                                                  builder: (BuildContext
+                                                                          context,
+                                                                      AsyncSnapshot<
+                                                                              dynamic>
+                                                                          snapshot) {
+                                                                    if (snapshot.connectionState ==
+                                                                            ConnectionState
+                                                                                .done &&
+                                                                        snapshot.data !=
+                                                                            null) {
+                                                                      return Text(
+                                                                        snapshot
+                                                                            .data
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15.0,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    } else {
+                                                                      return Text(
+                                                                        '0',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    }
+                                                                  },
                                                                 ),
                                                               ),
                                                             ],
@@ -1424,8 +1687,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -1458,18 +1720,18 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
-                                                                        110.0,
+                                                                        36.0,
                                                                         0.0),
                                                                 child: Text(
-                                                                  'Total solicitudes',
+                                                                  'Total solicitudes finalizadas',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -1478,109 +1740,53 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 300.0,
-                                                          child:
-                                                              StyledDivider(
-                                                            thickness: 2.0,
-                                                            indent: 10.0,
-                                                            endIndent: 20.0,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent2,
-                                                            lineStyle:
-                                                                DividerLineStyle
-                                                                    .dotted,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        110.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  'Total solicitudes',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FutureBuilder(
+                                                                  future: ControladorPQRS()
+                                                                      .getTotalPqrsFinalizadoIdentificaion(),
+                                                                  builder: (BuildContext
+                                                                          context,
+                                                                      AsyncSnapshot<
+                                                                              dynamic>
+                                                                          snapshot) {
+                                                                    if (snapshot
+                                                                            .connectionState ==
+                                                                        ConnectionState
+                                                                            .done) {
+                                                                      return Text(
+                                                                        snapshot
+                                                                            .data
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15.0,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    } else {
+                                                                      return Text(
+                                                                        '0',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              fontSize: 15,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      );
+                                                                    }
+                                                                  },
                                                                 ),
                                                               ),
                                                             ],
@@ -1596,21 +1802,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Container(
-                                                        width: 170.0,
-                                                        height: 170.0,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Image.network(
-                                                          'https://picsum.photos/seed/107/600',
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
+                                                      GraficoCircularIdentificacion()
                                                     ],
                                                   ),
                                                   Expanded(
@@ -1637,8 +1829,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             height: 8.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .info,
                                                               borderRadius:
                                                                   BorderRadius
@@ -1656,8 +1848,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10  En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -1706,8 +1898,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -1756,8 +1948,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -1797,10 +1989,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -1815,8 +2006,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -1875,8 +2065,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 20.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -1886,11 +2075,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                5.0,
-                                                                0.0,
-                                                                5.0,
-                                                                0.0),
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1929,8 +2115,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -1939,12 +2125,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -1953,8 +2140,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -1967,8 +2154,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -2011,8 +2197,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2021,12 +2207,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2035,8 +2222,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2049,8 +2236,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -2093,8 +2279,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2103,12 +2289,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2117,8 +2304,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2131,8 +2318,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -2175,8 +2361,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2185,12 +2371,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2199,8 +2386,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2262,8 +2449,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             height: 8.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .info,
                                                               borderRadius:
                                                                   BorderRadius
@@ -2281,8 +2468,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10  En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -2331,8 +2518,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -2381,8 +2568,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -2419,8 +2606,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                 0.0, 20.0, 0.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -2433,10 +2619,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -2451,8 +2636,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -2511,8 +2695,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 20.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -2522,11 +2705,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                5.0,
-                                                                0.0,
-                                                                5.0,
-                                                                0.0),
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -2565,8 +2745,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2575,12 +2755,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2589,8 +2770,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2603,8 +2784,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -2647,8 +2827,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2657,12 +2837,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2671,8 +2852,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2685,8 +2866,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -2729,8 +2909,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2739,12 +2919,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2753,8 +2934,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2767,8 +2948,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -2811,8 +2991,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2821,12 +3001,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -2835,8 +3016,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -2898,8 +3079,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             height: 8.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .info,
                                                               borderRadius:
                                                                   BorderRadius
@@ -2917,8 +3098,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10  En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -2967,8 +3148,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -3017,8 +3198,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -3058,10 +3239,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -3076,8 +3256,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -3136,8 +3315,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 20.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -3147,11 +3325,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                5.0,
-                                                                0.0,
-                                                                5.0,
-                                                                0.0),
+                                                            .fromSTEB(5.0, 0.0,
+                                                                5.0, 0.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -3190,8 +3365,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3200,12 +3375,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -3214,8 +3390,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3228,8 +3404,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -3272,8 +3447,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3282,12 +3457,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -3296,8 +3472,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3310,8 +3486,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -3354,8 +3529,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3364,12 +3539,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -3378,8 +3554,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3392,8 +3568,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         ),
                                                         SizedBox(
                                                           width: 300.0,
-                                                          child:
-                                                              StyledDivider(
+                                                          child: StyledDivider(
                                                             thickness: 2.0,
                                                             indent: 10.0,
                                                             endIndent: 20.0,
@@ -3436,8 +3611,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3446,12 +3621,13 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Text(
                                                                   '178',
                                                                   style: FlutterFlowTheme.of(
@@ -3460,8 +3636,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
                                                                         fontSize:
                                                                             15.0,
                                                                         fontWeight:
@@ -3523,8 +3699,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             height: 8.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme.of(
-                                                                      context)
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .info,
                                                               borderRadius:
                                                                   BorderRadius
@@ -3542,8 +3718,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10  En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -3592,8 +3768,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -3642,8 +3818,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '10 En proceso',
-                                                              style: FlutterFlowTheme.of(
-                                                                      context)
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
@@ -3693,10 +3869,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -3713,8 +3888,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 0.0),
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -3772,313 +3946,447 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       8.0, 15.0, 8.0, 20.0),
-                                              child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                5.0,
-                                                                0.0,
-                                                                5.0,
-                                                                0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      6.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  6.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                                child: FaIcon(
+                                                            child: Row(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              children: [
+                                                                FaIcon(
                                                                   FontAwesomeIcons
                                                                       .chartLine,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
+                                                                  color: FlutterFlowTheme
+                                                                          .of(context)
                                                                       .info,
                                                                   size: 24.0,
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        320.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  'PQRS con identificación',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
-                                                                        fontSize:
-                                                                            19.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            19.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
+                                                            child: Text(
+                                                              'PQRS con identificación',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        19.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 660.0,
-                                                          child:
-                                                              StyledDivider(
-                                                            thickness: 2.0,
-                                                            indent: 10.0,
-                                                            endIndent: 20.0,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent2,
-                                                            lineStyle:
-                                                                DividerLineStyle
-                                                                    .dotted,
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      6.0,
-                                                                      0.0,
-                                                                      6.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                          
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
-                                                                        0.0,
+                                                                        17.0,
                                                                         0.0),
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .chartLine,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  size: 24.0,
-                                                                ),
+                                                            child: FutureBuilder(
+                                                    future: ControladorPQRS()
+                                                        .getTotalPqrsIdentificacionCountHoy(),
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot
+                                                              .connectionState ==
+                                                          ConnectionState
+                                                              .done&&snapshot.data!=null) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 19.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
                                                               ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        395.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  'PQRS anónimas',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
-                                                                        fontSize:
-                                                                            19.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 19.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
                                                               ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            19.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 660.0,
-                                                          child:
-                                                              StyledDivider(
-                                                            thickness: 2.0,
-                                                            indent: 10.0,
-                                                            endIndent: 20.0,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent2,
-                                                            lineStyle:
-                                                                DividerLineStyle
-                                                                    .dotted,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      6.0,
-                                                                      0.0,
-                                                                      6.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .chartLine,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  size: 24.0,
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        395.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  'Total solicitudes',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).secondaryText,
-                                                                        fontSize:
-                                                                            19.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  '178',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color:
-                                                                            FlutterFlowTheme.of(context).info,
-                                                                        fontSize:
-                                                                            19.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        );
+                                                      }
+                                                    },
                                                   ),
-                                                ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: MediaQuery.of(context).size.width *
+                                                0.5,
+                                                      child: StyledDivider(
+                                                        thickness: 2.0,
+                                                        indent: 10.0,
+                                                        endIndent: 20.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                        lineStyle:
+                                                            DividerLineStyle
+                                                                .dotted,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  6.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              children: [
+                                                                FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .chartLine,
+                                                                  color: FlutterFlowTheme
+                                                                          .of(context)
+                                                                      .info,
+                                                                  size: 24.0,
+                                                                ),
+                                                                Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'PQRS anónimas',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        19.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        17.0,
+                                                                        0.0),
+                                                            child: FutureBuilder(
+                                                    future: ControladorPQRS()
+                                                        .getTotalPqrsAnonimoCountHoy(),
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot
+                                                              .connectionState ==
+                                                          ConnectionState
+                                                              .done&&snapshot.data!=null) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 19.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 19.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        );
+                                                      }
+                                                    },
+                                                  ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: MediaQuery.of(context).size.width *
+                                                0.5,
+                                                      child: StyledDivider(
+                                                        thickness: 2.0,
+                                                        indent: 10.0,
+                                                        endIndent: 20.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                        lineStyle:
+                                                            DividerLineStyle
+                                                                .dotted,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  6.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              children: [
+                                                                FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .chartLine,
+                                                                  color: FlutterFlowTheme
+                                                                          .of(context)
+                                                                      .info,
+                                                                  size: 24.0,
+                                                                ),
+                                                                Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Total PQRS',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        19.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        17.0,
+                                                                        0.0),
+                                                            child: FutureBuilder(
+                                                    future: ControladorPQRS()
+                                                        .getTotalPqrsCountHoy(),
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot
+                                                              .connectionState ==
+                                                          ConnectionState
+                                                              .done&&snapshot.data!=null) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 19.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 19.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        );
+                                                      }
+                                                    },
+                                                  ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: MediaQuery.of(context).size.width *
+                                                0.5,
+                                                      child: StyledDivider(
+                                                        thickness: 2.0,
+                                                        indent: 10.0,
+                                                        endIndent: 20.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                        lineStyle:
+                                                            DividerLineStyle
+                                                                .dotted,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ],
