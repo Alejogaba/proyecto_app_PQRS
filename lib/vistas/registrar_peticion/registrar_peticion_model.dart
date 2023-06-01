@@ -6,24 +6,24 @@ class RegistrarPeticionModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController;
+  FormFieldController<String>? radioButtonValueEsAnonima;
   // State field(s) for TextField widget.
-  TextEditingController? textController1;
+  TextEditingController? textControllerPrimerNombre;
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for TextField widget.
-  TextEditingController? textController2;
+  TextEditingController? textControllerSegundoNombre;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for TextField widget.
-  TextEditingController? textController3;
+  TextEditingController? textControllerPrimerApellido;
   String? Function(BuildContext, String?)? textController3Validator;
   // State field(s) for TextField widget.
-  TextEditingController? textController4;
+  TextEditingController? textControllerSegundoApellido;
   String? Function(BuildContext, String?)? textController4Validator;
   // State field(s) for DropDown widget.
-  String? dropDownValue1;
+  String? dropDownTipoIdentificacion;
   FormFieldController<String>? dropDownValueController1;
   // State field(s) for TextField widget.
-  TextEditingController? textController5;
+  TextEditingController? textControllerNumeroIdentificacion;
   String? Function(BuildContext, String?)? textController5Validator;
   // State field(s) for Checkbox widget.
   bool? checkboxValue1;
@@ -37,6 +37,7 @@ class RegistrarPeticionModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textController7Validator;
   // State field(s) for Checkbox widget.
   bool? checkboxValue3;
+  bool? checkboxValue4;
   // State field(s) for TextField widget.
   TextEditingController? textController8;
   String? Function(BuildContext, String?)? textController8Validator;
@@ -46,17 +47,26 @@ class RegistrarPeticionModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController9;
   String? Function(BuildContext, String?)? textController9Validator;
+  // State field(s) for TextField widget.
+  TextEditingController? textControllerDescripcionPqrs;
+  String? Function(BuildContext, String?)? textController10Validator =
+      (p0, p1) {
+    if (p1 == null || p1.isEmpty) {
+      return 'No deje este campo vacío.';
+    }
+    return null;
+  };
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    textController1?.dispose();
-    textController2?.dispose();
-    textController3?.dispose();
-    textController4?.dispose();
-    textController5?.dispose();
+    textControllerPrimerNombre?.dispose();
+    textControllerSegundoNombre?.dispose();
+    textControllerPrimerApellido?.dispose();
+    textControllerSegundoApellido?.dispose();
+    textControllerNumeroIdentificacion?.dispose();
     textController6?.dispose();
     textController7?.dispose();
     textController8?.dispose();
@@ -65,5 +75,5 @@ class RegistrarPeticionModel extends FlutterFlowModel {
 
   /// Additional helper methods are added here.
 
-  String? get radioButtonValue => radioButtonValueController?.value;
+  String? get radioButtonValue => radioButtonValueEsAnonima?.value;
 }

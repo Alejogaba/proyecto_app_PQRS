@@ -1,61 +1,69 @@
-class PQRS {
+class pqrs {
   String? id;
   String? nombreDependencia;
-  String? nombreSolicitante;
-  String? apellidoSolicitante;
+  String? primerNombreSolicitante;
+  String? segundoNombreSolicitante;
+  String? primerApellidoSolicitante;
+  String? segundoApellidoSolicitante;
   String? tipoIdSolicitante;
   String? idSolicitante;
   String? tipoPQRS;
-  String? tipoMedioContacto;
+  int tipoMedioContacto;
   String? numTelefono;
-  String? correo;
+  String? medioContacto;
   String? direccion;
   String? descripcion;
+  String? respuesta;
+  String? nombreArchivoAdjunto;
+  String fechaString;
+  int fechaInt;
+  bool esAnonimo;
 
-  PQRS({
-    this.id,
-    this.nombreDependencia,
-    this.nombreSolicitante,
-    this.apellidoSolicitante,
-    this.tipoIdSolicitante,
-    this.idSolicitante,
-    this.tipoPQRS,
-    this.tipoMedioContacto,
-    this.numTelefono,
-    this.correo,
-    this.direccion,
-    this.descripcion,
-  });
+  int estado = 1;
 
-  PQRS.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    nombreDependencia = json['nombreDependencia'];
-    nombreSolicitante = json['nombreSolicitante'];
-    apellidoSolicitante = json['apellidoSolicitante'];
-    tipoIdSolicitante = json['tipoIdSolicitante'];
-    idSolicitante = json['idSolicitante'];
-    tipoPQRS = json['tipoPQRS'];
-    tipoMedioContacto = json['tipoMedioContacto'];
-    numTelefono = json['numTelefono'];
-    correo = json['correo'];
-    direccion = json['direccion'];
-    descripcion = json['descripcion'];
-  }
+  pqrs(
+      {this.id,
+      this.nombreDependencia,
+      this.primerNombreSolicitante,
+      this.segundoNombreSolicitante,
+      this.primerApellidoSolicitante,
+      this.segundoApellidoSolicitante,
+      this.tipoIdSolicitante,
+      this.idSolicitante,
+      this.tipoPQRS,
+      required this.tipoMedioContacto,
+      this.numTelefono,
+      this.medioContacto,
+      this.direccion,
+      this.descripcion,
+      this.respuesta,
+      this.nombreArchivoAdjunto,
+      this.estado = 1,
+      this.fechaString = '',
+      this.fechaInt = 0,
+      this.esAnonimo=false});
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'nombreDependencia': nombreDependencia,
-      'nombreSolicitante': nombreSolicitante,
-      'apellidoSolicitante': apellidoSolicitante,
+      'primerNombreSolicitante': primerNombreSolicitante,
+      'segundoNombreSolicitante': segundoNombreSolicitante,
+      'primerApellidoSolicitante': primerApellidoSolicitante,
+      'segundoApellidoSolicitante': segundoApellidoSolicitante,
       'tipoIdSolicitante': tipoIdSolicitante,
       'idSolicitante': idSolicitante,
       'tipoPQRS': tipoPQRS,
       'tipoMedioContacto': tipoMedioContacto,
       'numTelefono': numTelefono,
-      'correo': correo,
+      'correo': medioContacto,
       'direccion': direccion,
       'descripcion': descripcion,
+      'respuesta': respuesta,
+      'nombreArchivoAdjunto': nombreArchivoAdjunto,
+      'estado': estado,
+      'fechaInt': fechaInt,
+      'fechaString': fechaString,
+      'esAnonimo': esAnonimo, 
     };
   }
 }

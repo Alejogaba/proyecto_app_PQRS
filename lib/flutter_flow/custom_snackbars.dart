@@ -51,7 +51,7 @@ class CustomSnackBars {
   }
   snackBarError(BuildContext context,String titulo, String mensaje){
     SmartSnackBars.showTemplatedSnackbar(
-      persist: true,
+      persist: false,
       context: context,
       backgroundColor: Colors.red,
       animateFrom: AnimateFrom.fromTop,
@@ -96,4 +96,5 @@ class CustomSnackBars {
       ),
     );
   }
+  
 }

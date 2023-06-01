@@ -159,6 +159,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
         }
         return null;
       }),
+      
       padding: MaterialStateProperty.all(widget.options.padding ??
           const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0)),
       elevation: MaterialStateProperty.resolveWith<double?>(
@@ -235,5 +236,6 @@ extension _WithoutColorExtension on TextStyle {
         // but it's almost always unset anyway.
         // package: _package,
         overflow: overflow,
+        
       );
 }
