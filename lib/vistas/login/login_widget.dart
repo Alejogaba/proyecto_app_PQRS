@@ -12,10 +12,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 import 'package:smart_snackbars/smart_snackbars.dart';
@@ -109,7 +106,7 @@ class _LoginWidgetState extends State<LoginWidget>
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: Image.asset(
-                      'assets/images/La-Paz-Portada-800x445_(1).jpg',
+                      'assets/images/La-Paz-Portada2.jpg',
                     ).image,
                   ),
                   gradient: LinearGradient(
@@ -421,7 +418,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                           .passwordController
                                                           .text);
                                               if (user != null) {
-                                                 log('user: $user');
+                                                log('user: $user');
                                                 print("Ingreso Exitoso");
                                                 CustomSnackBars().snackBarOk(
                                                     context,
@@ -436,27 +433,25 @@ class _LoginWidgetState extends State<LoginWidget>
                                                         builder: (context) =>
                                                             const VentanaDashboardWidget()));
                                               }
-                                             
                                             } on FirebaseException catch (e) {
                                               CustomSnackBars().snackBarError(
-                                                    context,
-                                                    'Error al iniciar sesión',
-                                                    e.message.toString());
-                                                SmartSnackBars
-                                                    .showTemplatedSnackbar(
-                                                        context: context);
-                                                
+                                                  context,
+                                                  'Error al iniciar sesión',
+                                                  e.message.toString());
+                                              SmartSnackBars
+                                                  .showTemplatedSnackbar(
+                                                      context: context);
+
                                               log(e.toString());
                                             } catch (e) {
-                                              
                                               CustomSnackBars().snackBarError(
-                                                    context,
-                                                    'Error al iniciar sesión',
-                                                    e.toString());
-                                                SmartSnackBars
-                                                    .showTemplatedSnackbar(
-                                                        context: context);
-                                               
+                                                  context,
+                                                  'Error al iniciar sesión',
+                                                  e.toString());
+                                              SmartSnackBars
+                                                  .showTemplatedSnackbar(
+                                                      context: context);
+
                                               log(e.toString());
                                             }
                                           }

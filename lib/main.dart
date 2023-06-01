@@ -5,17 +5,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
 
-import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/detalles_p_q_r_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/detalles_soporte/detalles_soporte_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/home_page/home_page_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/login/login_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/registrar_peticion_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/registrar_soporte/registrar_soporte_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/ventan_p_q_r_s_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/ventana_dashboard_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/ventana_dependencias/ventana_dependencias_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/ventana_funcionarios/ventana_funcionarios_widget.dart';
-import 'package:proyecto_p_q_r_s/vistas/ventana_soporte/ventana_soporte_widget.dart';
 import 'firebase_options.dart';
 
 import 'flutter_flow/internationalization.dart';
@@ -68,7 +57,7 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       initialRoute: 'login',
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),

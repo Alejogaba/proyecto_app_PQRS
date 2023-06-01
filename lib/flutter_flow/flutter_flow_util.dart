@@ -10,7 +10,6 @@ import 'package:intl/intl.dart';
 
 import '../main.dart';
 
-import 'lat_lng.dart';
 
 export 'lat_lng.dart';
 export 'place.dart';

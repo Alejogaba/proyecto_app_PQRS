@@ -1,10 +1,8 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
 
 class AuthHelper {
   static FirebaseAuth _auth = FirebaseAuth.instance;
@@ -14,7 +12,7 @@ class AuthHelper {
       String password = '',
       bool estaCreado = false}) async {
     try {
-      var res = null;
+      var res;
       if (estaCreado) {
         res = await signupWithEmail(
             email: email, password: password, estaRegistrado: estaCreado);
@@ -31,7 +29,7 @@ class AuthHelper {
       );
       return user;
     } on FirebaseAuthException catch (e) {
-      var user = null;
+      var user;
       FirebaseFirestore _db = FirebaseFirestore.instance;
       var existe = await _db.collection("users").doc(email.toLowerCase()).get();
       log('Error: ' + e.message! + ' - Codigo: ' + e.code);
@@ -90,7 +88,7 @@ class AuthHelper {
         () {},
       );
       return res.user;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
     } catch (e) {
       log(e.toString());
     }

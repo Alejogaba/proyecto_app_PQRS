@@ -8,9 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'dart:js' as js;
 
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -247,7 +244,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const LoginWidget()));
+                                                    const RegistrarPeticionWidget()));
                                       },
                                       text: 'Envía una petición',
                                       options: FFButtonOptions(
@@ -428,7 +425,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPresionado: () {
-                                        print('Button pressed ...');
+                                        log('boton reclamo');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const RegistrarPeticionWidget()));
                                       },
                                       text: 'Envía un reclamo',
                                       options: FFButtonOptions(
@@ -518,7 +520,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPresionado: () {
-                                        print('Button pressed ...');
+                                        log('boton sugerencia');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const RegistrarPeticionWidget()));
                                       },
                                       text: 'Envía una sugerencia',
                                       options: FFButtonOptions(
@@ -608,9 +615,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPresionado: () {
-                                        print('Button pressed ...');
+                                        print('Button felicitacio');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const RegistrarPeticionWidget()));
                                       },
-                                      text: 'Envía una petición',
+                                      text: 'Envía una felicitacion',
                                       options: FFButtonOptions(
                                         width: 200.0,
                                         height: 45.0,
@@ -651,26 +663,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(bottom:8.0),
+                              padding: const EdgeInsets.only(bottom: 8.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Stack(
                                     children: [
                                       Align(
-                                        alignment: AlignmentDirectional(0.0, -1.0),
+                                        alignment:
+                                            AlignmentDirectional(0.0, -1.0),
                                         child: Material(
                                           color: Colors.transparent,
                                           elevation: 0.0,
                                           child: Container(
-                                            width: MediaQuery.of(context).size.width *
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 1.0,
-                                            height:
-                                                MediaQuery.of(context).size.height *
-                                                    0.12,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.12,
                                             decoration: BoxDecoration(
-                                              color: FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
                                               shape: BoxShape.rectangle,
                                               border: Border.all(
                                                 color: Colors.transparent,
@@ -686,37 +703,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 20.0, 20.0, 20.0),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 20.0, 20.0, 20.0),
                                               child: Material(
                                                 color: Colors.transparent,
                                                 elevation: 3.0,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(20.0),
+                                                      BorderRadius.circular(
+                                                          20.0),
                                                 ),
                                                 child: Container(
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
                                                       0.805,
-                                                  
                                                   decoration: BoxDecoration(
-                                                    color:
-                                                        FlutterFlowTheme.of(context)
-                                                            .secondaryBackground,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     borderRadius:
-                                                        BorderRadius.circular(20.0),
+                                                        BorderRadius.circular(
+                                                            20.0),
                                                   ),
                                                   child: Padding(
-                                                    padding: EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 40.0, 0.0, 0.0),
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 40.0,
+                                                                0.0, 0.0),
                                                     child: Row(
-                                                      mainAxisSize: MainAxisSize.min,
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceAround,
@@ -735,26 +757,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         0.0),
                                                             child: Column(
                                                               mainAxisSize:
-                                                                  MainAxisSize.max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              20.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     'Alcaldia de la paz Robles-Cesar',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
-                                                                    style: FlutterFlowTheme
-                                                                            .of(context)
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
@@ -762,26 +784,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontSize:
                                                                               18.0,
                                                                           fontWeight:
-                                                                              FontWeight
-                                                                                  .w600,
+                                                                              FontWeight.w600,
                                                                         ),
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              20.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     'Sede Principal',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
-                                                                    style: FlutterFlowTheme
-                                                                            .of(context)
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
@@ -789,8 +809,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontSize:
                                                                               15.0,
                                                                           fontWeight:
-                                                                              FontWeight
-                                                                                  .w600,
+                                                                              FontWeight.w600,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -800,71 +819,54 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              20.0,
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          SelectionArea(
-                                                                              child:
-                                                                                  AutoSizeText(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          20.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child: SelectionArea(
+                                                                          child: AutoSizeText(
                                                                         'Dirección: ',
                                                                         textAlign:
-                                                                            TextAlign
-                                                                                .start,
-                                                                        style: FlutterFlowTheme.of(
-                                                                                context)
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily:
-                                                                                  'Poppins',
-                                                                              fontSize:
-                                                                                  14.0,
-                                                                              fontWeight:
-                                                                                  FontWeight.w600,
+                                                                              fontFamily: 'Poppins',
+                                                                              fontSize: 14.0,
+                                                                              fontWeight: FontWeight.w600,
                                                                             ),
                                                                       )),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              10.0,
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          SelectionArea(
-                                                                              child:
-                                                                                  AutoSizeText(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child: SelectionArea(
+                                                                          child: AutoSizeText(
                                                                         'Carrera 7 N° 8A - 09, Palacio Municipal, La Paz Robles - Cesar.',
                                                                         textAlign:
-                                                                            TextAlign
-                                                                                .start,
-                                                                        style: FlutterFlowTheme.of(
-                                                                                context)
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily:
-                                                                                  'Poppins',
-                                                                              fontSize:
-                                                                                  14.0,
-                                                                              fontWeight:
-                                                                                  FontWeight.w500,
+                                                                              fontFamily: 'Poppins',
+                                                                              fontSize: 14.0,
+                                                                              fontWeight: FontWeight.w500,
                                                                             ),
                                                                       )),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -874,58 +876,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           'Horario de Atención:',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w600,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w600,
                                                                               ),
                                                                         )),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                10.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           'Lunes a viernes de 8:00 a.m. a 12:30 p.m. y de 2:30 \np.m. a 6:00 p.m',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w500,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w500,
                                                                               ),
                                                                         )),
                                                                       ),
@@ -933,13 +919,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -949,58 +934,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           'Conmutador:',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w600,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w600,
                                                                               ),
                                                                         )),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                10.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           '(+57) 5 5771240',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w500,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w500,
                                                                               ),
                                                                         )),
                                                                       ),
@@ -1008,13 +977,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1024,58 +992,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           'Línea Fax:',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w600,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w600,
                                                                               ),
                                                                         )),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                10.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           '(+57) 5 5771240',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w500,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w500,
                                                                               ),
                                                                         )),
                                                                       ),
@@ -1083,13 +1035,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1099,30 +1050,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                        child:
-                                                                            SelectionArea(
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: SelectionArea(
+                                                                            child: AutoSizeText(
                                                                           'Línea Anticorrupción: (+57) 018000919748',
                                                                           textAlign:
-                                                                              TextAlign
-                                                                                  .start,
-                                                                          style: FlutterFlowTheme.of(
-                                                                                  context)
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily:
-                                                                                    'Poppins',
-                                                                                fontSize:
-                                                                                    14.0,
-                                                                                fontWeight:
-                                                                                    FontWeight.w600,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w600,
                                                                               ),
                                                                         )),
                                                                       ),
@@ -1130,13 +1073,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1146,44 +1088,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           focusColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           hoverColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           highlightColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {},
                                                                           child:
                                                                               AutoSizeText(
                                                                             'Correo Electrónico: contactenos@lapazrobles-cesar.gov.co',
                                                                             textAlign:
-                                                                                TextAlign
-                                                                                    .start,
-                                                                            style: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .bodyMedium
-                                                                                .override(
-                                                                                  fontFamily:
-                                                                                      'Poppins',
-                                                                                  fontSize:
-                                                                                      14.0,
-                                                                                  fontWeight:
-                                                                                      FontWeight.w600,
+                                                                                TextAlign.start,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  fontSize: 14.0,
+                                                                                  fontWeight: FontWeight.w600,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1192,13 +1122,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1208,47 +1137,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           focusColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           hoverColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           highlightColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {
-                                                                            await launchURL(
-                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Mapa-del-Sitio.aspx');
+                                                                            await launchURL('https://www.lapazrobles-cesar.gov.co/Paginas/Mapa-del-Sitio.aspx');
                                                                           },
                                                                           child:
                                                                               AutoSizeText(
                                                                             'Mapa del Sitio',
                                                                             textAlign:
-                                                                                TextAlign
-                                                                                    .start,
-                                                                            style: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .bodyMedium
-                                                                                .override(
-                                                                                  fontFamily:
-                                                                                      'Poppins',
-                                                                                  fontSize:
-                                                                                      14.0,
-                                                                                  fontWeight:
-                                                                                      FontWeight.w600,
+                                                                                TextAlign.start,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  fontSize: 14.0,
+                                                                                  fontWeight: FontWeight.w600,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1257,13 +1173,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1273,47 +1188,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           focusColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           hoverColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           highlightColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {
-                                                                            await launchURL(
-                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Notificaciones-Judiciales.aspx');
+                                                                            await launchURL('https://www.lapazrobles-cesar.gov.co/Paginas/Notificaciones-Judiciales.aspx');
                                                                           },
                                                                           child:
                                                                               AutoSizeText(
                                                                             'Notificaciones Judiciales',
                                                                             textAlign:
-                                                                                TextAlign
-                                                                                    .start,
-                                                                            style: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .bodyMedium
-                                                                                .override(
-                                                                                  fontFamily:
-                                                                                      'Poppins',
-                                                                                  fontSize:
-                                                                                      14.0,
-                                                                                  fontWeight:
-                                                                                      FontWeight.w600,
+                                                                                TextAlign.start,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  fontSize: 14.0,
+                                                                                  fontWeight: FontWeight.w600,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1322,13 +1224,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1338,47 +1239,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           focusColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           hoverColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           highlightColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {
-                                                                            await launchURL(
-                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-de-Privacidad-y-Condiciones-de-Uso.aspx');
+                                                                            await launchURL('https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-de-Privacidad-y-Condiciones-de-Uso.aspx');
                                                                           },
                                                                           child:
                                                                               AutoSizeText(
                                                                             'Políticas de Privacidad y condiciones de uso',
                                                                             textAlign:
-                                                                                TextAlign
-                                                                                    .start,
-                                                                            style: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .bodyMedium
-                                                                                .override(
-                                                                                  fontFamily:
-                                                                                      'Poppins',
-                                                                                  fontSize:
-                                                                                      14.0,
-                                                                                  fontWeight:
-                                                                                      FontWeight.w600,
+                                                                                TextAlign.start,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  fontSize: 14.0,
+                                                                                  fontWeight: FontWeight.w600,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1387,13 +1275,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -1403,47 +1290,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           focusColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           hoverColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           highlightColor:
-                                                                              Colors
-                                                                                  .transparent,
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {
-                                                                            await launchURL(
-                                                                                'https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-Editoriales-y-de-Actualizacion.aspx');
+                                                                            await launchURL('https://www.lapazrobles-cesar.gov.co/Paginas/Politicas-Editoriales-y-de-Actualizacion.aspx');
                                                                           },
                                                                           child:
                                                                               AutoSizeText(
                                                                             'Políticas Editoriales y de Actualización',
                                                                             textAlign:
-                                                                                TextAlign
-                                                                                    .start,
-                                                                            style: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .bodyMedium
-                                                                                .override(
-                                                                                  fontFamily:
-                                                                                      'Poppins',
-                                                                                  fontSize:
-                                                                                      14.0,
-                                                                                  fontWeight:
-                                                                                      FontWeight.w600,
+                                                                                TextAlign.start,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  fontSize: 14.0,
+                                                                                  fontWeight: FontWeight.w600,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1452,16 +1326,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              20.0,
-                                                                              2.0,
-                                                                              0.0,
-                                                                              10.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          10.0),
                                                                   child: Wrap(
-                                                                    spacing: 42.0,
-                                                                    runSpacing: 0.0,
+                                                                    spacing:
+                                                                        42.0,
+                                                                    runSpacing:
+                                                                        0.0,
                                                                     alignment:
                                                                         WrapAlignment
                                                                             .start,
@@ -1481,15 +1356,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     children: [
                                                                       InkWell(
                                                                         splashColor:
-                                                                            Colors
-                                                                                .transparent,
-                                                                        focusColor: Colors
-                                                                            .transparent,
-                                                                        hoverColor: Colors
-                                                                            .transparent,
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
                                                                         highlightColor:
-                                                                            Colors
-                                                                                .transparent,
+                                                                            Colors.transparent,
                                                                         onTap:
                                                                             () async {
                                                                           await launchURL(
@@ -1499,40 +1372,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             Container(
                                                                           width:
                                                                               140.0,
-                                                                          height: MediaQuery.of(context)
-                                                                                  .size
-                                                                                  .height *
-                                                                              0.04,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.04,
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .secondaryBackground,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
-                                                                          child: Row(
+                                                                          child:
+                                                                              Row(
                                                                             mainAxisSize:
-                                                                                MainAxisSize
-                                                                                    .max,
+                                                                                MainAxisSize.max,
                                                                             children: [
                                                                               FaIcon(
-                                                                                FontAwesomeIcons
-                                                                                    .facebook,
-                                                                                color:
-                                                                                    Color(0xFF0A5D8F),
-                                                                                size:
-                                                                                    24.0,
+                                                                                FontAwesomeIcons.facebook,
+                                                                                color: Color(0xFF0A5D8F),
+                                                                                size: 24.0,
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                    2.0,
-                                                                                    0.0,
-                                                                                    0.0,
-                                                                                    3.0),
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 3.0),
+                                                                                child: AutoSizeText(
                                                                                   '@Facebook',
-                                                                                  textAlign:
-                                                                                      TextAlign.start,
+                                                                                  textAlign: TextAlign.start,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Poppins',
                                                                                         color: Color(0xFF0A5D8F),
@@ -1547,15 +1408,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       ),
                                                                       InkWell(
                                                                         splashColor:
-                                                                            Colors
-                                                                                .transparent,
-                                                                        focusColor: Colors
-                                                                            .transparent,
-                                                                        hoverColor: Colors
-                                                                            .transparent,
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
                                                                         highlightColor:
-                                                                            Colors
-                                                                                .transparent,
+                                                                            Colors.transparent,
                                                                         onTap:
                                                                             () async {
                                                                           await launchURL(
@@ -1565,40 +1424,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             Container(
                                                                           width:
                                                                               120.0,
-                                                                          height: MediaQuery.of(context)
-                                                                                  .size
-                                                                                  .height *
-                                                                              0.04,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.04,
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .secondaryBackground,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
-                                                                          child: Row(
+                                                                          child:
+                                                                              Row(
                                                                             mainAxisSize:
-                                                                                MainAxisSize
-                                                                                    .max,
+                                                                                MainAxisSize.max,
                                                                             children: [
                                                                               FaIcon(
-                                                                                FontAwesomeIcons
-                                                                                    .twitter,
-                                                                                color:
-                                                                                    Color(0xFF0A5D8F),
-                                                                                size:
-                                                                                    24.0,
+                                                                                FontAwesomeIcons.twitter,
+                                                                                color: Color(0xFF0A5D8F),
+                                                                                size: 24.0,
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                    2.0,
-                                                                                    0.0,
-                                                                                    0.0,
-                                                                                    3.0),
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 3.0),
+                                                                                child: AutoSizeText(
                                                                                   '@Twitter',
-                                                                                  textAlign:
-                                                                                      TextAlign.start,
+                                                                                  textAlign: TextAlign.start,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Poppins',
                                                                                         color: Color(0xFF0A5D8F),
@@ -1613,15 +1460,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       ),
                                                                       InkWell(
                                                                         splashColor:
-                                                                            Colors
-                                                                                .transparent,
-                                                                        focusColor: Colors
-                                                                            .transparent,
-                                                                        hoverColor: Colors
-                                                                            .transparent,
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
                                                                         highlightColor:
-                                                                            Colors
-                                                                                .transparent,
+                                                                            Colors.transparent,
                                                                         onTap:
                                                                             () async {
                                                                           await launchURL(
@@ -1631,40 +1476,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             Container(
                                                                           width:
                                                                               140.0,
-                                                                          height: MediaQuery.of(context)
-                                                                                  .size
-                                                                                  .height *
-                                                                              0.04,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.04,
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .secondaryBackground,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
-                                                                          child: Row(
+                                                                          child:
+                                                                              Row(
                                                                             mainAxisSize:
-                                                                                MainAxisSize
-                                                                                    .max,
+                                                                                MainAxisSize.max,
                                                                             children: [
                                                                               FaIcon(
-                                                                                FontAwesomeIcons
-                                                                                    .youtube,
-                                                                                color:
-                                                                                    Color(0xFF0A5D8F),
-                                                                                size:
-                                                                                    24.0,
+                                                                                FontAwesomeIcons.youtube,
+                                                                                color: Color(0xFF0A5D8F),
+                                                                                size: 24.0,
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                    2.0,
-                                                                                    0.0,
-                                                                                    0.0,
-                                                                                    3.0),
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 3.0),
+                                                                                child: AutoSizeText(
                                                                                   '@Youtube',
-                                                                                  textAlign:
-                                                                                      TextAlign.start,
+                                                                                  textAlign: TextAlign.start,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Poppins',
                                                                                         color: Color(0xFF0A5D8F),
@@ -1679,15 +1512,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       ),
                                                                       InkWell(
                                                                         splashColor:
-                                                                            Colors
-                                                                                .transparent,
-                                                                        focusColor: Colors
-                                                                            .transparent,
-                                                                        hoverColor: Colors
-                                                                            .transparent,
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
                                                                         highlightColor:
-                                                                            Colors
-                                                                                .transparent,
+                                                                            Colors.transparent,
                                                                         onTap:
                                                                             () async {
                                                                           await launchURL(
@@ -1697,40 +1528,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             Container(
                                                                           width:
                                                                               140.0,
-                                                                          height: MediaQuery.of(context)
-                                                                                  .size
-                                                                                  .height *
-                                                                              0.04,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.04,
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color: FlutterFlowTheme.of(
-                                                                                    context)
-                                                                                .secondaryBackground,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
-                                                                          child: Row(
+                                                                          child:
+                                                                              Row(
                                                                             mainAxisSize:
-                                                                                MainAxisSize
-                                                                                    .max,
+                                                                                MainAxisSize.max,
                                                                             children: [
                                                                               FaIcon(
-                                                                                FontAwesomeIcons
-                                                                                    .instagram,
-                                                                                color:
-                                                                                    Color(0xFF0A5D8F),
-                                                                                size:
-                                                                                    24.0,
+                                                                                FontAwesomeIcons.instagram,
+                                                                                color: Color(0xFF0A5D8F),
+                                                                                size: 24.0,
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                    2.0,
-                                                                                    0.0,
-                                                                                    0.0,
-                                                                                    3.0),
-                                                                                child:
-                                                                                    AutoSizeText(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 3.0),
+                                                                                child: AutoSizeText(
                                                                                   '@Instagram',
-                                                                                  textAlign:
-                                                                                      TextAlign.start,
+                                                                                  textAlign: TextAlign.start,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Poppins',
                                                                                         color: Color(0xFF0A5D8F),
@@ -1761,7 +1580,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         20.0),
                                                             child: Column(
                                                               mainAxisSize:
-                                                                  MainAxisSize.max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               children: [
                                                                 Image.asset(
                                                                   'assets/images/Captura_de_pantalla_2023-05-06_174803-removebg-preview.png',
@@ -1775,23 +1595,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           .size
                                                                           .height *
                                                                       0.172,
-                                                                  fit: BoxFit.cover,
+                                                                  fit: BoxFit
+                                                                      .cover,
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              10.0,
-                                                                              10.0,
-                                                                              15.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          10.0,
+                                                                          15.0),
                                                                   child: Text(
                                                                     'Para una correcta visualización y  navegación en el sitio, se recomienda usar las últimas versiones de los siguientes navegadores: Internet Explorer, Mozilla FireFox, Google Chrome.',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
-                                                                    style: FlutterFlowTheme
-                                                                            .of(context)
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
@@ -1799,26 +1619,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontSize:
                                                                               14.0,
                                                                           fontWeight:
-                                                                              FontWeight
-                                                                                  .normal,
+                                                                              FontWeight.normal,
                                                                         ),
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     'Si su equipo no cuenta con esta versión, por favor realice la actualización.',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
-                                                                    style: FlutterFlowTheme
-                                                                            .of(context)
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
@@ -1826,8 +1644,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fontSize:
                                                                               14.0,
                                                                           fontWeight:
-                                                                              FontWeight
-                                                                                  .normal,
+                                                                              FontWeight.normal,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -1844,7 +1661,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           ],
                                         ),
                                       ),
-                                      
                                     ],
                                   ),
                                   Row(
@@ -1855,16 +1671,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         child: Container(
-                
                                           child: Text(
                                             'Diseñado,Desarollado e Implementado por:',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
-                                                  color:
-                                                      FlutterFlowTheme.of(context)
-                                                          .primaryBtnText,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
                                                 ),
                                           ),
                                         ),
