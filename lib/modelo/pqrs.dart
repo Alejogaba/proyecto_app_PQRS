@@ -41,9 +41,9 @@ class pqrs {
       this.estado = 1,
       this.fechaString = '',
       this.fechaInt = 0,
-      this.esAnonimo=false});
+      this.esAnonimo = false});
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> mapeo() {
     return {
       'nombreDependencia': nombreDependencia,
       'primerNombreSolicitante': primerNombreSolicitante,
@@ -63,7 +63,7 @@ class pqrs {
       'estado': estado,
       'fechaInt': fechaInt,
       'fechaString': fechaString,
-      'esAnonimo': esAnonimo, 
+      'esAnonimo': esAnonimo,
     };
   }
 }

@@ -42,13 +42,15 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+
   final _formKey = GlobalKey<FormState>();
+  
   bool _esAnonimo = false;
   bool _opcionenvioDireccion = false;
   bool _opcionenvioEmail = false;
   bool _opcionenvioVentanilla = false;
   bool _opcionenvioWhatsapp = false;
-  bool _hoverArchivoAdjunto = false;
+
 
   String? nombreTipoPQR = 'Petición';
   String nombreArchivo = '';
@@ -92,7 +94,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            'Envia un [PQR]',
+            'Envia un $nombreTipoPQR',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Poppins',
                   fontSize: 26.0,
@@ -164,7 +166,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Tipo de [PQR]',
+                                              'Tipo de $nombreTipoPQR',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1923,7 +1925,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              '[PQR]',
+                                              '$nombreTipoPQR',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -2047,7 +2049,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
-                                                          'Describa su [PQR]..',
+                                                          'Describa su $nombreTipoPQR',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2479,7 +2481,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                             'No deje campos obligatorios vacios');
                                       }
                                     },
-                                    text: 'Enviar [PQR]',
+                                    text: 'Enviar $nombreTipoPQR',
                                     options: FFButtonOptions(
                                       width: 250.0,
                                       height: 50.0,
