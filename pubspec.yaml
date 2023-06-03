@@ -64,6 +64,7 @@ dependencies:
   graphic: ^2.2.0
   fl_chart: ^0.62.0
   image_picker: ^0.8.7+5
+  flutter_image_compress: ^2.0.3
  
 
 
