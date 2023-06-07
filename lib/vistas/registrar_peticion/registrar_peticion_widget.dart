@@ -44,13 +44,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
   final _unfocusNode = FocusNode();
 
   final _formKey = GlobalKey<FormState>();
-  
+
   bool _esAnonimo = false;
   bool _opcionenvioDireccion = false;
   bool _opcionenvioEmail = false;
   bool _opcionenvioVentanilla = false;
   bool _opcionenvioWhatsapp = false;
-
 
   String? nombreTipoPQR = 'Petición';
   String nombreArchivo = '';
@@ -2466,14 +2465,13 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                             _opcionenvioVentanilla ||
                                             _opcionenvioWhatsapp ||
                                             _opcionenvioEmail) {
-                                               await guardarPQR();
+                                          await guardarPQR();
                                         } else {
                                           CustomSnackBars().snackBarError(
                                               context,
                                               'Advertencia',
                                               'Seleccione al menos un medio de contacto para dar respuesta a su $nombreTipoPQR');
                                         }
-                                       
                                       } else {
                                         CustomSnackBars().snackBarError(
                                             context,
@@ -2570,26 +2568,26 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
     String? nombreAdjuntoPQRS = window.localStorage['nombreAdjuntoPQRS'];
 
     // Crear la instancia de PQR con los valores obtenidos
-    pqrs peticion = pqrs(
-      nombreDependencia: '',
-      primerNombreSolicitante: primerNombre,
-      segundoNombreSolicitante: segundoNombre,
-      primerApellidoSolicitante: primerApellido,
-      segundoApellidoSolicitante: segundoApellido,
-      tipoIdSolicitante: tipoIdentificacion,
-      idSolicitante: numeroIdentificacion,
-      tipoPQRS: this.nombreTipoPQR,
-      tipoMedioContacto: int.parse(tipomedioContacto),
-      numTelefono: telefono,
-      medioContacto: medioContacto,
-      direccion: '',
-      descripcion: descripcion,
-      respuesta: respuesta,
-      nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
-      fechaInt: DateTime.now().millisecondsSinceEpoch,
-      fechaString: DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()),
-      esAnonimo: esAnonima
-    );
+    Pqrs peticion = Pqrs(
+        nombreDependencia: '',
+        primerNombreSolicitante: primerNombre,
+        segundoNombreSolicitante: segundoNombre,
+        primerApellidoSolicitante: primerApellido,
+        segundoApellidoSolicitante: segundoApellido,
+        tipoIdSolicitante: tipoIdentificacion,
+        idSolicitante: numeroIdentificacion,
+        tipoPQRS: this.nombreTipoPQR,
+        tipoMedioContacto: int.parse(tipomedioContacto),
+        numTelefono: telefono,
+        medioContacto: medioContacto,
+        direccion: '',
+        descripcion: descripcion,
+        respuesta: respuesta,
+        nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
+        fechaInt: DateTime.now().millisecondsSinceEpoch,
+        fechaString:
+            DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()),
+        esAnonimo: esAnonima);
 
     AlertPQRS(pqr: peticion).showConfirmationAlert(context);
     // Llamar a la función guardarPQR con la instancia de PQR

@@ -1,5 +1,5 @@
-class pqrs {
-  String? id;
+class Pqrs {
+  int? id;
   String? nombreDependencia;
   String? primerNombreSolicitante;
   String? segundoNombreSolicitante;
@@ -21,8 +21,8 @@ class pqrs {
 
   int estado = 1;
 
-  pqrs(
-      {this.id,
+  Pqrs(
+      {this.id=0,
       this.nombreDependencia,
       this.primerNombreSolicitante,
       this.segundoNombreSolicitante,
@@ -45,6 +45,7 @@ class pqrs {
 
   Map<String, dynamic> mapeo() {
     return {
+      'id':id,
       'nombreDependencia': nombreDependencia,
       'primerNombreSolicitante': primerNombreSolicitante,
       'segundoNombreSolicitante': segundoNombreSolicitante,
@@ -67,8 +68,8 @@ class pqrs {
     };
   }
 
-  factory pqrs.fromMap(Map<String, dynamic> map) {
-    return pqrs(
+  factory Pqrs.fromMap(Map<String, dynamic> map) {
+    return Pqrs(
       nombreDependencia: map['nombreDependencia'] ?? '',
       primerNombreSolicitante: map['primerNombreSolicitante'] ?? '',
       segundoNombreSolicitante: map['segundoNombreSolicitante'] ?? '',
@@ -88,6 +89,7 @@ class pqrs {
       fechaInt: map['fechaInt'] ?? 0,
       fechaString: map['fechaString'] ?? '',
       esAnonimo: map['esAnonimo'] ?? false,
+      id: map['id'] ?? 0
     );
   }
 }

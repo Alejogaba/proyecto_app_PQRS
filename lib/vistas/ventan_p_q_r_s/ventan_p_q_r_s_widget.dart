@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:proyecto_p_q_r_s/index.dart';
+import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/barra_carga_identificacion.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/graficos_barra_identificacion.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/tarjeta_pqrs_identificacion.dart';
 
 import '../../controlador/controlador_pqrs.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -936,7 +938,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                     .fromSTEB(
                                                         10.0, 20.0, 15.0, 0.0),
                                                 child: FutureBuilder(
-                                                  future: _getTotalPqrsEnProceso,
+                                                  future:
+                                                      _getTotalPqrsEnProceso,
                                                   builder:
                                                       (BuildContext context,
                                                           AsyncSnapshot<dynamic>
@@ -1118,7 +1121,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                       .fromSTEB(10.0, 20.0,
                                                           15.0, 0.0),
                                                   child: FutureBuilder(
-                                                    future: _getTotalPqrsSinIniciar,
+                                                    future:
+                                                        _getTotalPqrsSinIniciar,
                                                     builder: (BuildContext
                                                             context,
                                                         AsyncSnapshot<dynamic>
@@ -1291,7 +1295,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                       .fromSTEB(10.0, 20.0,
                                                           15.0, 0.0),
                                                   child: FutureBuilder(
-                                                    future: _getTotalPqrsFinalizados,
+                                                    future:
+                                                        _getTotalPqrsFinalizados,
                                                     builder: (BuildContext
                                                             context,
                                                         AsyncSnapshot<dynamic>
@@ -1451,7 +1456,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                     ),
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
-                                          0.94,
+                                          0.93,
                                       decoration: BoxDecoration(
                                         color:
                                             FlutterFlowTheme.of(context).info,
@@ -1836,14 +1841,14 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                           ChipData('Reclamo',
                                                               Icons.ten_k),
                                                           ChipData(
-                                                              'Suguerencia',
+                                                              'Sugerencia',
                                                               Icons.ten_k)
                                                         ],
                                                         initialized: true,
                                                         onChanged: (val) =>
                                                             setState(() => _model
                                                                     .tipoPqrsvalue =
-                                                                val?.first),
+                                                                val?.first ?? 'Todas'),
                                                         selectedChipStyle:
                                                             ChipStyle(
                                                           backgroundColor:
@@ -1925,40 +1930,57 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 10.0, 10.0, 10.0),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 1.0,
-                              height:
-                                  MediaQuery.of(context).size.height * 0.323,
-                              constraints: BoxConstraints(
-                                minHeight: 100.0,
-                                maxHeight: double.infinity,
-                              ),
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: ListView(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 20.0),
-                                    child: Container(
-                                      width: 100.0,
-                                      height: 100.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                        border: Border.all(
-                                          color: Color(0xFF006344),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                            child: Center(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.95,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.323,
+                                constraints: BoxConstraints(
+                                  minHeight: 100.0,
+                                  maxHeight: double.infinity,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: FutureBuilder<List<Pqrs>>(
+                                    future: ControladorPQRS().cargarPQRS(esAnonima: false,estadoPqr: _estadoPqrs,tipoPqrs: _model.tipoPqrsvalue!),
+                                    builder: (BuildContext context, snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return Center(child: Container(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            color: FlutterFlowTheme.of(context).secondary,
+                                          )));
+                                      } else if (snapshot.connectionState ==
+                                              ConnectionState.done &&
+                                          snapshot.data!.length > 0) {
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: snapshot.data!.length,
+                                          itemBuilder:
+                                              (BuildContext context, int index) {
+                                            return Opacity(
+                                              opacity: (_model.tipoPqrsvalue=='Todas'&&_estadoPqrs==3)
+                                                  ? 0.4
+                                                  : 1.0,
+                                              child: GestureDetector(
+                                                  onTap: () async {},
+                                                  child:
+                                                      tarjetaPqrsIdentificacion(
+                                                          snapshot.data![index])),
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        return Center(child: Text('No se ha enconcontrado ninguna solicitud de este tipo...'));
+                                      }
+                                    }),
                               ),
                             ),
                           ),

@@ -1,4 +1,3 @@
-
 import 'dart:html';
 
 import 'package:flutter/material.dart';
@@ -12,7 +11,7 @@ import '../../controlador/storage_helper.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 
 class AlertPQRS {
-  final pqrs pqr;
+  final Pqrs pqr;
 
   AlertPQRS({
     required this.pqr,
@@ -22,7 +21,7 @@ class AlertPQRS {
     Alert(
       context: context,
       title: 'Confirme sus datos',
-       content: Column(
+      content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (pqr.primerNombreSolicitante != null &&
@@ -32,21 +31,21 @@ class AlertPQRS {
               child: Row(
                 children: [
                   Text(
-                      'Nombre: ',
-                      style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),),
-                                                      Text(
-                      '${pqr.primerNombreSolicitante} ${pqr.segundoNombreSolicitante} ${pqr.primerApellidoSolicitante} ${pqr.segundoApellidoSolicitante}',
-                      style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),),
+                    'Nombre: ',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  Text(
+                    '${pqr.primerNombreSolicitante} ${pqr.segundoNombreSolicitante} ${pqr.primerApellidoSolicitante} ${pqr.segundoApellidoSolicitante}',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        ),
+                  ),
                 ],
               ),
             ),
@@ -56,18 +55,22 @@ class AlertPQRS {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text('Tipo de identificación: ', style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),),
-                                                      Text('${pqr.tipoIdSolicitante}', style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),),
+                  Text(
+                    'Tipo de identificación: ',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  Text(
+                    '${pqr.tipoIdSolicitante}',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        ),
+                  ),
                 ],
               ),
             ),
@@ -77,18 +80,22 @@ class AlertPQRS {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text('Identificación del solicitante: ',  style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                            fontFamily: 'Poppins',
-                                                            fontSize: 19.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),),
-                                                          Text('${pqr.idSolicitante}',  style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),),
+                  Text(
+                    'Identificación del solicitante: ',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  Text(
+                    '${pqr.idSolicitante}',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ],
               ),
             ),
@@ -96,18 +103,22 @@ class AlertPQRS {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Text('Tipo de PQRS: ', style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),),
-                                                      Text('${pqr.tipoPQRS}', style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),),
+                Text(
+                  'Tipo de PQRS: ',
+                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 19.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                Text(
+                  '${pqr.tipoPQRS}',
+                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 19.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
               ],
             ),
           ),
@@ -116,83 +127,75 @@ class AlertPQRS {
             child: Row(
               children: [
                 Text('Tipo de medio de contacto:  ',
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      )),
-                                                      Text(tipoMedioContacto(pqr.tipoMedioContacto),
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      )),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        )),
+                Text(tipoMedioContacto(pqr.tipoMedioContacto),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        )),
               ],
             ),
           ),
-          if(pqr.tipoMedioContacto<4)
+          if (pqr.tipoMedioContacto < 4)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text('Medio de contacto:  ',
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.bold,
+                          )),
+                  Text(pqr.medioContacto.toString(),
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.normal,
+                          )),
+                ],
+              ),
+            ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Text('Medio de contacto:  ',
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      )),
-                                                      Text(pqr.medioContacto.toString(),
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      )),
-              ],
-            ),
-          ),
-         Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
                 Text('Número de telefono:  ',
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      )),
-                                                      Text(pqr.numTelefono.toString(),
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      )),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        )),
+                Text(pqr.numTelefono.toString(),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        )),
               ],
             ),
           ),
-        Padding(
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Text('Descripción:  ',
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      )),
-                                                      Text(pqr.descripcion.toString(),
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      )),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        )),
+                Text(pqr.descripcion.toString(),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        )),
               ],
             ),
           ),
@@ -201,19 +204,17 @@ class AlertPQRS {
             child: Row(
               children: [
                 Text('Archivo adjunto:  ',
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      )),
-                                                      Text(pqr.nombreArchivoAdjunto.toString(),
-                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 19.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      )),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        )),
+                Text(pqr.nombreArchivoAdjunto.toString(),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        )),
               ],
             ),
           ),
@@ -250,7 +251,6 @@ class AlertPQRS {
             }
           },
         ),
-        
       ],
     ).show();
   }

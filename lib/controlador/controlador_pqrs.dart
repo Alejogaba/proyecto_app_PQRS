@@ -6,7 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../modelo/pqrs.dart';
 
 class ControladorPQRS {
-  Future<String?> guardarPQR(pqrs pqr) async {
+  Future<String?> guardarPQR(Pqrs pqr) async {
     late String result;
     await FirebaseFirestore.instance
         .collection('pqrs') // Nombre de la colección en Firestore
@@ -21,17 +21,37 @@ class ControladorPQRS {
     return result;
   }
 
-  Future<List<pqrs>> cargarPQRS() async {
-  List<pqrs> pqrsList = [];
-  QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('pqrs').get();
+  Future<List<Pqrs>> cargarPQRS({required bool esAnonima, int estadoPqr=1,String tipoPqrs='Todas'}) async {
+    List<Pqrs> pqrsList = [];
+    if (tipoPqrs == 'Todas') {
+      QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('pqrs')
+        .where('esAnonimo',isEqualTo: esAnonima)
+        .where('estado',isEqualTo: estadoPqr)
+        .get();
 
-  querySnapshot.docs.forEach((doc) {
-    pqrs pqr = pqrs.fromMap(doc.data() as Map<String, dynamic>);
-    pqrsList.add(pqr);
-  });
+    querySnapshot.docs.forEach((doc) {
+      Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+      pqrsList.add(pqr);
+    });
+    } else {
+      QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('pqrs')
+        .where('esAnonimo',isEqualTo: esAnonima)
+        .where('estado',isEqualTo: estadoPqr)
+        .where('tipoPQRS',isEqualTo: tipoPqrs)
+        .get();
 
-  return pqrsList;
-}
+    querySnapshot.docs.forEach((doc) {
+      Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+      pqrsList.add(pqr);
+    });
+    }
+    
+    
+
+    return pqrsList;
+  }
 
   Future<int> getTotalPqrsCount() async {
     final querySnapshot =

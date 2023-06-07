@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       initialRoute: 'login',
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
