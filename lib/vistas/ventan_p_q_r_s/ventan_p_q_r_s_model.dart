@@ -9,8 +9,8 @@ class VentanPQRSModel extends FlutterFlowModel {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // State field(s) for ChoiceChips widget.
-  String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsValueController;
+  String? tipoPqrsvalue = "Todas";
+  FormFieldController<List<String>>? choiceChipsValueController ;
 
   /// Initialization and disposal methods.
 
@@ -21,5 +21,4 @@ class VentanPQRSModel extends FlutterFlowModel {
   }
 
   /// Additional helper methods are added here.
-
 }

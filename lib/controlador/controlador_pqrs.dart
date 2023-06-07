@@ -21,6 +21,18 @@ class ControladorPQRS {
     return result;
   }
 
+  Future<List<pqrs>> cargarPQRS() async {
+  List<pqrs> pqrsList = [];
+  QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('pqrs').get();
+
+  querySnapshot.docs.forEach((doc) {
+    pqrs pqr = pqrs.fromMap(doc.data() as Map<String, dynamic>);
+    pqrsList.add(pqr);
+  });
+
+  return pqrsList;
+}
+
   Future<int> getTotalPqrsCount() async {
     final querySnapshot =
         await FirebaseFirestore.instance.collection('pqrs').get();
@@ -71,6 +83,38 @@ class ControladorPQRS {
 
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
+        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .get();
+
+    return querySnapshot.size;
+  }
+
+  Future<int> getTotalPqrsIdentificacionCountSemana() async {
+    DateTime nowtemp = DateTime.now();
+    DateTime now = DateTime(nowtemp.year, nowtemp.month, nowtemp.day, 0, 0, 0);
+    DateTime lunes = (now.weekday != 1)
+        ? now.subtract(Duration(days: now.weekday - (now.weekday - 1)))
+        : now;
+
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('esAnonimo', isEqualTo: false)
+        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .get();
+
+    return querySnapshot.size;
+  }
+
+  Future<int> getTotalPqrsAnonimoCountSemana() async {
+    DateTime nowtemp = DateTime.now();
+    DateTime now = DateTime(nowtemp.year, nowtemp.month, nowtemp.day, 0, 0, 0);
+    DateTime lunes = (now.weekday != 1)
+        ? now.subtract(Duration(days: now.weekday - (now.weekday - 1)))
+        : now;
+
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('esAnonimo', isEqualTo: true)
         .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
         .get();
 

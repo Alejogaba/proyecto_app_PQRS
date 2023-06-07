@@ -1,5 +1,10 @@
-import 'package:proyecto_p_q_r_s/index.dart';
+import 'dart:developer';
 
+import 'package:proyecto_p_q_r_s/index.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/barra_carga_identificacion.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/graficos_barra_identificacion.dart';
+
+import '../../controlador/controlador_pqrs.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -23,13 +28,25 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  int _estadoPqrs = 1;
+  String _tipoPqrs = "Todas";
+  late Future<int> _getTotalPqrs;
+  late Future<int> _getTotalPqrsEnProceso;
+  late Future<int> _getTotalPqrsSinIniciar;
+  late Future<int> _getTotalPqrsFinalizados;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => VentanPQRSModel());
-
     _model.textController ??= TextEditingController();
+    _getTotalPqrs = ControladorPQRS().getTotalPqrsCountIdentificacion();
+    _getTotalPqrsEnProceso =
+        ControladorPQRS().getTotalPqrsEnProcesoIdentificaion();
+    _getTotalPqrsSinIniciar =
+        ControladorPQRS().getTotalPqrsPendienteIdentificacion();
+    _getTotalPqrsFinalizados =
+        ControladorPQRS().getTotalPqrsFinalizadoIdentificaion();
   }
 
   @override
@@ -690,8 +707,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.45,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.13,
+                                    height: 105,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -741,7 +757,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'TOTAL PQRS',
+                                                      'Total',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -760,21 +776,58 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 15.0, 0.0),
-                                                child: Text(
-                                                  '170',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
+                                                child: FutureBuilder(
+                                                  future: _getTotalPqrs,
+                                                  builder:
+                                                      (BuildContext context,
+                                                          AsyncSnapshot<dynamic>
+                                                              snapshot) {
+                                                    if (snapshot.connectionState ==
+                                                            ConnectionState
+                                                                .done &&
+                                                        snapshot.data != null) {
+                                                      return Text(
+                                                        snapshot.data
+                                                            .toString(),
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .info,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                      );
+                                                    } else {
+                                                      return Text(
+                                                        '0',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                      );
+                                                    }
+                                                  },
                                                 ),
                                               ),
                                             ],
@@ -791,82 +844,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              LinearPercentIndicator(
-                                                percent: 0.1,
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.43,
-                                                lineHeight: 24.0,
-                                                animation: true,
-                                                progressColor:
-                                                    Color(0xFF054E63),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent4,
-                                                center: Text(
-                                                  '50%',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                      ),
-                                                ),
-                                                padding: EdgeInsets.zero,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 4.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'TOTAL SOLICITUDES',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Text(
-                                                  '170',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
+                                              GraficoBarraTotalIdentificacion()
                                             ],
                                           ),
                                         ),
@@ -888,8 +866,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.45,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.13,
+                                    height: 105,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -939,7 +916,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'TOTAL PQRS',
+                                                      'Total En Proceso',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -958,21 +935,58 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 15.0, 0.0),
-                                                child: Text(
-                                                  '170',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
+                                                child: FutureBuilder(
+                                                  future: _getTotalPqrsEnProceso,
+                                                  builder:
+                                                      (BuildContext context,
+                                                          AsyncSnapshot<dynamic>
+                                                              snapshot) {
+                                                    if (snapshot.connectionState ==
+                                                            ConnectionState
+                                                                .done &&
+                                                        snapshot.data != null) {
+                                                      return Text(
+                                                        snapshot.data
+                                                            .toString(),
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .info,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                      );
+                                                    } else {
+                                                      return Text(
+                                                        '0',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                      );
+                                                    }
+                                                  },
                                                 ),
                                               ),
                                             ],
@@ -989,82 +1003,10 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              LinearPercentIndicator(
-                                                percent: 0.1,
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.43,
-                                                lineHeight: 24.0,
-                                                animation: true,
-                                                progressColor:
-                                                    Color(0xFF12B07E),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent4,
-                                                center: Text(
-                                                  '50%',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                      ),
-                                                ),
-                                                padding: EdgeInsets.zero,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 4.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'PORCENTAJE',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Text(
-                                                  '170',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
+                                              BarraCargaIdentificacion(
+                                                tipo: 1,
+                                                colorBarra: Color(0xFF12B07E),
+                                              )
                                             ],
                                           ),
                                         ),
@@ -1095,9 +1037,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.45,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.13,
+                                      height: 105,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -1157,7 +1097,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'TOTAL PQRS',
+                                                        'Total Sin Iniciar',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -1177,20 +1117,55 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 20.0,
                                                           15.0, 0.0),
-                                                  child: Text(
-                                                    '170',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
+                                                  child: FutureBuilder(
+                                                    future: _getTotalPqrsSinIniciar,
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot.connectionState ==
+                                                              ConnectionState
+                                                                  .done &&
+                                                          snapshot.data !=
+                                                              null) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .info,
-                                                          fontSize: 22.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 22.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 22.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        );
+                                                      }
+                                                    },
                                                   ),
                                                 ),
                                               ],
@@ -1207,85 +1182,13 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
-                                                LinearPercentIndicator(
-                                                  percent: 0.1,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.43,
-                                                  lineHeight: 24.0,
-                                                  animation: true,
-                                                  progressColor:
+                                                BarraCargaIdentificacion(
+                                                  tipo: 2,
+                                                  colorBarra:
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primary,
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent4,
-                                                  center: Text(
-                                                    '50%',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                        ),
-                                                  ),
-                                                  padding: EdgeInsets.zero,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 4.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'PORCENTAJE',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    '170',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
+                                                )
                                               ],
                                             ),
                                           ),
@@ -1307,9 +1210,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.45,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.13,
+                                      height: 105,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -1346,7 +1247,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'FINALIZADAS',
+                                                        'FINALIZADOS',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -1369,7 +1270,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'TOTAL PQRS',
+                                                        'Total Finalizados',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -1389,20 +1290,55 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 20.0,
                                                           15.0, 0.0),
-                                                  child: Text(
-                                                    '170',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
+                                                  child: FutureBuilder(
+                                                    future: _getTotalPqrsFinalizados,
+                                                    builder: (BuildContext
+                                                            context,
+                                                        AsyncSnapshot<dynamic>
+                                                            snapshot) {
+                                                      if (snapshot.connectionState ==
+                                                              ConnectionState
+                                                                  .done &&
+                                                          snapshot.data !=
+                                                              null) {
+                                                        return Text(
+                                                          snapshot.data
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .info,
-                                                          fontSize: 22.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 22.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        );
+                                                      } else {
+                                                        return Text(
+                                                          '0',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 22.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        );
+                                                      }
+                                                    },
                                                   ),
                                                 ),
                                               ],
@@ -1419,85 +1355,13 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
-                                                LinearPercentIndicator(
-                                                  percent: 0.1,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.43,
-                                                  lineHeight: 24.0,
-                                                  animation: true,
-                                                  progressColor:
+                                                BarraCargaIdentificacion(
+                                                  tipo: 3,
+                                                  colorBarra:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .info,
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent4,
-                                                  center: Text(
-                                                    '50%',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                        ),
-                                                  ),
-                                                  padding: EdgeInsets.zero,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 4.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'PROCENTAJE',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    '170',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
+                                                          .secondary,
+                                                )
                                               ],
                                             ),
                                           ),
@@ -1573,6 +1437,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                 8.0, 4.0, 8.0, 4.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -1585,7 +1451,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                     ),
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
-                                          0.95,
+                                          0.94,
                                       decoration: BoxDecoration(
                                         color:
                                             FlutterFlowTheme.of(context).info,
@@ -1648,215 +1514,254 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                         VerticalDirection.down,
                                                     clipBehavior: Clip.none,
                                                     children: [
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.2,
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.2,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.0),
-                                                          border: Border.all(
-                                                            color: Color(
-                                                                0xFF140101),
-                                                            width: 2.0,
+                                                      InkWell(
+                                                        onTap: () {
+                                                          if (_estadoPqrs !=
+                                                              1) {
+                                                            setState(() {
+                                                              _estadoPqrs = 1;
+                                                            });
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.2,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15.0),
+                                                            border: Border.all(
+                                                              color: (_estadoPqrs ==
+                                                                      1)
+                                                                  ? Color(
+                                                                      0xFF140101)
+                                                                  : Colors
+                                                                      .transparent,
+                                                              width: 2.0,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Icon(
-                                                              Icons.warning,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              size: 90.0,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'PQRS SIN INICIAR',
-                                                                style: FlutterFlowTheme.of(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Icon(
+                                                                Icons.warning,
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
-                                                                      fontSize:
-                                                                          20.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
+                                                                    .tertiary,
+                                                                size: 90.0,
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'PQRS SIN INICIAR',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .tertiary,
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.2,
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.2,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.0),
-                                                          border: Border.all(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 2.0,
+                                                      InkWell(
+                                                        onTap: () {
+                                                          if (_estadoPqrs !=
+                                                              2) {
+                                                            setState(() {
+                                                              _estadoPqrs = 2;
+                                                            });
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.2,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15.0),
+                                                            border: Border.all(
+                                                              color: (_estadoPqrs ==
+                                                                      2)
+                                                                  ? Color(
+                                                                      0xFF140101)
+                                                                  : Colors
+                                                                      .transparent,
+                                                              width: 2.0,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Icon(
-                                                              Icons.insights,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              size: 90.0,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'PQRS EN PROCESO',
-                                                                style: FlutterFlowTheme.of(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Icon(
+                                                                Icons.insights,
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
-                                                                      fontSize:
-                                                                          20.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
+                                                                    .tertiary,
+                                                                size: 90.0,
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'PQRS EN PROCESO',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .tertiary,
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.2,
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.2,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.0),
-                                                          border: Border.all(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 2.0,
+                                                      InkWell(
+                                                        onTap: () {
+                                                          if (_estadoPqrs !=
+                                                              3) {
+                                                            setState(() {
+                                                              _estadoPqrs = 3;
+                                                            });
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.2,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15.0),
+                                                            border: Border.all(
+                                                              color: (_estadoPqrs ==
+                                                                      3)
+                                                                  ? Color(
+                                                                      0xFF140101)
+                                                                  : Colors
+                                                                      .transparent,
+                                                              width: 2.0,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Icon(
-                                                              Icons
-                                                                  .file_download_done,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
-                                                              size: 90.0,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'PQRS FINALIZADAS',
-                                                                style: FlutterFlowTheme.of(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Icon(
+                                                                Icons
+                                                                    .file_download_done,
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
-                                                                      fontSize:
-                                                                          20.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
+                                                                    .tertiary,
+                                                                size: 90.0,
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'PQRS FINALIZADAS',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .tertiary,
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -1934,9 +1839,10 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                               'Suguerencia',
                                                               Icons.ten_k)
                                                         ],
+                                                        initialized: true,
                                                         onChanged: (val) =>
                                                             setState(() => _model
-                                                                    .choiceChipsValue =
+                                                                    .tipoPqrsvalue =
                                                                 val?.first),
                                                         selectedChipStyle:
                                                             ChipStyle(
@@ -1999,7 +1905,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                                 .choiceChipsValueController ??=
                                                             FormFieldController<
                                                                 List<String>>(
-                                                          [],
+                                                          ["Todas"],
                                                         ),
                                                       ),
                                                     ],

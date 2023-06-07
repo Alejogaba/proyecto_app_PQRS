@@ -1,22 +1,21 @@
 import 'dart:developer';
 
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
+import 'package:proyecto_p_q_r_s/flutter_flow/flutter_flow_theme.dart';
+import 'package:segment_bar/percent_graph_model.dart';
+import 'package:segment_bar/segment_bar.dart';
 
-class GraficoCircularIdentificacion extends StatefulWidget {
-  const GraficoCircularIdentificacion({key});
+class GraficoBarraTotalIdentificacion extends StatefulWidget {
+  const GraficoBarraTotalIdentificacion({Key? key});
 
   @override
-  State<GraficoCircularIdentificacion> createState() =>
-      _GraficoCircularIdentificacionState();
+  State<GraficoBarraTotalIdentificacion> createState() =>
+      _GraficoBarraTotalIdentificacionState();
 }
 
-class _GraficoCircularIdentificacionState
-    extends State<GraficoCircularIdentificacion> {
-  @override
+class _GraficoBarraTotalIdentificacionState
+    extends State<GraficoBarraTotalIdentificacion> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<int>>(
       future: loadDataFromFirebase(),
@@ -62,42 +61,19 @@ class _GraficoCircularIdentificacionState
     // Ejemplo:
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        return Container(
-          height: MediaQuery.of(context).size.width * 0.1,
-          width: MediaQuery.of(context).size.width * 0.1,
-          child: AspectRatio(
-            aspectRatio: 1.5,
-            child: PieChart(
-              PieChartData(
-                sections: [
-                  PieChartSectionData(
-                    showTitle: true,
-                    value: section1Percentage,
-                    color: Colors.red,
-                    title: '$section1Percentage%',
-                    radius: 100,
-                    titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                  PieChartSectionData(
-                    value: section2Percentage,
-                    color: Colors.blue,
-                    title: '$section2Percentage%',
-                    radius: 100,
-                    titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                  PieChartSectionData(
-                    value: section3Percentage,
-                    color: Colors.green,
-                    title: '$section3Percentage%',
-                    radius: 100,
-                    titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+      return Container(
+      height: 28,
+      width: MediaQuery.of(context).size.width * 0.43,
+      child: SegmentBar(
+        segmentData: [
+          SegmentBarModel(value: section1Percentage, color: FlutterFlowTheme.of(context).primary, label: (section1Percentage>0) ? 'Sin Iniciar: $section1Percentage%' : ''),
+          SegmentBarModel(value: section2Percentage, color:  Color(0xFF12B07E), label: (section2Percentage>0) ? 'En Proceso: $section2Percentage%':''),
+          SegmentBarModel(value: section3Percentage, color: FlutterFlowTheme.of(context).secondary, label: (section3Percentage>0) ?  "Finalizados: $section3Percentage%" : ''),
+        ],
+      ),
+    );
       },
     );
   }
+
 }

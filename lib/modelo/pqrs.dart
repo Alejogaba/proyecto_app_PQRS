@@ -66,4 +66,28 @@ class pqrs {
       'esAnonimo': esAnonimo,
     };
   }
+
+  factory pqrs.fromMap(Map<String, dynamic> map) {
+    return pqrs(
+      nombreDependencia: map['nombreDependencia'] ?? '',
+      primerNombreSolicitante: map['primerNombreSolicitante'] ?? '',
+      segundoNombreSolicitante: map['segundoNombreSolicitante'] ?? '',
+      primerApellidoSolicitante: map['primerApellidoSolicitante'] ?? '',
+      segundoApellidoSolicitante: map['segundoApellidoSolicitante'] ?? '',
+      tipoIdSolicitante: map['tipoIdSolicitante'] ?? '',
+      idSolicitante: map['idSolicitante'] ?? '',
+      tipoPQRS: map['tipoPQRS'] ?? '',
+      tipoMedioContacto: map['tipoMedioContacto'] ?? '',
+      numTelefono: map['numTelefono'] ?? '',
+      medioContacto: map['correo'] ?? '',
+      direccion: map['direccion'] ?? '',
+      descripcion: map['descripcion'] ?? '',
+      respuesta: map['respuesta'] ?? '',
+      nombreArchivoAdjunto: map['nombreArchivoAdjunto'] ?? '',
+      estado: map['estado'] ?? 0,
+      fechaInt: map['fechaInt'] ?? 0,
+      fechaString: map['fechaString'] ?? '',
+      esAnonimo: map['esAnonimo'] ?? false,
+    );
+  }
 }
