@@ -101,12 +101,7 @@ class _MyAppState extends State<MyApp> {
         handlerFunc: (context, params) => RegistrarPeticionWidget(),
       ),
     );
-    _router.define(
-      '/detallesPQR',
-      handler: Handler(
-        handlerFunc: (context, params) => DetallesPQRWidget(),
-      ),
-    );
+    
     _router.define(
       '/registraSoporte',
       handler: Handler(

@@ -253,10 +253,10 @@ class _RegistrarFuncionarioPageWidgetState
         ),
       ),
       appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.06),
-        child: BarraSuperior(),
-      ),
+          preferredSize:
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+          child: BarraSuperior(),
+        ),
       body: Stack(
         children: [
           SingleChildScrollView(

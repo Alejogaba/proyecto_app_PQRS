@@ -17,7 +17,7 @@ class BarraSuperior extends StatelessWidget {
       title: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             mainAxisSize: MainAxisSize.max,
@@ -25,25 +25,27 @@ class BarraSuperior extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/1663692934.png',
-                width: 150.0,
-                height: 50.0,
+                width: 120.0,
+                height: 40.0,
                 fit: BoxFit.fill,
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      AuthHelper.handleSignOut();
+                      
+                      /*AuthHelper.handleSignOut();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const HomePageWidget()));
+                                  const HomePageWidget()));*/
                     },
                     child: Container(
-                      width: 50.0,
-                      height: 50.0,
+                      width: 40.0,
+                      height: 40.0,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -52,6 +54,26 @@ class BarraSuperior extends StatelessWidget {
                         'https://picsum.photos/seed/967/600',
                         fit: BoxFit.cover,
                       ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      
+                      AuthHelper.handleSignOut();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const HomePageWidget()));
+                    },
+                    child: Container(
+                      width: 45.0,
+                      height: 45.0,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.logout_outlined),
                     ),
                   ),
                 ],

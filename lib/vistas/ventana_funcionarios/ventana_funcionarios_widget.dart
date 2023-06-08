@@ -2,6 +2,7 @@ import 'package:proyecto_p_q_r_s/vistas/registrar_funcionario_page/registrar_fun
 
 import 'package:proyecto_p_q_r_s/index.dart';
 
+import '../components/barra_superior.dart';
 import '/vistas/components/fila_app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -51,26 +52,8 @@ class _VentanaFuncionariosWidgetState extends State<VentanaFuncionariosWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
           preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.06),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            automaticallyImplyLeading: false,
-            title: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                wrapWithModel(
-                  model: _model.filaAppBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: FilaAppBarWidget(),
-                ),
-              ],
-            ),
-            actions: [],
-            centerTitle: true,
-            elevation: 3.0,
-          ),
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+          child: BarraSuperior(),
         ),
         body: SafeArea(
           top: true,

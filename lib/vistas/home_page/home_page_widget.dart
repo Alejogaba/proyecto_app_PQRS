@@ -244,7 +244,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Petición',)));
                                       },
                                       text: 'Envía una petición',
                                       options: FFButtonOptions(
@@ -430,7 +430,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Reclamo',)));
                                       },
                                       text: 'Envía un reclamo',
                                       options: FFButtonOptions(
@@ -525,7 +525,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Sugerencia',)));
                                       },
                                       text: 'Envía una sugerencia',
                                       options: FFButtonOptions(
@@ -620,7 +620,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Felicitaciones',)));
                                       },
                                       text: 'Envía una felicitacion',
                                       options: FFButtonOptions(

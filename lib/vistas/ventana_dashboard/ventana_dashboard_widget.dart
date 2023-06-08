@@ -1325,9 +1325,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                 0.0, 30.0, 0.0, 10.0),
                             child: Wrap(
                               crossAxisAlignment: WrapCrossAlignment.center,
-                              alignment: WrapAlignment.spaceEvenly,
+                              alignment: WrapAlignment.center,
                               runAlignment: WrapAlignment.center,
-                              spacing: 70,
+                              spacing: 40,
                               children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -1342,7 +1342,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                       child: Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.45,
+                                                0.46,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -1415,7 +1415,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        15.0, 15.0, 15.0, 20.0),
+                                                        14.0, 15.0, 15.0, 15.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -1871,7 +1871,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  20.0,
+                                                                  3.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
@@ -1908,8 +1908,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             child: AutoSizeText(
                                                               'Pendientes',
                                                               maxLines: 1,
-                                                              minFontSize: 9,
-                                                              maxFontSize: 15,
+                                                              minFontSize: 8,
+                                                              maxFontSize: 14,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -1963,8 +1963,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             child: AutoSizeText(
                                                               'En proceso',
                                                               maxLines: 1,
-                                                              minFontSize: 9,
-                                                              maxFontSize: 15,
+                                                              minFontSize: 8,
+                                                              maxFontSize: 14,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -2018,8 +2018,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             child: AutoSizeText(
                                                               'Finalizados',
                                                               maxLines: 1,
-                                                              minFontSize: 9,
-                                                              maxFontSize: 15,
+                                                              minFontSize: 8,
+                                                              maxFontSize: 14,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -2066,7 +2066,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                       child: Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.45,
+                                                0.46,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -2105,7 +2105,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                       0.0,
                                                                       0.0),
                                                           child: Text(
-                                                            'PQRS An',
+                                                            'PQRS Identificación',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -2139,7 +2139,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        15.0, 15.0, 15.0, 20.0),
+                                                        14.0, 15.0, 15.0, 15.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -2595,7 +2595,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  20.0,
+                                                                  3.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
@@ -2632,8 +2632,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             child: AutoSizeText(
                                                               'Pendientes',
                                                               maxLines: 1,
-                                                              minFontSize: 9,
-                                                              maxFontSize: 15,
+                                                              minFontSize: 8,
+                                                              maxFontSize: 14,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -2687,8 +2687,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             child: AutoSizeText(
                                                               'En proceso',
                                                               maxLines: 1,
-                                                              minFontSize: 9,
-                                                              maxFontSize: 15,
+                                                              minFontSize: 8,
+                                                              maxFontSize: 14,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -2742,8 +2742,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             child: AutoSizeText(
                                                               'Finalizados',
                                                               maxLines: 1,
-                                                              minFontSize: 9,
-                                                              maxFontSize: 15,
+                                                              minFontSize: 8,
+                                                              maxFontSize: 14,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -2782,12 +2782,12 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                50.0, 30.0, 0.0, 10.0),
+                                10.0, 30.0, 0.0, 10.0),
                             child: Wrap(
                               alignment: WrapAlignment.center,
                               runAlignment: WrapAlignment.center,
                               crossAxisAlignment: WrapCrossAlignment.center,
-                              spacing: 70,
+                              spacing: 40,
                               runSpacing: 8,
                               children: [
                                 Column(
@@ -2803,7 +2803,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                       child: Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.45,
+                                                0.46,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -3315,7 +3315,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                       child: Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.45,
+                                                0.46,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,

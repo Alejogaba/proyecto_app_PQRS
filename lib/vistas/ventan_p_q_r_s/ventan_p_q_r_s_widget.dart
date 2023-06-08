@@ -7,6 +7,7 @@ import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/graficos_barra_identifica
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/tarjeta_pqrs_identificacion.dart';
 
 import '../../controlador/controlador_pqrs.dart';
+import '../components/barra_superior.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -68,50 +69,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
           preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.06),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            automaticallyImplyLeading: false,
-            title: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      'assets/images/1663692934.png',
-                      width: 150.0,
-                      height: 50.0,
-                      fit: BoxFit.fill,
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 50.0,
-                          height: 50.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/967/600',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            actions: [],
-            centerTitle: true,
-            elevation: 3.0,
-          ),
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+          child: BarraSuperior(),
         ),
         body: SafeArea(
           top: true,
@@ -1814,7 +1773,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                               children: [
                                                 Expanded(
                                                   child: Wrap(
-                                                    spacing: 10.0,
+                                                    spacing: 4.0,
                                                     runSpacing: 0.0,
                                                     alignment: WrapAlignment
                                                         .spaceBetween,
@@ -1835,20 +1794,23 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                               FontAwesomeIcons
                                                                   .cubes),
                                                           ChipData('Petición',
-                                                              Icons.ten_k),
+                                                              Icons.comment),
                                                           ChipData('Queja',
-                                                              Icons.ten_k),
+                                                              Icons.warning),
                                                           ChipData('Reclamo',
-                                                              Icons.ten_k),
+                                                              Icons.report),
+                                                          ChipData('Sugerencia',
+                                                              Icons.lightbulb),
                                                           ChipData(
-                                                              'Sugerencia',
-                                                              Icons.ten_k)
+                                                              'Felicitaciones',
+                                                              Icons.thumb_up),
                                                         ],
                                                         initialized: true,
                                                         onChanged: (val) =>
                                                             setState(() => _model
                                                                     .tipoPqrsvalue =
-                                                                val?.first ?? 'Todas'),
+                                                                val?.first ??
+                                                                    'Todas'),
                                                         selectedChipStyle:
                                                             ChipStyle(
                                                           backgroundColor:
@@ -1866,7 +1828,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                                             context)
                                                                         .tertiary,
                                                                     fontSize:
-                                                                        24.0,
+                                                                        22.0,
                                                                   ),
                                                           iconColor:
                                                               FlutterFlowTheme.of(
@@ -1892,13 +1854,13 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                                             context)
                                                                         .primaryText,
                                                                     fontSize:
-                                                                        23.0,
+                                                                        22.0,
                                                                   ),
                                                           iconColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .primaryText,
-                                                          iconSize: 24.0,
+                                                          iconSize: 22.0,
                                                           elevation: 4.0,
                                                         ),
                                                         chipSpacing: 20.0,
@@ -1944,16 +1906,23 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                       .secondaryBackground,
                                 ),
                                 child: FutureBuilder<List<Pqrs>>(
-                                    future: ControladorPQRS().cargarPQRS(esAnonima: false,estadoPqr: _estadoPqrs,tipoPqrs: _model.tipoPqrsvalue!),
+                                    future: ControladorPQRS().cargarPQRS(
+                                        esAnonima: false,
+                                        estadoPqr: _estadoPqrs,
+                                        tipoPqrs: _model.tipoPqrsvalue!),
                                     builder: (BuildContext context, snapshot) {
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {
-                                        return Center(child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context).secondary,
-                                          )));
+                                        return Center(
+                                            child: Container(
+                                                width: 50,
+                                                height: 50,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                )));
                                       } else if (snapshot.connectionState ==
                                               ConnectionState.done &&
                                           snapshot.data!.length > 0) {
@@ -1963,22 +1932,35 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                           shrinkWrap: true,
                                           scrollDirection: Axis.vertical,
                                           itemCount: snapshot.data!.length,
-                                          itemBuilder:
-                                              (BuildContext context, int index) {
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
                                             return Opacity(
-                                              opacity: (_model.tipoPqrsvalue=='Todas'&&_estadoPqrs==3)
+                                              opacity: (_model.tipoPqrsvalue ==
+                                                          'Todas' &&
+                                                      _estadoPqrs == 3)
                                                   ? 0.4
                                                   : 1.0,
                                               child: GestureDetector(
-                                                  onTap: () async {},
+                                                  onTap: () async {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                DetallesPQRWidget(
+                                                                    snapshot.data![
+                                                                        index])));
+                                                  },
                                                   child:
                                                       tarjetaPqrsIdentificacion(
-                                                          snapshot.data![index])),
+                                                          snapshot
+                                                              .data![index])),
                                             );
                                           },
                                         );
                                       } else {
-                                        return Center(child: Text('No se ha enconcontrado ninguna solicitud de este tipo...'));
+                                        return Center(
+                                            child: Text(
+                                                'No se ha enconcontrado ninguna solicitud de este tipo...'));
                                       }
                                     }),
                               ),

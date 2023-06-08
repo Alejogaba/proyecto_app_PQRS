@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 
 import '../../flutter_flow/flutter_flow_theme.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 
 class tarjetaPqrsIdentificacion extends StatelessWidget {
   final Pqrs pqrs;

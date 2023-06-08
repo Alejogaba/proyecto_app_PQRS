@@ -3,6 +3,7 @@ import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/ventana_dashboard_widg
 import 'package:proyecto_p_q_r_s/vistas/ventana_funcionarios/ventana_funcionarios_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_soporte/ventana_soporte_widget.dart';
 
+import '../components/barra_superior.dart';
 import '/vistas/components/fila_app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -52,26 +53,8 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
           preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.06),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            automaticallyImplyLeading: false,
-            title: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                wrapWithModel(
-                  model: _model.filaAppBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: FilaAppBarWidget(),
-                ),
-              ],
-            ),
-            actions: [],
-            centerTitle: true,
-            elevation: 3.0,
-          ),
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+          child: BarraSuperior(),
         ),
         body: SafeArea(
           top: true,

@@ -11,6 +11,7 @@ import 'package:quickalert/quickalert.dart';
 import 'package:smart_snackbars/smart_snackbars.dart';
 
 import '../../flutter_flow/custom_snackbars.dart';
+import '../../modelo/counter.dart';
 import '../../modelo/pqrs.dart';
 import '../../modelo/pqrs.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -2566,9 +2567,15 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
     String descripcion = _model.textControllerDescripcionPqrs?.text ?? '';
     String telefono = _model.textController9.text;
     String? nombreAdjuntoPQRS = window.localStorage['nombreAdjuntoPQRS'];
+    Counter counter =
+        Counter(collectionName: 'counters', documentId: 'contadorPqrs');
+
+// Generar un ID autoincrementado
+    int newId = await counter.generateAutoIncrementedId();
 
     // Crear la instancia de PQR con los valores obtenidos
     Pqrs peticion = Pqrs(
+        id: newId,
         nombreDependencia: '',
         primerNombreSolicitante: primerNombre,
         segundoNombreSolicitante: segundoNombre,
