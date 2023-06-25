@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
@@ -11,11 +10,9 @@ import '../components/barra_superior.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'ventan_p_q_r_s_model.dart';
 export 'ventan_p_q_r_s_model.dart';
 
@@ -42,7 +39,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => VentanPQRSModel());
-    _model.textController ??= TextEditingController();
+    _model.textControllerBuscar ??= TextEditingController();
     _getTotalPqrs = ControladorPQRS().getTotalPqrsCountIdentificacion();
     _getTotalPqrsEnProceso =
         ControladorPQRS().getTotalPqrsEnProcesoIdentificaion();
@@ -532,11 +529,16 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.3,
                                   child: TextFormField(
-                                    controller: _model.textController,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        
+                                      });
+                                    },
+                                    controller: _model.textControllerBuscar,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Consultar Ticket',
+                                      hintText: 'Consultar Ticket...',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -588,37 +590,11 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                   ),
                                 ),
                               ),
-                              FFButtonWidget(
-                                onPresionado: () {
-                                  print('Button pressed ...');
-                                },
-                                text: 'Buscar',
-                                options: FFButtonOptions(
-                                  width: 160.0,
-                                  height: 50.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).info,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        fontSize: 18.0,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
+                              
                             ],
                           ),
                         ),
+                        if(_model.textControllerBuscar.text.length<1)
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 4.0, 8.0, 4.0),
@@ -652,6 +628,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                             ],
                           ),
                         ),
+                        if(_model.textControllerBuscar.text.length<1)
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -980,6 +957,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                             ),
                           ],
                         ),
+                        if(_model.textControllerBuscar.text.length<1)
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
@@ -1342,6 +1320,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                     ),
                   ),
                 ),
+                
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                   child: Container(
@@ -1363,6 +1342,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 4.0),
@@ -1396,6 +1376,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                               ],
                             ),
                           ),
+                          if(_model.textControllerBuscar.text.length<1)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 4.0),
@@ -1909,7 +1890,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                     future: ControladorPQRS().cargarPQRS(
                                         esAnonima: false,
                                         estadoPqr: _estadoPqrs,
-                                        tipoPqrs: _model.tipoPqrsvalue!),
+                                        tipoPqrs: _model.tipoPqrsvalue,
+                                        textoBusqueda: _model.textControllerBuscar.text),
                                     builder: (BuildContext context, snapshot) {
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {

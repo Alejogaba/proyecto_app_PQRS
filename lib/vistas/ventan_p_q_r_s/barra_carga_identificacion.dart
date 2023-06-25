@@ -3,8 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
-import 'package:segment_bar/percent_graph_model.dart';
-import 'package:segment_bar/segment_bar.dart';
 
 import '../../flutter_flow/flutter_flow_theme.dart';
 

@@ -3,7 +3,6 @@ import 'package:proyecto_p_q_r_s/vistas/registrar_funcionario_page/registrar_fun
 import 'package:proyecto_p_q_r_s/index.dart';
 
 import '../components/barra_superior.dart';
-import '/vistas/components/fila_app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 
 class GraficoCircularIdentificacion extends StatefulWidget {

@@ -1,12 +1,37 @@
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../flutter_flow/flutter_flow_util.dart';
-import '../modelo/counter.dart';
 import '../modelo/pqrs.dart';
 
 class ControladorPQRS {
+
+Future<void> marcarPqrsFinalizada(int iDticket) async {
+  final QuerySnapshot snapshot = await FirebaseFirestore.instance
+      .collection('pqrs')
+      .where('id', isEqualTo: iDticket)
+      .get();
+
+  final List<DocumentSnapshot> documents = snapshot.docs;
+
+  for (final DocumentSnapshot document in documents) {
+    await document.reference.update({'estado': 3});
+  }
+}
+
+Future<void> marcarPqrsEnProceso(int iDticket) async {
+  final QuerySnapshot snapshot = await FirebaseFirestore.instance
+      .collection('pqrs')
+      .where('id', isEqualTo: iDticket)
+      .get();
+
+  final List<DocumentSnapshot> documents = snapshot.docs;
+
+  for (final DocumentSnapshot document in documents) {
+    await document.reference.update({'estado': 2});
+  }
+}
+
   Future<String?> guardarPQR(Pqrs pqr) async {
     
     late String result;
@@ -16,6 +41,7 @@ class ControladorPQRS {
         .then((value) {
       print('PQR guardada con éxito. ID: ${value.id}');
       result = value.id;
+      
     }).catchError((error) {
       print('Error al guardar la PQR: $error');
       result = '';
@@ -23,12 +49,33 @@ class ControladorPQRS {
     return result;
   }
 
+  Future<void> actualizarPQR(Pqrs pqr) async {
+  try {
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('id', isEqualTo: pqr.id)
+        .get();
+
+    final documents = querySnapshot.docs;
+    if (documents.isNotEmpty) {
+      final document = documents.first;
+      await document.reference.update(pqr.mapeo());
+      print('PQR actualizada con éxito. ID: ${document.id}');
+    } else {
+      print('No se encontró ninguna PQR con el idToken proporcionado.');
+    }
+  } catch (error) {
+    print('Error al actualizar la PQR: $error');
+  }
+}
+
   Future<List<Pqrs>> cargarPQRS(
       {required bool esAnonima,
       int estadoPqr = 1,
-      String tipoPqrs = 'Todas'}) async {
+      String tipoPqrs = 'Todas', required String textoBusqueda}) async {
     List<Pqrs> pqrsList = [];
-    if (tipoPqrs == 'Todas') {
+    if(textoBusqueda.length<1){
+      if (tipoPqrs == 'Todas') {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('pqrs')
           .where('esAnonimo', isEqualTo: esAnonima)
@@ -45,6 +92,18 @@ class ControladorPQRS {
           .where('esAnonimo', isEqualTo: esAnonima)
           .where('estado', isEqualTo: estadoPqr)
           .where('tipoPQRS', isEqualTo: tipoPqrs)
+          .get();
+
+      querySnapshot.docs.forEach((doc) {
+        Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+        pqrsList.add(pqr);
+      });
+    }
+    }else{
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('pqrs')
+          .where('esAnonimo', isEqualTo: esAnonima)
+          .where('id', isEqualTo: int.parse(textoBusqueda))
           .get();
 
       querySnapshot.docs.forEach((doc) {

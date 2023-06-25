@@ -235,7 +235,7 @@ class AlertPQRS {
               String? adjuntoPQRS = window.localStorage['adjuntoPQRS'];
               if (pqr.nombreArchivoAdjunto != null) {
                 if (pqr.nombreArchivoAdjunto!.isNotEmpty) {
-                  await StorageHelper().subirArchivoBase64(adjuntoPQRS!, idPQR);
+                  await StorageHelper().subirArchivoBase64(adjuntoPQRS!, pqr.nombreArchivoAdjunto.toString(),carpeta: pqr.id.toString());
                 }
               }
               QuickAlert.show(

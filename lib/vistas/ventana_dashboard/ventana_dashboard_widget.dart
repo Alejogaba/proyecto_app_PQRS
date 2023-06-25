@@ -1,5 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/grafico_circular.dart';

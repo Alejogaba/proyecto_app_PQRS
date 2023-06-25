@@ -6,12 +6,9 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 
 import 'package:image_picker/image_picker.dart';
-import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
 
-import '../../flutter_flow/flutter_flow_drop_down.dart';
 import '../../flutter_flow/flutter_flow_icon_button.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
-import '../../flutter_flow/flutter_flow_widgets.dart';
 
 import 'package:flutter/material.dart';
 
@@ -150,7 +147,7 @@ class _RegistrarFuncionarioPageWidgetState
 
   @override
   Widget build(BuildContext context) {
-    dynamic tamanio_padding = (MediaQuery.of(context).size.width < anchominimo)
+    dynamic tamanioPadding = (MediaQuery.of(context).size.width < anchominimo)
         ? EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10)
         : EdgeInsetsDirectional.fromSTEB(80, 10, 80, 10);
 
@@ -977,7 +974,7 @@ class _RegistrarFuncionarioPageWidgetState
                               (MediaQuery.of(context).size.width < anchominimo)
                                   ? Container()
                                   : Padding(
-                                      padding: tamanio_padding,
+                                      padding: tamanioPadding,
                                       child: Divider(
                                         height: 2,
                                         thickness: 1,
@@ -987,7 +984,7 @@ class _RegistrarFuncionarioPageWidgetState
                               Column(
                                 children: [
                                   Padding(
-                                    padding: tamanio_padding,
+                                    padding: tamanioPadding,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1019,7 +1016,7 @@ class _RegistrarFuncionarioPageWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: tamanio_padding,
+                                    padding: tamanioPadding,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1051,7 +1048,7 @@ class _RegistrarFuncionarioPageWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: tamanio_padding,
+                                    padding: tamanioPadding,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1083,7 +1080,7 @@ class _RegistrarFuncionarioPageWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: tamanio_padding,
+                                    padding: tamanioPadding,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1120,7 +1117,7 @@ class _RegistrarFuncionarioPageWidgetState
                                                 anchominimo)
                                             ? EdgeInsetsDirectional.fromSTEB(
                                                 10, 10, 10, 65)
-                                            : tamanio_padding,
+                                            : tamanioPadding,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -1229,7 +1226,7 @@ class _RegistrarFuncionarioPageWidgetState
       String hint,
       String label,
       int maxCharacters,
-      tipo_teclado,
+      tipoTeclado,
       esNumero,
       bool _esObligatorio,
       sufix,
@@ -1247,7 +1244,7 @@ class _RegistrarFuncionarioPageWidgetState
           : null,
       cursorColor: FlutterFlowTheme.of(context).primaryText,
       controller: controlador,
-      keyboardType: tipo_teclado,
+      keyboardType: tipoTeclado,
       inputFormatters: (esNumero == null)
           ? <TextInputFormatter>[
               LengthLimitingTextInputFormatter(maxCharacters),

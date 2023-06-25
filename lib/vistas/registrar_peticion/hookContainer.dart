@@ -7,12 +7,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'dart:html' as html;
 import 'package:file_picker/file_picker.dart';
-import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
 
 import '../../flutter_flow/flutter_flow_theme.dart';
 import 'dart:convert';
 import 'package:mime/mime.dart';
-import 'package:path/path.dart' as p;
 import 'package:quickalert/quickalert.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 

@@ -1,19 +1,11 @@
 import 'dart:html';
-import 'dart:io';
-import 'package:intl/intl.dart';
 
-import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
-import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/hookContainer.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/alert_pqrs.dart';
-import 'package:quickalert/quickalert.dart';
-import 'package:smart_snackbars/smart_snackbars.dart';
 
 import '../../flutter_flow/custom_snackbars.dart';
 import '../../modelo/counter.dart';
-import '../../modelo/pqrs.dart';
-import '../../modelo/pqrs.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -26,8 +18,6 @@ import 'registrar_peticion_model.dart';
 export 'registrar_peticion_model.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'dart:js' as js;
-import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 class RegistrarPeticionWidget extends StatefulWidget {
   final String? tipoPQRS;
