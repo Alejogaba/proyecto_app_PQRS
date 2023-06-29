@@ -15,6 +15,8 @@ class Pqrs {
   String? descripcion;
   String? respuesta;
   String? nombreArchivoAdjunto;
+  String? dependencia;
+  String? asunto;
   String fechaString;
   int fechaInt;
   bool esAnonimo;
@@ -22,7 +24,9 @@ class Pqrs {
   int estado = 1;
 
   Pqrs(
-      {this.id=0,
+      {this.asunto,
+      this.dependencia,
+      this.id = 0,
       this.nombreDependencia,
       this.primerNombreSolicitante,
       this.segundoNombreSolicitante,
@@ -45,7 +49,7 @@ class Pqrs {
 
   Map<String, dynamic> mapeo() {
     return {
-      'id':id,
+      'id': id,
       'nombreDependencia': nombreDependencia,
       'primerNombreSolicitante': primerNombreSolicitante,
       'segundoNombreSolicitante': segundoNombreSolicitante,
@@ -65,31 +69,34 @@ class Pqrs {
       'fechaInt': fechaInt,
       'fechaString': fechaString,
       'esAnonimo': esAnonimo,
+      'dependencia': dependencia,
+      'asunto': asunto
     };
   }
 
   factory Pqrs.fromMap(Map<String, dynamic> map) {
     return Pqrs(
-      nombreDependencia: map['nombreDependencia'] ?? '',
-      primerNombreSolicitante: map['primerNombreSolicitante'] ?? '',
-      segundoNombreSolicitante: map['segundoNombreSolicitante'] ?? '',
-      primerApellidoSolicitante: map['primerApellidoSolicitante'] ?? '',
-      segundoApellidoSolicitante: map['segundoApellidoSolicitante'] ?? '',
-      tipoIdSolicitante: map['tipoIdSolicitante'] ?? '',
-      idSolicitante: map['idSolicitante'] ?? '',
-      tipoPQRS: map['tipoPQRS'] ?? '',
-      tipoMedioContacto: map['tipoMedioContacto'] ?? '',
-      numTelefono: map['numTelefono'] ?? '',
-      medioContacto: map['correo'] ?? '',
-      direccion: map['direccion'] ?? '',
-      descripcion: map['descripcion'] ?? '',
-      respuesta: map['respuesta'] ?? '',
-      nombreArchivoAdjunto: map['nombreArchivoAdjunto'] ?? '',
-      estado: map['estado'] ?? 0,
-      fechaInt: map['fechaInt'] ?? 0,
-      fechaString: map['fechaString'] ?? '',
-      esAnonimo: map['esAnonimo'] ?? false,
-      id: map['id'] ?? 0
-    );
+        nombreDependencia: map['nombreDependencia'] ?? '',
+        primerNombreSolicitante: map['primerNombreSolicitante'] ?? '',
+        segundoNombreSolicitante: map['segundoNombreSolicitante'] ?? '',
+        primerApellidoSolicitante: map['primerApellidoSolicitante'] ?? '',
+        segundoApellidoSolicitante: map['segundoApellidoSolicitante'] ?? '',
+        tipoIdSolicitante: map['tipoIdSolicitante'] ?? '',
+        idSolicitante: map['idSolicitante'] ?? '',
+        tipoPQRS: map['tipoPQRS'] ?? '',
+        tipoMedioContacto: map['tipoMedioContacto'] ?? '',
+        numTelefono: map['numTelefono'] ?? '',
+        medioContacto: map['correo'] ?? '',
+        direccion: map['direccion'] ?? '',
+        descripcion: map['descripcion'] ?? '',
+        respuesta: map['respuesta'] ?? '',
+        nombreArchivoAdjunto: map['nombreArchivoAdjunto'] ?? '',
+        estado: map['estado'] ?? 0,
+        fechaInt: map['fechaInt'] ?? 0,
+        fechaString: map['fechaString'] ?? '',
+        esAnonimo: map['esAnonimo'] ?? false,
+        dependencia: map['dependencia'] ?? '',
+        asunto: map['asunto'] ?? '',
+        id: map['id'] ?? 0);
   }
 }

@@ -48,6 +48,7 @@ class RegistrarPeticionModel extends FlutterFlowModel {
   TextEditingController? textController9;
   String? Function(BuildContext, String?)? textController9Validator;
   // State field(s) for TextField widget.
+  TextEditingController? textControllerAsuntoPqrs;
   TextEditingController? textControllerDescripcionPqrs;
   String? Function(BuildContext, String?)? textController10Validator =
       (p0, p1) {

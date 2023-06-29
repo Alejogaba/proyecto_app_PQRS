@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       initialRoute: 'login',
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
             if (AuthHelper.estaLogeado()) {
               return VentanaDashboardWidget();
             } else {
-              return VentanPQRSWidget();
+              return HomePageWidget();
             }
           } else {
             return Container();

@@ -1,6 +1,8 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
@@ -93,7 +95,7 @@ class AlertPQRS {
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Poppins',
                           fontSize: 19.0,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.normal,
                         ),
                   ),
                 ],
@@ -116,7 +118,7 @@ class AlertPQRS {
                   style: FlutterFlowTheme.of(context).bodyLarge.override(
                         fontFamily: 'Poppins',
                         fontSize: 19.0,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                       ),
                 ),
               ],
@@ -223,12 +225,40 @@ class AlertPQRS {
       buttons: [
         DialogButton(
           color: FlutterFlowTheme.of(context).primary,
-          child: Text('Corregir'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FaIcon(FontAwesomeIcons.xmark,
+                  color: FlutterFlowTheme.of(context).tertiary),
+              Padding(
+                padding: const EdgeInsets.only(left: 7.0),
+                child: Text(
+                  'Cancelar',
+                  style:
+                      TextStyle(color: FlutterFlowTheme.of(context).tertiary),
+                ),
+              ),
+            ],
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         DialogButton(
           color: FlutterFlowTheme.of(context).info,
-          child: Text('Enviar'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FaIcon(FontAwesomeIcons.mailchimp,
+                  color: FlutterFlowTheme.of(context).tertiary),
+              Padding(
+                padding: const EdgeInsets.only(left: 7.0),
+                child: Text(
+                  'Enviar',
+                  style:
+                      TextStyle(color: FlutterFlowTheme.of(context).tertiary),
+                ),
+              ),
+            ],
+          ),
           onPressed: () async {
             String? idPQR = await ControladorPQRS().guardarPQR(pqr);
             if (idPQR != null && idPQR.isNotEmpty) {
@@ -260,10 +290,34 @@ class AlertPQRS {
       context: context,
       title: '¡Envío exitoso!',
       desc: 'El PQR ha sido enviado correctamente.',
+      onWillPopActive: true,
+      closeFunction: (){
+        Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePageWidget()));
+      },
       buttons: [
         DialogButton(
-          child: Text('Aceptar'),
-          onPressed: () => Navigator.pop(context),
+          color: FlutterFlowTheme.of(context).info,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 7.0),
+                child: Text(
+                  'Aceptar',
+                  style:
+                      TextStyle(color: FlutterFlowTheme.of(context).tertiary),
+                ),
+              ),
+            ],
+          ),
+          onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePageWidget()),
+                    ),
         ),
       ],
     ).show();

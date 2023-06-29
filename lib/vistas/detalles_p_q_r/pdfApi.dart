@@ -3,10 +3,10 @@ import 'dart:html';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
-import 'package:open_filex/open_filex.dart' as OpenFile;
+
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
-import 'package:pdf_image_renderer/pdf_image_renderer.dart' as pdfRender;
+
 import 'package:pdf/widgets.dart' as pw;
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:url_launcher/url_launcher.dart';

@@ -3,10 +3,40 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AuthHelper {
   static FirebaseAuth _auth = FirebaseAuth.instance;
-
+Future<void> resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      Get.snackbar('Correo de restablecimiento enviado correctamente',
+          'Siga las instruciones en su correo',
+          duration: Duration(seconds: 5),
+          margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
+          snackStyle: SnackStyle.FLOATING,
+          backgroundColor: Color.fromARGB(211, 28, 138, 46),
+          icon: Icon(
+            Icons.check,
+            color: Colors.white,
+          ),
+          colorText: Color.fromARGB(255, 228, 219, 218));
+    } catch (e) {
+      Get.snackbar('Error',
+          'Ocurrio un error, verifique que el correo este correctamente escrito',
+          duration: Duration(seconds: 5),
+          margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
+          snackStyle: SnackStyle.FLOATING,
+          backgroundColor: Color.fromARGB(213, 211, 31, 31),
+          icon: Icon(
+            Icons.error_outline,
+            color: Colors.white,
+          ),
+          colorText: Color.fromARGB(255, 228, 219, 218));
+      log('Error resetear la contraseña: $e');
+    }
+  }
   static signInWithEmail(
       {String email = '',
       String password = '',

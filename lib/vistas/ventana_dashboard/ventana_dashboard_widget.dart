@@ -3,7 +3,9 @@ import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/grafico_circular.dart';
 
+import '../../modelo/pqrs.dart';
 import '../components/barra_superior.dart';
+import '../ventan_p_q_r_s/tarjeta_pqrs_identificacion.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -59,6 +61,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              if(_model.textController.text.length==0)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                 child: Expanded(
@@ -473,6 +476,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                   ),
                 ),
               ),
+              
               Container(
                 width: MediaQuery.of(context).size.width * 1.0,
                 decoration: BoxDecoration(
@@ -487,6 +491,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                 ),
                 child: Stack(
                   children: [
+                    if(_model.textController.text.length==0)
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(4.0, 85.0, 4.0, 0.0),
@@ -521,6 +526,9 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.3,
                                     child: TextFormField(
+                                      onChanged: (value){setState(() {
+                                        
+                                      });},
                                       controller: _model.textController,
                                       autofocus: true,
                                       obscureText: false,
@@ -577,37 +585,11 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     ),
                                   ),
                                 ),
-                                FFButtonWidget(
-                                  onPresionado: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Button',
-                                  options: FFButtonOptions(
-                                    width: 160.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).info,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 18.0,
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
+                                
                               ],
                             ),
                           ),
+                          if(_model.textController.text.length==0)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 4.0),
@@ -643,6 +625,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                               ],
                             ),
                           ),
+                          if(_model.textController.text.length==0)
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -975,6 +958,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                               ),
                             ],
                           ),
+                          if(_model.textController.text.length==0)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 10.0),
@@ -1319,6 +1303,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                               ],
                             ),
                           ),
+                          if(_model.textController.text.length==0)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 10.0),
@@ -2779,6 +2764,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                               ],
                             ),
                           ),
+                          if(_model.textController.text.length==0)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 30.0, 0.0, 10.0),
@@ -3822,6 +3808,142 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                   ],
                 ),
               ),
+              if(_model.textController.text.length>0)
+              Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 5.0,
+                          color: Color(0x2E000000),
+                          offset: Offset(0.0, 2.0),
+                        )
+                      ],
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 4.0, 8.0, 4.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 2.0, 0.0, 5.0),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.cubes,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 30.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    'PQRS',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 22.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Center(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.95,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.323,
+                                constraints: BoxConstraints(
+                                  minHeight: 100.0,
+                                  maxHeight: double.infinity,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: FutureBuilder<List<Pqrs>>(
+                                    future: ControladorPQRS().cargarTodasPQRS(
+                                        textoBusqueda: _model.textController.text),
+                                    builder: (BuildContext context, snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return Center(
+                                            child: Container(
+                                                width: 50,
+                                                height: 50,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                )));
+                                      } else if (snapshot.connectionState ==
+                                              ConnectionState.done &&
+                                          snapshot.data!.length > 0) {
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: snapshot.data!.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Opacity(
+                                              opacity: (snapshot
+                                                              .data![index].estado == 3)
+                                                  ? 0.4
+                                                  : 1.0,
+                                              child: GestureDetector(
+                                                  onTap: () async {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                DetallesPQRWidget(
+                                                                    snapshot.data![
+                                                                        index])));
+                                                  },
+                                                  child:
+                                                      tarjetaPqrsIdentificacion(
+                                                          snapshot
+                                                              .data![index])),
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        return Center(
+                                            child: Text(
+                                                'No se ha enconcontrado ninguna solicitud con ese N° de Ticket...'));
+                                      }
+                                    }),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
