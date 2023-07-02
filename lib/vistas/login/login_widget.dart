@@ -419,7 +419,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                               .validate()) {
                                             try {
                                               var user = await AuthHelper
-                                                  .signInWithEmail(
+                                                  .signInWithEmail(context,
                                                       email: _model
                                                           .emailAddressController
                                                           .text
@@ -448,9 +448,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   context,
                                                   'Error al iniciar sesión',
                                                   e.message.toString());
-                                              SmartSnackBars
-                                                  .showTemplatedSnackbar(
-                                                      context: context);
+                                            
 
                                               log(e.toString());
                                             } catch (e) {
@@ -458,9 +456,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   context,
                                                   'Error al iniciar sesión',
                                                   e.toString());
-                                              SmartSnackBars
-                                                  .showTemplatedSnackbar(
-                                                      context: context);
+                                             
 
                                               log(e.toString());
                                             }

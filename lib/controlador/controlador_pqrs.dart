@@ -140,7 +140,7 @@ class ControladorPQRS {
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
         .where('fechaString',
-            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+            isEqualTo: DateFormat('d - MMMM - y', 'es')
                 .format(DateTime.now())
                 .toString())
         .get();
@@ -152,7 +152,7 @@ class ControladorPQRS {
         .collection('pqrs')
         .where('esAnonimo', isEqualTo: true)
         .where('fechaString',
-            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+            isEqualTo: DateFormat('d - MMMM - y', 'es')
                 .format(DateTime.now())
                 .toString())
         .get();
@@ -164,7 +164,7 @@ class ControladorPQRS {
         .collection('pqrs')
         .where('esAnonimo', isEqualTo: false)
         .where('fechaString',
-            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+            isEqualTo: DateFormat('d - MMMM - y', 'es')
                 .format(DateTime.now())
                 .toString())
         .get();
@@ -180,7 +180,7 @@ class ControladorPQRS {
 
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
-        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .where('fechaInt', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
         .get();
 
     return querySnapshot.size;
@@ -196,7 +196,7 @@ class ControladorPQRS {
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
         .where('esAnonimo', isEqualTo: false)
-        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .where('fechaInt', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
         .get();
 
     return querySnapshot.size;
@@ -212,7 +212,7 @@ class ControladorPQRS {
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
         .where('esAnonimo', isEqualTo: true)
-        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .where('fechaInt', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
         .get();
 
     return querySnapshot.size;

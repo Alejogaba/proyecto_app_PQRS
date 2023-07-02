@@ -22,11 +22,12 @@ class _GraficoCircularIdentificacionState
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          log('Error: ${snapshot.error}');
+          log('Error grafico circular: ${snapshot.error}');
           return Icon(Icons.warning);
         } else if (snapshot.hasData) {
           final List<int> data = snapshot.data!;
-          return buildChart(data);
+          log('data grafico circular: ' + data.toString());
+          return Icon(Icons.warning);
         } else {
           return Text('No data available');
         }

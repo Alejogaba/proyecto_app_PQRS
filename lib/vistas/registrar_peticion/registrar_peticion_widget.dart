@@ -2164,9 +2164,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                         ),
                                                     maxLines: 1,
                                                     minLines: 1,
-                                                    validator: _model
-                                                        .textController10Validator
-                                                        .asValidator(context),
+                                                   
                                                   ),
                                                 ),
                                               ),

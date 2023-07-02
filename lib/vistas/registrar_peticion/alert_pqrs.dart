@@ -186,6 +186,25 @@ class AlertPQRS {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
+                Text('Asunto:  ',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.bold,
+                        )),
+                Text(pqr.asunto.toString(),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.normal,
+                        )),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
                 Text('Descripción:  ',
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Poppins',
@@ -201,6 +220,7 @@ class AlertPQRS {
               ],
             ),
           ),
+          if(pqr.nombreArchivoAdjunto.toString().isNotEmpty)
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -247,7 +267,7 @@ class AlertPQRS {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FaIcon(FontAwesomeIcons.mailchimp,
+              FaIcon(Icons.mail,
                   color: FlutterFlowTheme.of(context).tertiary),
               Padding(
                 padding: const EdgeInsets.only(left: 7.0),
