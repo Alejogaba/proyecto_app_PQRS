@@ -27,7 +27,7 @@ class _GraficoCircularIdentificacionState
         } else if (snapshot.hasData) {
           final List<int> data = snapshot.data!;
           log('data grafico circular: ' + data.toString());
-          return Icon(Icons.warning);
+          return buildChart(data);
         } else {
           return Text('No data available');
         }
