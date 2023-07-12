@@ -351,10 +351,9 @@ class _RegistrarFuncionarioPageWidgetState
                                             0, 16, 10, 14),
                                         child: Center(
                                           child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            child: Text('PlaceHolder')
-                                          ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: Text('PlaceHolder')),
                                         ),
                                       ),
                                     ),
@@ -992,7 +991,6 @@ class _RegistrarFuncionarioPageWidgetState
       });
     }
 
-    
     Widget _decideImageView(imageFile) {
       if (funcionarioEditar != null && imageFile == null) {
         return Image.network(
@@ -1067,7 +1065,6 @@ class _RegistrarFuncionarioPageWidgetState
                 child: _decideImageView(imageFile)),
       );
     }
-
 
     Future<void> cargarFuncionarioDropdown(int idArea) async {
       log('idAre: $idArea');

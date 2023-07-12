@@ -12,7 +12,7 @@ import 'package:smart_snackbars/smart_snackbars.dart';
 
 import '../../flutter_flow/custom_snackbars.dart';
 import '../../modelo/pqrs.dart';
-import '../../modelo/pqrs.dart';
+
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,8 +25,8 @@ import 'registrar_peticion_model.dart';
 export 'registrar_peticion_model.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'dart:js' as js;
-import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+//import 'package:flutter/material.dart';
+//import 'package:flutter_hooks/flutter_hooks.dart';
 
 class RegistrarPeticionWidget extends StatefulWidget {
   final String? tipoPQRS;
@@ -2464,14 +2464,13 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                             _opcionenvioVentanilla ||
                                             _opcionenvioWhatsapp ||
                                             _opcionenvioEmail) {
-                                               await guardarPQR();
+                                          await guardarPQR();
                                         } else {
                                           CustomSnackBars().snackBarError(
                                               context,
                                               'Advertencia',
                                               'Seleccione al menos un medio de contacto para dar respuesta a su $nombreTipoPQR');
                                         }
-                                       
                                       } else {
                                         CustomSnackBars().snackBarError(
                                             context,
@@ -2569,25 +2568,25 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
 
     // Crear la instancia de PQR con los valores obtenidos
     pqrs peticion = pqrs(
-      nombreDependencia: '',
-      primerNombreSolicitante: primerNombre,
-      segundoNombreSolicitante: segundoNombre,
-      primerApellidoSolicitante: primerApellido,
-      segundoApellidoSolicitante: segundoApellido,
-      tipoIdSolicitante: tipoIdentificacion,
-      idSolicitante: numeroIdentificacion,
-      tipoPQRS: this.nombreTipoPQR,
-      tipoMedioContacto: int.parse(tipomedioContacto),
-      numTelefono: telefono,
-      medioContacto: medioContacto,
-      direccion: '',
-      descripcion: descripcion,
-      respuesta: respuesta,
-      nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
-      fechaInt: DateTime.now().millisecondsSinceEpoch,
-      fechaString: DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()),
-      esAnonimo: esAnonima
-    );
+        nombreDependencia: '',
+        primerNombreSolicitante: primerNombre,
+        segundoNombreSolicitante: segundoNombre,
+        primerApellidoSolicitante: primerApellido,
+        segundoApellidoSolicitante: segundoApellido,
+        tipoIdSolicitante: tipoIdentificacion,
+        idSolicitante: numeroIdentificacion,
+        tipoPQRS: this.nombreTipoPQR,
+        tipoMedioContacto: int.parse(tipomedioContacto),
+        numTelefono: telefono,
+        medioContacto: medioContacto,
+        direccion: '',
+        descripcion: descripcion,
+        respuesta: respuesta,
+        nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
+        fechaInt: DateTime.now().millisecondsSinceEpoch,
+        fechaString:
+            DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()),
+        esAnonimo: esAnonima);
 
     AlertPQRS(pqr: peticion).showConfirmationAlert(context);
     // Llamar a la función guardarPQR con la instancia de PQR

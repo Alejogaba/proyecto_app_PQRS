@@ -28,42 +28,54 @@ class ControladorPQRS {
   }
 
   Future<int> getTotalPqrsCountHoy() async {
-    final querySnapshot =
-        await FirebaseFirestore.instance.collection('pqrs')
-        .where('fechaString',isEqualTo:DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()).toString()).get();
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('fechaString',
+            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+                .format(DateTime.now())
+                .toString())
+        .get();
     return querySnapshot.size;
   }
 
   Future<int> getTotalPqrsAnonimoCountHoy() async {
-    final querySnapshot =
-        await FirebaseFirestore.instance.collection('pqrs')
-        .where('esAnonimo',isEqualTo:true)
-        .where('fechaString',isEqualTo:DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()).toString()).get();
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('esAnonimo', isEqualTo: true)
+        .where('fechaString',
+            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+                .format(DateTime.now())
+                .toString())
+        .get();
     return querySnapshot.size;
   }
 
   Future<int> getTotalPqrsIdentificacionCountHoy() async {
-    final querySnapshot =
-        await FirebaseFirestore.instance.collection('pqrs')
-        .where('esAnonimo',isEqualTo:false)
-        .where('fechaString',isEqualTo:DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()).toString()).get();
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('esAnonimo', isEqualTo: false)
+        .where('fechaString',
+            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+                .format(DateTime.now())
+                .toString())
+        .get();
     return querySnapshot.size;
   }
 
   Future<int> getTotalPqrsCountSemana() async {
-  DateTime nowtemp = DateTime.now();
-  DateTime now = DateTime(nowtemp.year, nowtemp.month, nowtemp.day, 0, 0, 0);
-  DateTime lunes = (now.weekday!=1) ? now.subtract(Duration(days: now.weekday - (now.weekday-1))):now;
+    DateTime nowtemp = DateTime.now();
+    DateTime now = DateTime(nowtemp.year, nowtemp.month, nowtemp.day, 0, 0, 0);
+    DateTime lunes = (now.weekday != 1)
+        ? now.subtract(Duration(days: now.weekday - (now.weekday - 1)))
+        : now;
 
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .get();
 
-  final querySnapshot = await FirebaseFirestore.instance
-      .collection('pqrs')
-      .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
-      .get();
-
-  return querySnapshot.size;
-}
-
+    return querySnapshot.size;
+  }
 
   Future<int> getTotalPqrsPendiente() async {
     final querySnapshot = await FirebaseFirestore.instance

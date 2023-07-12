@@ -111,7 +111,7 @@ class AuthHelper {
 
 class UserHelper {
   static FirebaseFirestore _db = FirebaseFirestore.instance;
-  static var _dbRT = FirebaseDatabase.instance.reference();
+  //static var _dbRT = FirebaseDatabase.instance.ref();
 
   Future<void> eliminarFuncionario(String email) async {
     CollectionReference funcionarios =

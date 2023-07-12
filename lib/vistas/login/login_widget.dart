@@ -74,7 +74,6 @@ class _LoginWidgetState extends State<LoginWidget>
     super.initState();
     _model = createModel(context, () => LoginModel());
 
-    // ignore: unnecessary_statements
     _model.emailAddressController;
     _model.passwordController;
   }
