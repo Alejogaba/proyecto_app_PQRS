@@ -64,6 +64,16 @@ dependencies:
   graphic: ^2.2.0
   fl_chart: ^0.62.0
   image_picker: ^0.8.7+5
+  flutter_image_compress: ^2.0.3
+  segment_bar: ^0.0.3
+  mailto: ^2.0.0
+  url_launcher: ^6.1.11
+  get: ^4.6.5
+  open_filex: ^4.3.2
+  pdf_image_renderer: ^0.7.0
+  pdf: ^3.10.4
+  snackbar: ^1.0.2
+  top_snackbar_flutter: ^3.1.0
  
 
 

@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
             if (AuthHelper.estaLogeado()) {
               return VentanaDashboardWidget();
             } else {
-              return VentanaFuncionariosWidget();
+              return HomePageWidget();
             }
           } else {
             return Container();
@@ -101,12 +101,7 @@ class _MyAppState extends State<MyApp> {
         handlerFunc: (context, params) => RegistrarPeticionWidget(),
       ),
     );
-    _router.define(
-      '/detallesPQR',
-      handler: Handler(
-        handlerFunc: (context, params) => DetallesPQRWidget(),
-      ),
-    );
+    
     _router.define(
       '/registraSoporte',
       handler: Handler(

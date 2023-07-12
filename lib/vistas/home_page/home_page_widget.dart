@@ -175,7 +175,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -244,7 +244,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Petición',)));
                                       },
                                       text: 'Envía una petición',
                                       options: FFButtonOptions(
@@ -430,7 +430,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Reclamo',)));
                                       },
                                       text: 'Envía un reclamo',
                                       options: FFButtonOptions(
@@ -525,7 +525,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Sugerencia',)));
                                       },
                                       text: 'Envía una sugerencia',
                                       options: FFButtonOptions(
@@ -620,7 +620,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget()));
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Felicitaciones',)));
                                       },
                                       text: 'Envía una felicitacion',
                                       options: FFButtonOptions(
@@ -668,13 +668,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Stack(
+                                    
                                     children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          elevation: 0.0,
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom:391.0),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 1.0),
                                           child: Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -690,12 +690,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       .primaryBackground,
                                               shape: BoxShape.rectangle,
                                               border: Border.all(
-                                                color: Colors.transparent,
-                                                width: 0.0,
+                                                color: Colors.black26,
+                                                width: 0.1,
                                               ),
                                             ),
-                                            alignment: AlignmentDirectional(
-                                                0.050000000000000044, 0.55),
+                                          
                                           ),
                                         ),
                                       ),
@@ -734,7 +733,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 40.0,
+                                                            .fromSTEB(0.0, 10.0,
                                                                 0.0, 0.0),
                                                     child: Row(
                                                       mainAxisSize:

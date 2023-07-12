@@ -1,16 +1,40 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../flutter_flow/flutter_flow_util.dart';
 import '../modelo/pqrs.dart';
 
 class ControladorPQRS {
-  Future<String?> guardarPQR(pqrs pqr) async {
+  Future<void> marcarPqrsFinalizada(int iDticket) async {
+    final QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('id', isEqualTo: iDticket)
+        .get();
+
+    final List<DocumentSnapshot> documents = snapshot.docs;
+
+    for (final DocumentSnapshot document in documents) {
+      await document.reference.update({'estado': 3});
+    }
+  }
+
+  Future<void> marcarPqrsEnProceso(int iDticket) async {
+    final QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('id', isEqualTo: iDticket)
+        .get();
+
+    final List<DocumentSnapshot> documents = snapshot.docs;
+
+    for (final DocumentSnapshot document in documents) {
+      await document.reference.update({'estado': 2});
+    }
+  }
+
+  Future<String?> guardarPQR(Pqrs pqr) async {
     late String result;
     await FirebaseFirestore.instance
         .collection('pqrs') // Nombre de la colección en Firestore
-        .add(pqr.toMap())
+        .add(pqr.mapeo())
         .then((value) {
       print('PQR guardada con éxito. ID: ${value.id}');
       result = value.id;
@@ -19,6 +43,91 @@ class ControladorPQRS {
       result = '';
     });
     return result;
+  }
+
+  Future<void> actualizarPQR(Pqrs pqr) async {
+    try {
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('pqrs')
+          .where('id', isEqualTo: pqr.id)
+          .get();
+
+      final documents = querySnapshot.docs;
+      if (documents.isNotEmpty) {
+        final document = documents.first;
+        await document.reference.update(pqr.mapeo());
+        print('PQR actualizada con éxito. ID: ${document.id}');
+      } else {
+        print('No se encontró ninguna PQR con el idToken proporcionado.');
+      }
+    } catch (error) {
+      print('Error al actualizar la PQR: $error');
+    }
+  }
+
+  Future<List<Pqrs>> cargarPQRS(
+      {required bool esAnonima,
+      int estadoPqr = 1,
+      String tipoPqrs = 'Todas',
+      required String textoBusqueda}) async {
+    List<Pqrs> pqrsList = [];
+    if (textoBusqueda.length < 1) {
+      if (tipoPqrs == 'Todas') {
+        QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+            .collection('pqrs')
+            .where('esAnonimo', isEqualTo: esAnonima)
+            .where('estado', isEqualTo: estadoPqr)
+            .get();
+
+        querySnapshot.docs.forEach((doc) {
+          Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+          pqrsList.add(pqr);
+        });
+      } else {
+        QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+            .collection('pqrs')
+            .where('esAnonimo', isEqualTo: esAnonima)
+            .where('estado', isEqualTo: estadoPqr)
+            .where('tipoPQRS', isEqualTo: tipoPqrs)
+            .get();
+
+        querySnapshot.docs.forEach((doc) {
+          Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+          pqrsList.add(pqr);
+        });
+      }
+    } else {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('pqrs')
+          .where('esAnonimo', isEqualTo: esAnonima)
+          .where('id', isEqualTo: int.parse(textoBusqueda))
+          .get();
+
+      querySnapshot.docs.forEach((doc) {
+        Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+        pqrsList.add(pqr);
+      });
+    }
+
+    return pqrsList;
+  }
+
+  Future<List<Pqrs>> cargarTodasPQRS({required String textoBusqueda}) async {
+    List<Pqrs> pqrsList = [];
+    if (textoBusqueda.length > 0) {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('pqrs')
+          .where('id', isEqualTo: int.parse(textoBusqueda))
+          .get();
+
+      querySnapshot.docs.forEach((doc) {
+        Pqrs pqr = Pqrs.fromMap(doc.data() as Map<String, dynamic>);
+        pqrsList.add(pqr);
+      });
+      return pqrsList;
+    } else {
+      return [];
+    }
   }
 
   Future<int> getTotalPqrsCount() async {
@@ -31,7 +140,7 @@ class ControladorPQRS {
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
         .where('fechaString',
-            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+            isEqualTo: DateFormat('d - MMMM - y', 'es')
                 .format(DateTime.now())
                 .toString())
         .get();
@@ -43,7 +152,7 @@ class ControladorPQRS {
         .collection('pqrs')
         .where('esAnonimo', isEqualTo: true)
         .where('fechaString',
-            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+            isEqualTo: DateFormat('d - MMMM - y', 'es')
                 .format(DateTime.now())
                 .toString())
         .get();
@@ -55,7 +164,7 @@ class ControladorPQRS {
         .collection('pqrs')
         .where('esAnonimo', isEqualTo: false)
         .where('fechaString',
-            isEqualTo: DateFormat('d "de" MMMM "de" y', 'es')
+            isEqualTo: DateFormat('d - MMMM - y', 'es')
                 .format(DateTime.now())
                 .toString())
         .get();
@@ -71,7 +180,39 @@ class ControladorPQRS {
 
     final querySnapshot = await FirebaseFirestore.instance
         .collection('pqrs')
-        .where('fecha', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .where('fechaInt', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .get();
+
+    return querySnapshot.size;
+  }
+
+  Future<int> getTotalPqrsIdentificacionCountSemana() async {
+    DateTime nowtemp = DateTime.now();
+    DateTime now = DateTime(nowtemp.year, nowtemp.month, nowtemp.day, 0, 0, 0);
+    DateTime lunes = (now.weekday != 1)
+        ? now.subtract(Duration(days: now.weekday - (now.weekday - 1)))
+        : now;
+
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('esAnonimo', isEqualTo: false)
+        .where('fechaInt', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
+        .get();
+
+    return querySnapshot.size;
+  }
+
+  Future<int> getTotalPqrsAnonimoCountSemana() async {
+    DateTime nowtemp = DateTime.now();
+    DateTime now = DateTime(nowtemp.year, nowtemp.month, nowtemp.day, 0, 0, 0);
+    DateTime lunes = (now.weekday != 1)
+        ? now.subtract(Duration(days: now.weekday - (now.weekday - 1)))
+        : now;
+
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('esAnonimo', isEqualTo: true)
+        .where('fechaInt', isGreaterThanOrEqualTo: lunes.millisecondsSinceEpoch)
         .get();
 
     return querySnapshot.size;

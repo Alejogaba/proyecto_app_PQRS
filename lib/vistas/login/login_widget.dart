@@ -7,6 +7,7 @@ import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
 import 'package:proyecto_p_q_r_s/flutter_flow/custom_snackbars.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 
+import '../olvido_password/olvido_password_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -380,21 +381,30 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 .labelLarge,
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 2.0, 0.0, 24.0),
-                                          child: Text(
-                                            ' Haz clic aquí',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                ),
+                                        InkWell(
+                                          onTap: (){
+                                             Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OlvidoContrasenadWidget(email:_model.emailAddressController.text)),
+                    );
+                                          },
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 2.0, 0.0, 24.0),
+                                            child: Text(
+                                              ' Haz clic aquí',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(context)
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Poppins',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                  ),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -408,7 +418,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                               .validate()) {
                                             try {
                                               var user = await AuthHelper
-                                                  .signInWithEmail(
+                                                  .signInWithEmail(context,
                                                       email: _model
                                                           .emailAddressController
                                                           .text
@@ -437,9 +447,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   context,
                                                   'Error al iniciar sesión',
                                                   e.message.toString());
-                                              SmartSnackBars
-                                                  .showTemplatedSnackbar(
-                                                      context: context);
+                                            
 
                                               log(e.toString());
                                             } catch (e) {
@@ -447,9 +455,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   context,
                                                   'Error al iniciar sesión',
                                                   e.toString());
-                                              SmartSnackBars
-                                                  .showTemplatedSnackbar(
-                                                      context: context);
+                                             
 
                                               log(e.toString());
                                             }

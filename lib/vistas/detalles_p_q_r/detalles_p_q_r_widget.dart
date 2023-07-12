@@ -1,12 +1,24 @@
+import 'dart:developer';
+
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
+import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
+import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
+import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_respuesta_pqrs.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'detalles_p_q_r_model.dart';
 export 'detalles_p_q_r_model.dart';
+import 'package:mailto/mailto.dart';
+import 'package:get/get.dart';
 
 class DetallesPQRWidget extends StatefulWidget {
-  const DetallesPQRWidget({Key? key}) : super(key: key);
+  final Pqrs pqrs;
+  const DetallesPQRWidget(this.pqrs, {Key? key}) : super(key: key);
 
   @override
   _DetallesPQRWidgetState createState() => _DetallesPQRWidgetState();
@@ -43,6 +55,15 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
           child: AppBar(
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             title: Column(
@@ -60,7 +81,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          '[PQR]',
+                          widget.pqrs.tipoPQRS.toString(),
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
@@ -132,7 +153,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: Text(
-                                'Fecha: Lunes, Junio 12 2022',
+                                'Fecha:  ${widget.pqrs.fechaString.toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
@@ -177,7 +198,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     3.0, 0.0, 20.0, 0.0),
                                 child: Text(
-                                  'Dependencia',
+                                  '${widget.pqrs.nombreDependencia.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -218,7 +239,16 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 20.0, 0.0),
                                 child: Text(
-                                  'Nombre del solicitante',
+                                  ('${widget.pqrs.primerNombreSolicitante.toString()}' +
+                                          ' ' +
+                                          widget.pqrs.segundoNombreSolicitante
+                                              .toString() +
+                                          ' ' +
+                                          '${widget.pqrs.primerApellidoSolicitante.toString()}' +
+                                          ' ' +
+                                          widget.pqrs.segundoApellidoSolicitante
+                                              .toString())
+                                      .replaceAll('  ', ' '),
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -259,7 +289,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 20.0, 0.0),
                                 child: Text(
-                                  'Número de telefono',
+                                  '${widget.pqrs.numTelefono.toString()}',
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -284,7 +314,65 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Text(
-                                  'Medio de envio de la respuesta:',
+                                  'Tipo de medio de envio de la respuesta:',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    6.0, 0.0, 20.0, 0.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    FaIcon(
+                                      definirIcono(
+                                          widget.pqrs.tipoMedioContacto),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 7.0),
+                                      child: Text(
+                                        definirTipoEnvio(
+                                            widget.pqrs.tipoMedioContacto),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 0.0, 5.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 20.0, 0.0),
+                                child: Text(
+                                  'Medio de envio:',
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -300,7 +388,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 20.0, 0.0),
                                 child: Text(
-                                  'Medio de envio',
+                                  widget.pqrs.medioContacto.toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -319,7 +407,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Text(
-                            'Asunto del [PQR]',
+                            'Descripción de la ${widget.pqrs.tipoPQRS}',
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
@@ -335,7 +423,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 8.0, 20.0, 0.0),
                           child: Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+                            widget.pqrs.descripcion.toString(),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -344,96 +432,119 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 10.0, 20.0, 0.0),
-                          child: Text(
-                            'Archivo adjunto',
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              6.0, 8.0, 0.0, 8.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 3.0, 0.0, 7.0),
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.15,
-                                  decoration: BoxDecoration(
+                        if (widget.pqrs.nombreArchivoAdjunto
+                            .toString()
+                            .isNotEmpty)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 10.0, 20.0, 0.0),
+                            child: Text(
+                              widget.pqrs.nombreArchivoAdjunto.toString(),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    border: Border.all(
-                                      color: FlutterFlowTheme.of(context).info,
-                                      width: 2.0,
-                                    ),
+                                        .primaryText,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.04,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.07,
-                                        decoration: BoxDecoration(
+                            ),
+                          ),
+                        if (widget.pqrs.nombreArchivoAdjunto != null &&
+                            widget.pqrs.nombreArchivoAdjunto
+                                .toString()
+                                .isNotEmpty)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                6.0, 8.0, 0.0, 8.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 3.0, 0.0, 7.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      StorageHelper().descargarArchivo(
+                                          'NPkcT3fnkQSTAiDhBSrn', 'descarga');
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.4,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        border: Border.all(
                                           color:
                                               FlutterFlowTheme.of(context).info,
-                                          borderRadius:
-                                              BorderRadius.circular(13.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                          ),
-                                        ),
-                                        alignment: AlignmentDirectional(
-                                            0.050000000000000044,
-                                            0.050000000000000044),
-                                        child: Icon(
-                                          Icons.attach_file,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          size: 24.0,
+                                          width: 2.0,
                                         ),
                                       ),
-                                      Column(
+                                      child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
                                           Container(
-                                            width: 450.0,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.04,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.07,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      25.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Nombre de archivo de ejemplo.pdf',
-                                                style:
+                                                      .info,
+                                              borderRadius:
+                                                  BorderRadius.circular(13.0),
+                                              border: Border.all(
+                                                color:
                                                     FlutterFlowTheme.of(context)
+                                                        .info,
+                                              ),
+                                            ),
+                                            alignment: AlignmentDirectional(
+                                                0.050000000000000044,
+                                                0.050000000000000044),
+                                            child: Icon(
+                                              Icons.attach_file,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: 450.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          25.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    widget.pqrs
+                                                        .nombreArchivoAdjunto
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
@@ -441,18 +552,19 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -467,7 +579,19 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
                       onPresionado: () {
-                        print('Button pressed ...');
+                        
+                        try {
+                        AlertRespuestaPQRS(
+                            contextPadre: context,
+                            iconEnvio:
+                                definirIcono(widget.pqrs.tipoMedioContacto),
+                            mensajeEnvio: definirMensajeEnvio(
+                                widget.pqrs.tipoMedioContacto),
+                            pqr: widget.pqrs).showConfirmationAlert(context);  
+                        } catch (e) {
+                          log('Error responder: $e');
+                        }
+                        
                       },
                       text: 'Responder',
                       icon: Icon(
@@ -534,8 +658,21 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
-                      onPresionado: () {
-                        print('Button pressed ...');
+                      onPresionado: () async {
+                        await ControladorPQRS()
+                            .marcarPqrsFinalizada(widget.pqrs.id!);
+                        Get.snackbar('Finzalizado',
+                            '${widget.pqrs.tipoPQRS} marcada como finalizada',
+                            duration: Duration(seconds: 5),
+                            margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
+                            snackStyle: SnackStyle.FLOATING,
+                            backgroundColor: Color.fromARGB(211, 28, 138, 46),
+                            icon: Icon(
+                              Icons.check,
+                              color: Colors.white,
+                            ),
+                            colorText: Color.fromARGB(255, 228, 219, 218));
+                        Navigator.of(context).pop();
                       },
                       text: 'Marcar como finalizado',
                       icon: Icon(
@@ -571,5 +708,40 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
         ),
       ),
     );
+  }
+
+  IconData definirIcono(int tipoMedioRespuesta) {
+    switch (tipoMedioRespuesta) {
+      case 2:
+        return FontAwesomeIcons.envelope;
+      case 3:
+        return FontAwesomeIcons.whatsapp;
+      default:
+        return FontAwesomeIcons.print;
+    }
+  }
+
+  String definirMensajeEnvio(int tipoMedioRespuesta) {
+    switch (tipoMedioRespuesta) {
+      case 2:
+        return 'Enviar respuesta al correo';
+      case 3:
+        return 'Enviar respuesta al WhatsApp';
+      default:
+        return 'Imprimir';
+    }
+  }
+
+  String definirTipoEnvio(int tipoMedioRespuesta) {
+    switch (tipoMedioRespuesta) {
+      case 1:
+        return 'Enviar por correspondencia';
+      case 2:
+        return 'Enviar respuesta al correo electrónico';
+      case 3:
+        return 'Enviar respuesta al WhatsApp';
+      default:
+        return 'Reclamar en ventanilla';
+    }
   }
 }

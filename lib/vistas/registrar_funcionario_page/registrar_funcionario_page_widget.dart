@@ -6,12 +6,9 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 
 import 'package:image_picker/image_picker.dart';
-import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
 
-import '../../flutter_flow/flutter_flow_drop_down.dart';
 import '../../flutter_flow/flutter_flow_icon_button.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
-import '../../flutter_flow/flutter_flow_widgets.dart';
 
 import 'package:flutter/material.dart';
 
@@ -21,6 +18,11 @@ import 'dart:async';
 import 'package:dotted_border/dotted_border.dart';
 
 import '../../modelo/funcionario.dart';
+import '../components/barra_superior.dart';
+import '../ventan_p_q_r_s/ventan_p_q_r_s_widget.dart';
+import '../ventana_dependencias/ventana_dependencias_widget.dart';
+import '../ventana_funcionarios/ventana_funcionarios_widget.dart';
+import '../ventana_soporte/ventana_soporte_widget.dart';
 
 class RegistrarFuncionarioPageWidget extends StatefulWidget {
   final String? operacionaRealizar;
@@ -76,6 +78,7 @@ class _RegistrarFuncionarioPageWidgetState
   final String? id;
   int idArea = 0;
   int anchominimo = 640;
+  Uint8List? imageBytes;
 
   final Funcionario? funcionarioEditar;
   FocusNode _focusNodeCorreo = FocusNode();
@@ -144,7 +147,7 @@ class _RegistrarFuncionarioPageWidgetState
 
   @override
   Widget build(BuildContext context) {
-    dynamic tamanio_padding = (MediaQuery.of(context).size.width < anchominimo)
+    dynamic tamanioPadding = (MediaQuery.of(context).size.width < anchominimo)
         ? EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10)
         : EdgeInsetsDirectional.fromSTEB(80, 10, 80, 10);
 
@@ -246,516 +249,942 @@ class _RegistrarFuncionarioPageWidgetState
           },
         ),
       ),
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        iconTheme: IconThemeData(color: FlutterFlowTheme.of(context).tertiary),
-        automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () async {
-            Navigator.pop(context);
-          },
-          child: Icon(
-            Icons.chevron_left_rounded,
-            color: FlutterFlowTheme.of(context).tertiary,
-            size: 30,
-          ),
-        ),
-        title: Text(
-          'Resgistrar funcionario',
-          textAlign: TextAlign.start,
-          style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: FlutterFlowTheme.of(context).subtitle1Family,
-                color: FlutterFlowTheme.of(context).tertiary,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).subtitle1Family),
-              ),
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 0,
+      appBar: PreferredSize(
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+        child: BarraSuperior(),
       ),
       body: Stack(
         children: [
-          Padding(
-            padding: defTamanoAncho(MediaQuery.of(context).size.width),
-            child: Container(
-              alignment: Alignment.topCenter,
-              margin: (MediaQuery.of(context).size.width < anchominimo)
-                  ? EdgeInsets.fromLTRB(0, 15, 0, 0)
-                  : EdgeInsets.all(10),
-              height: (MediaQuery.of(context).size.width < anchominimo)
-                  ? null
-                  : 1000,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: (MediaQuery.of(context).size.width < anchominimo)
-                    ? null
-                    : BorderRadius.circular(30), //border corner radius
-                /*boxShadow: [
-                  BoxShadow(
-                    color: FlutterFlowTheme.of(context).boxShadow, //color of shadow
-                    spreadRadius: 5, //spread radius
-                    blurRadius: 7, // blur radius
-                    offset: Offset(0, 2), // changes position of shadow
-                    //first paramerter of offset is left-right
-                    //second parameter is top to down
-                  ),
-                  //you can set more BoxShadow() here
-                ],*/
-              ),
-              child: Form(
-                key: _formKey,
-                child: Padding(
-                  padding: (MediaQuery.of(context).size.width < anchominimo)
-                      ? EdgeInsetsDirectional.all(10)
-                      : EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                          child: Wrap(
-                            spacing: 0,
-                            runSpacing: 2,
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            direction: Axis.horizontal,
-                            runAlignment: WrapAlignment.center,
-                            verticalDirection: VerticalDirection.down,
-                            clipBehavior: Clip.none,
-                            children: [
-                              Column(
+          SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: Container(
+                            width: 155.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).accent3,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(0.0),
+                                bottomRight: Radius.circular(0.0),
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 5.0),
+                                  child: Icon(
+                                    Icons.home,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 20.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Dashboard',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidget()));
+                            },
+                            child: Container(
+                              width: 240.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent3,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 20, 0),
-                                    child: Text(
-                                      'Toca en la cámara para subir una imagen',
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
+                                        10.0, 0.0, 0.0, 5.0),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.cubes,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 21.0,
                                     ),
                                   ),
-                                  Container(
-                                    width: (MediaQuery.of(context).size.width <
-                                            anchominimo)
-                                        ? MediaQuery.of(context).size.width *
-                                            0.9
-                                        : MediaQuery.of(context).size.width *
-                                            0.2,
-                                    child: Center(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 16, 10, 14),
-                                        child: Center(
-                                          child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: Text('PlaceHolder')),
-                                        ),
-                                      ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'PQRS  Identificación',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
                                     ),
                                   ),
                                 ],
                               ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidget()));
+                            },
+                            child: Container(
+                              width: 185.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent3,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Container(
-                                    width: anchoColumnaWrap,
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 5.0),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.cube,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 20.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'PQRS Anónimo',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 18.0,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanaFuncionariosWidget()));
+                            },
+                            child: Container(
+                              width: 185.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 2.0),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.solidIdCard,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 22.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Funcionarios',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanaDependenciasWidget()));
+                            },
+                            child: Container(
+                              width: 180.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent3,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 1.0),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.building,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 22.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Dependencias',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanaSoporteWidget()));
+                            },
+                            child: Container(
+                              width: 130.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent3,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 1.0),
+                                    child: Icon(
+                                      Icons.support_agent,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 22.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Soporte',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 18.0,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: defTamanoAncho(MediaQuery.of(context).size.width),
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    margin: (MediaQuery.of(context).size.width < anchominimo)
+                        ? EdgeInsets.fromLTRB(0, 15, 0, 0)
+                        : EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    height: (MediaQuery.of(context).size.width < anchominimo)
+                        ? null
+                        : 1000,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      //border corner radius
+                      /*boxShadow: [
+                        BoxShadow(
+                          color: FlutterFlowTheme.of(context).boxShadow, //color of shadow
+                          spreadRadius: 5, //spread radius
+                          blurRadius: 7, // blur radius
+                          offset: Offset(0, 2), // changes position of shadow
+                          //first paramerter of offset is left-right
+                          //second parameter is top to down
+                        ),
+                        //you can set more BoxShadow() here
+                      ],*/
+                    ),
+                    child: Form(
+                      key: _formKey,
+                      child: Padding(
+                        padding:
+                            (MediaQuery.of(context).size.width < anchominimo)
+                                ? EdgeInsetsDirectional.all(10)
+                                : EdgeInsetsDirectional.fromSTEB(20, 0, 20, 20),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 50, 5, 0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.solidIdCard,
-                                              color:
+                                                    0, 10, 20, 0),
+                                            child: Text(
+                                              'Toca en la cámara para subir una imagen',
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 28,
+                                                      .title3,
                                             ),
                                           ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 30, 0, 0),
-                                              child: TextFormFieldCustom(
-                                                  context,
-                                                  textControllerCedula,
-                                                  'Ej. 1065324298',
-                                                  'Número de cédula*',
-                                                  10,
-                                                  TextInputType.number,
-                                                  inputNumero,
-                                                  true,
-                                                  null,
-                                                  _focusNodeCedula,
-                                                  esSoloLectura:
-                                                      (funcionarioEditar !=
-                                                              null)
-                                                          ? true
-                                                          : false),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: anchoColumnaWrap,
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.05, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 50, 5, 0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.solidUser,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 28,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 30, 0, 0),
-                                              child: TextFormFieldCustom(
-                                                  context,
-                                                  textControllerNombres,
-                                                  'Ej. Luis Carlos',
-                                                  'Nombres*',
-                                                  30,
-                                                  TextInputType.name,
-                                                  null,
-                                                  true,
-                                                  null,
-                                                  _focusNodeNombre),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: anchoColumnaWrap,
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.05, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 50, 5, 0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.solidUser,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 28,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 30, 0, 0),
-                                              child: TextFormFieldCustom(
-                                                  context,
-                                                  textControllerApellidos,
-                                                  'Ej. Calderon Gutierrez',
-                                                  'Apellidos',
-                                                  30,
-                                                  TextInputType.name,
-                                                  null,
-                                                  false,
-                                                  null,
-                                                  _focusNodeApellidos),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  FutureBuilder<List<String>>(
-                                    builder: (BuildContext context,
-                                        AsyncSnapshot<dynamic> snapshot) {
-                                      if (snapshot.connectionState ==
-                                              ConnectionState.done &&
-                                          snapshot.hasData) {
-                                        return Container(
-                                          width: anchoColumnaWrap,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 20),
-                                                child: Text(
-                                                  'Área del funcionario',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1Family,
-                                                        fontSize: 20,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1Family),
-                                                      ),
+                                          Container(
+                                            width: (MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    anchominimo)
+                                                ? MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.9
+                                                : MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.2,
+                                            child: Center(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 16, 10, 14),
+                                                child: Center(
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    child: imagenPerfil(context,
+                                                        urlImagen, imageFile),
+                                                  ),
                                                 ),
                                               ),
-                                              Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 12, 0, 0),
-                                                  child: Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0, 0),
-                                                            child:
-                                                                Text('vacio')),
-                                                      ),
-                                                    ],
-                                                  )),
-                                            ],
+                                            ),
                                           ),
-                                        );
-                                      } else {
-                                        return Container();
-                                      }
-                                    },
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: anchoColumnaWrap,
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 50, 5, 0),
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons
+                                                        .solidIdCard,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 28,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 30, 0, 0),
+                                                    child: TextFormFieldCustom(
+                                                        context,
+                                                        textControllerCedula,
+                                                        'Ej. 1065324298',
+                                                        'Número de cédula*',
+                                                        10,
+                                                        TextInputType.number,
+                                                        inputNumero,
+                                                        true,
+                                                        null,
+                                                        _focusNodeCedula,
+                                                        esSoloLectura:
+                                                            (funcionarioEditar !=
+                                                                    null)
+                                                                ? true
+                                                                : false),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: anchoColumnaWrap,
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.05, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 50, 5, 0),
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons.solidUser,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 28,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 30, 0, 0),
+                                                    child: TextFormFieldCustom(
+                                                        context,
+                                                        textControllerNombres,
+                                                        'Ej. Luis Carlos',
+                                                        'Nombres*',
+                                                        30,
+                                                        TextInputType.name,
+                                                        null,
+                                                        true,
+                                                        null,
+                                                        _focusNodeNombre),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: anchoColumnaWrap,
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.05, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 50, 5, 0),
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons.solidUser,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 28,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 30, 0, 0),
+                                                    child: TextFormFieldCustom(
+                                                        context,
+                                                        textControllerApellidos,
+                                                        'Ej. Calderon Gutierrez',
+                                                        'Apellidos',
+                                                        30,
+                                                        TextInputType.name,
+                                                        null,
+                                                        false,
+                                                        null,
+                                                        _focusNodeApellidos),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        FutureBuilder<List<String>>(
+                                          builder: (BuildContext context,
+                                              AsyncSnapshot<dynamic> snapshot) {
+                                            if (snapshot.connectionState ==
+                                                    ConnectionState.done &&
+                                                snapshot.hasData) {
+                                              return Container(
+                                                width: anchoColumnaWrap,
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 20),
+                                                      child: Text(
+                                                        'Área del funcionario',
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1Family,
+                                                                  fontSize: 20,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyText1Family),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 12,
+                                                                    0, 0),
+                                                        child: Row(
+                                                          children: [
+                                                            Expanded(
+                                                              child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0, 0),
+                                                                  child: Text(
+                                                                      'vacio')),
+                                                            ),
+                                                          ],
+                                                        )),
+                                                  ],
+                                                ),
+                                              );
+                                            } else {
+                                              return Container();
+                                            }
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              (MediaQuery.of(context).size.width < anchominimo)
+                                  ? Container()
+                                  : Padding(
+                                      padding: tamanioPadding,
+                                      child: Divider(
+                                        height: 2,
+                                        thickness: 1,
+                                        color: Color(0x94ABB3BA),
+                                      ),
+                                    ),
+                              Column(
+                                children: [
+                                  Padding(
+                                    padding: tamanioPadding,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 30, 15, 0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.suitcase,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 25,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormFieldCustom(
+                                              context,
+                                              textControllerCargo,
+                                              '',
+                                              'Cargo*',
+                                              30,
+                                              TextInputType.name,
+                                              null,
+                                              true,
+                                              null,
+                                              _focusNodeCargo),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: tamanioPadding,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 30, 15, 0),
+                                          child: Icon(
+                                            Icons.mail,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 28,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormFieldCustom(
+                                              context,
+                                              textControllerCorreo,
+                                              'Ej. Sistemas@lajaguadeIbirico-Cesar.gov.co',
+                                              'Correo eléctronico',
+                                              100,
+                                              TextInputType.emailAddress,
+                                              null,
+                                              false,
+                                              null,
+                                              _focusNodeCorreo),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: tamanioPadding,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 30, 15, 0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.phone,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 25,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormFieldCustom(
+                                              context,
+                                              textControllerTelefono_1,
+                                              'Ej.3104562222',
+                                              'Número de teléfono*',
+                                              10,
+                                              TextInputType.phone,
+                                              inputNumero,
+                                              true,
+                                              null,
+                                              _focusNodeTelefono_1),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: tamanioPadding,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 30, 15, 0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.phone,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 25,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormFieldCustom(
+                                              context,
+                                              textControllerTelefono_2,
+                                              '',
+                                              'Número de teléfono alternativo',
+                                              10,
+                                              TextInputType.phone,
+                                              inputNumero,
+                                              false,
+                                              null,
+                                              _focusNodeTelefono_2),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        (MediaQuery.of(context).size.width <
+                                                anchominimo)
+                                            ? EdgeInsetsDirectional.fromSTEB(
+                                                10, 10, 10, 65)
+                                            : tamanioPadding,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 30, 16, 0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.globe,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 25,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormFieldCustom(
+                                              context,
+                                              textControllerEnlaceSIGEP,
+                                              'Ej. https://www.funcionpublica.gov.co/web/sigep/hdv/-/directorio/S2138649-0690-4/view',
+                                              'Enlace al SIGEP',
+                                              150,
+                                              TextInputType.url,
+                                              null,
+                                              false,
+                                              null,
+                                              _focusNodeEnlaceSIGEP),
+                                        ),
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30,
+                                          borderWidth: 1,
+                                          buttonSize: 45,
+                                          icon: Icon(
+                                            Icons.content_paste,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 30,
+                                          ),
+                                          onPressed: () {
+                                            Clipboard.getData(
+                                                    Clipboard.kTextPlain)
+                                                .then((value) {
+                                              if (value != null) {
+                                                if (value.text!
+                                                    .trim()
+                                                    .isNotEmpty) {
+                                                  textControllerEnlaceSIGEP
+                                                          .text =
+                                                      value.text!.trim();
+                                                }
+                                              }
+                                            });
+                                          },
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
                             ],
                           ),
                         ),
-                        (MediaQuery.of(context).size.width < anchominimo)
-                            ? Container()
-                            : Padding(
-                                padding: tamanio_padding,
-                                child: Divider(
-                                  height: 2,
-                                  thickness: 1,
-                                  color: Color(0x94ABB3BA),
-                                ),
-                              ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: tamanio_padding,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 30, 15, 0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.suitcase,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 25,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: TextFormFieldCustom(
-                                        context,
-                                        textControllerCargo,
-                                        '',
-                                        'Cargo*',
-                                        30,
-                                        TextInputType.name,
-                                        null,
-                                        true,
-                                        null,
-                                        _focusNodeCargo),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: tamanio_padding,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 30, 15, 0),
-                                    child: Icon(
-                                      Icons.mail,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 28,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: TextFormFieldCustom(
-                                        context,
-                                        textControllerCorreo,
-                                        'Ej. Sistemas@lajaguadeIbirico-Cesar.gov.co',
-                                        'Correo eléctronico',
-                                        100,
-                                        TextInputType.emailAddress,
-                                        null,
-                                        false,
-                                        null,
-                                        _focusNodeCorreo),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: tamanio_padding,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 30, 15, 0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.phone,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 25,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: TextFormFieldCustom(
-                                        context,
-                                        textControllerTelefono_1,
-                                        'Ej.3104562222',
-                                        'Número de teléfono*',
-                                        10,
-                                        TextInputType.phone,
-                                        inputNumero,
-                                        true,
-                                        null,
-                                        _focusNodeTelefono_1),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: tamanio_padding,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 30, 15, 0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.phone,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 25,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: TextFormFieldCustom(
-                                        context,
-                                        textControllerTelefono_2,
-                                        '',
-                                        'Número de teléfono alternativo',
-                                        10,
-                                        TextInputType.phone,
-                                        inputNumero,
-                                        false,
-                                        null,
-                                        _focusNodeTelefono_2),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: (MediaQuery.of(context).size.width <
-                                      anchominimo)
-                                  ? EdgeInsetsDirectional.fromSTEB(
-                                      10, 10, 10, 65)
-                                  : tamanio_padding,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 30, 16, 0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.globe,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 25,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: TextFormFieldCustom(
-                                        context,
-                                        textControllerEnlaceSIGEP,
-                                        'Ej. https://www.funcionpublica.gov.co/web/sigep/hdv/-/directorio/S2138649-0690-4/view',
-                                        'Enlace al SIGEP',
-                                        150,
-                                        TextInputType.url,
-                                        null,
-                                        false,
-                                        null,
-                                        _focusNodeEnlaceSIGEP),
-                                  ),
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 45,
-                                    icon: Icon(
-                                      Icons.content_paste,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 30,
-                                    ),
-                                    onPressed: () {
-                                      Clipboard.getData(Clipboard.kTextPlain)
-                                          .then((value) {
-                                        if (value != null) {
-                                          if (value.text!.trim().isNotEmpty) {
-                                            textControllerEnlaceSIGEP.text =
-                                                value.text!.trim();
-                                          }
-                                        }
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
           if (blur)
@@ -797,7 +1226,7 @@ class _RegistrarFuncionarioPageWidgetState
       String hint,
       String label,
       int maxCharacters,
-      tipo_teclado,
+      tipoTeclado,
       esNumero,
       bool _esObligatorio,
       sufix,
@@ -815,7 +1244,7 @@ class _RegistrarFuncionarioPageWidgetState
           : null,
       cursorColor: FlutterFlowTheme.of(context).primaryText,
       controller: controlador,
-      keyboardType: tipo_teclado,
+      keyboardType: tipoTeclado,
       inputFormatters: (esNumero == null)
           ? <TextInputFormatter>[
               LengthLimitingTextInputFormatter(maxCharacters),
@@ -1075,11 +1504,177 @@ class _RegistrarFuncionarioPageWidgetState
     return '';
   }
 
+  Widget imagenPerfil(BuildContext context, urlImagen, imageFile) {
+    return GestureDetector(
+      onTap: () async {
+        print('Escoger imagen');
+        await pickImageDesktop();
+        setState(() {
+          controladorimagenUrl = null;
+        });
+      },
+      child: (imageFile == null || imageFile.toString().isEmpty)
+          ? DottedBorder(
+              color: FlutterFlowTheme.of(context).secondaryText,
+              strokeWidth: 2,
+              dashPattern: [10, 10],
+              child: Container(
+                  width: 250,
+                  height: 200,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: urlImagen != null && imageFile == null
+                          ? DecorationImage(
+                              fit: BoxFit.cover, image: NetworkImage(urlImagen))
+                          : null),
+                  child: _decideImageView(imageFile)))
+          : Container(
+              width: 250,
+              height: 200,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    width: 2,
+                  ),
+                  shape: BoxShape.rectangle,
+                  image: urlImagen != null && imageFile == null
+                      ? DecorationImage(
+                          fit: BoxFit.cover, image: NetworkImage(urlImagen))
+                      : null),
+              child: _decideImageView(imageFile)),
+    );
+  }
+
+  Future pickImageFromGallery() async {
+    print("starting get image");
+    final XFile? pickedFile =
+        await picker.pickImage(source: ImageSource.gallery);
+    //final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    print("getting image.....");
+    setState(() {
+      if (pickedFile != null) {
+        print("file not null");
+        imageFile = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  Future captureImageFromCamera() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        imageFile = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  Future<void> _showChoiceDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Seleccione"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text("Galeria"),
+                    onTap: () {
+                      pickImageFromGallery();
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                  ),
+                  GestureDetector(
+                    child: Text("Camara"),
+                    onTap: () {
+                      captureImageFromCamera();
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Future<void> pickFile() async {
+    FilePickerResult? pickedFile =
+        await FilePicker.platform.pickFiles(type: FileType.image);
+    setState(() {
+      if (pickedFile != null) {
+        File imagefile = File(pickedFile.files.single.path!);
+        log('ruta archivo: ${imagefile.path}');
+      } else {
+        // User canceled the picker
+      }
+    });
+  }
+
+  Future pickImageDesktop() async {
+    print("starting get image");
+    final FilePickerResult? pickedFile = await FilePicker.platform.pickFiles(
+      dialogTitle: 'Seleccionar imagen',
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'png', 'jpge', 'gif', 'bmp', 'webp'],
+    );
+    //final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    print("getting image Desktop.....");
+    setState(() {
+      if (pickedFile != null) {
+        print("file not null");
+        Uint8List? bytes = pickedFile.files.first.bytes;
+        if (bytes != null) {
+          setState(() {
+            imageBytes = bytes;
+          });
+        }
+        //inputImage = InputImage.fromFilePath(pickedFile.files.single.path!);
+        //imageToText(inputImage);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  Widget _decideImageView(imageFile) {
+    if (funcionarioEditar != null && imageBytes == null) {
+      return Image.network(
+        funcionarioEditar!.urlImagen,
+        width: 250,
+        height: 200,
+        fit: BoxFit.cover,
+      );
+    } else if (imageBytes == null) {
+      return const Center(
+        child: Icon(
+          FontAwesomeIcons.camera,
+          size: 40,
+        ),
+      );
+    } else {
+      return Image.memory(
+        imageBytes!,
+        width: 250,
+        height: 200,
+        fit: BoxFit.cover,
+      );
+    }
+  }
+
   EdgeInsetsGeometry defTamanoAncho(screenSize) {
     if (screenSize < 640) {
       return EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
     } else {
-      return EdgeInsetsDirectional.fromSTEB(50, 50, 50, 50);
+      return EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
     }
   }
 }

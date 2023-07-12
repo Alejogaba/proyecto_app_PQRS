@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 
 class GraficoCircularIdentificacion extends StatefulWidget {
@@ -24,11 +22,12 @@ class _GraficoCircularIdentificacionState
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          log('Error: ${snapshot.error}');
+          log('Error grafico circular: ${snapshot.error}');
           return Icon(Icons.warning);
         } else if (snapshot.hasData) {
           final List<int> data = snapshot.data!;
-          return buildChart(data);
+          log('data grafico circular: ' + data.toString());
+          return Icon(Icons.warning);
         } else {
           return Text('No data available');
         }
@@ -60,40 +59,44 @@ class _GraficoCircularIdentificacionState
 
     // Construye la gráfica utilizando los datos cargados
     // Ejemplo:
-    return Container(
-      height: 200,
-      width: 200,
-      child: AspectRatio(
-        aspectRatio: 1.5,
-        child: PieChart(
-          PieChartData(
-            sections: [
-              PieChartSectionData(
-                showTitle: true,
-                value: section1Percentage,
-                color: Colors.red,
-                title: '$section1Percentage%',
-                radius: 100,
-                titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+          height: MediaQuery.of(context).size.width * 0.1,
+          width: MediaQuery.of(context).size.width * 0.1,
+          child: AspectRatio(
+            aspectRatio: 1.5,
+            child: PieChart(
+              PieChartData(
+                sections: [
+                  PieChartSectionData(
+                    showTitle: true,
+                    value: section1Percentage,
+                    color: Colors.red,
+                    title: '$section1Percentage%',
+                    radius: 100,
+                    titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                  PieChartSectionData(
+                    value: section2Percentage,
+                    color: Colors.blue,
+                    title: '$section2Percentage%',
+                    radius: 100,
+                    titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                  PieChartSectionData(
+                    value: section3Percentage,
+                    color: Colors.green,
+                    title: '$section3Percentage%',
+                    radius: 100,
+                    titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ],
               ),
-              PieChartSectionData(
-                value: section2Percentage,
-                color: Colors.blue,
-                title: '$section2Percentage%',
-                radius: 100,
-                titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-              ),
-              PieChartSectionData(
-                value: section3Percentage,
-                color: Colors.green,
-                title: '$section3Percentage%',
-                radius: 100,
-                titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

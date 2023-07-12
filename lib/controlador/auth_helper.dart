@@ -3,25 +3,51 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:snackbar/snackbar.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AuthHelper {
   static FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      Get.snackbar('Correo de restablecimiento enviado correctamente',
+          'Siga las instruciones en su correo',
+          duration: Duration(seconds: 5),
+          margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
+          snackStyle: SnackStyle.FLOATING,
+          backgroundColor: Color.fromARGB(211, 28, 138, 46),
+          icon: Icon(
+            Icons.check,
+            color: Colors.white,
+          ),
+          colorText: Color.fromARGB(255, 228, 219, 218));
+    } catch (e) {
+      Get.snackbar('Error',
+          'Ocurrio un error, verifique que el correo este correctamente escrito',
+          duration: Duration(seconds: 5),
+          margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
+          snackStyle: SnackStyle.FLOATING,
+          backgroundColor: Color.fromARGB(213, 211, 31, 31),
+          icon: Icon(
+            Icons.error_outline,
+            color: Colors.white,
+          ),
+          colorText: Color.fromARGB(255, 228, 219, 218));
+      log('Error resetear la contraseña: $e');
+    }
+  }
 
-  static signInWithEmail(
-      {String email = '',
-      String password = '',
-      bool estaCreado = false}) async {
+  static signInWithEmail(BuildContext context,
+      {String email = '', String password = ''}) async {
     try {
       var res;
-      if (estaCreado) {
-        res = await signupWithEmail(
-            email: email, password: password, estaRegistrado: estaCreado);
-      } else {
-        res = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-      }
-      final User user = res.user;
-
+      res = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      final User user = await res.user;
       print('Ingreso Exitoso');
       Future.delayed(
         Duration(seconds: 4),
@@ -29,20 +55,16 @@ class AuthHelper {
       );
       return user;
     } on FirebaseAuthException catch (e) {
-      var user;
-      FirebaseFirestore _db = FirebaseFirestore.instance;
-      var existe = await _db.collection("users").doc(email.toLowerCase()).get();
       log('Error: ' + e.message! + ' - Codigo: ' + e.code);
-      if (e.code == 'user-not-found' && existe.exists) {
-        log(existe.exists.toString());
-        user = await signupWithEmail(
-            email: email, password: password, estaRegistrado: true);
-        if (user != null) {
-          log(user);
-        }
-      } else {}
+      var mensaje = getErrorMessageFromFirebaseAuthException(e);
+      showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.error(
+          message: mensaje.toString(),
+        ),
+      );
     } catch (e) {
-      log(e.toString());
+      log('Error en login: ' + e.toString());
     }
   }
 
@@ -168,3 +190,36 @@ class UserHelper {
     }
   }
 }
+
+String extractErrorCodeFromErrorMessage(String errorMessage) {
+  RegExp regExp = RegExp(r'\((.*?)\)');
+  Match? match = regExp.firstMatch(errorMessage);
+  String errorCode = match?.group(1) ?? 'unknown';
+  return errorCode;
+}
+
+String getErrorMessageFromFirebaseAuthException(FirebaseAuthException exception) {
+  String errorMessage = exception.message ?? 'An unknown error occurred';
+  String errorCode = extractErrorCodeFromErrorMessage(errorMessage);
+  
+  String customErrorMessage = '';
+
+  switch (errorCode) {
+    case 'auth/invalid-email':
+      customErrorMessage = 'El correo electrónico proporcionado no es válido.';
+      break;
+    case 'auth/user-not-found':
+      customErrorMessage = 'No se encontró un usuario con el correo electrónico proporcionado.';
+      break;
+    case 'auth/wrong-password':
+      customErrorMessage = 'La contraseña es incorrecta.';
+      break;
+    // Agrega más casos para otros códigos de error según tus necesidades
+    default:
+      customErrorMessage = 'Se produjo un error en la autenticación.';
+      break;
+  }
+
+  return customErrorMessage;
+}
+

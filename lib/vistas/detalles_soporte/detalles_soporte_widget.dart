@@ -1,5 +1,4 @@
 import 'package:proyecto_p_q_r_s/index.dart';
-import 'package:proyecto_p_q_r_s/vistas/ventana_dependencias/ventana_dependencias_model.dart';
 
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

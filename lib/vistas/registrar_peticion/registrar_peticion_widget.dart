@@ -1,18 +1,17 @@
-import 'dart:html';
-import 'dart:io';
-import 'package:intl/intl.dart';
+import 'dart:developer';
 
-import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
-import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
+import 'dart:html';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/hookContainer.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/alert_pqrs.dart';
-import 'package:quickalert/quickalert.dart';
-import 'package:smart_snackbars/smart_snackbars.dart';
 
+import '../../controlador/controlador_dependencia.dart';
 import '../../flutter_flow/custom_snackbars.dart';
-import '../../modelo/pqrs.dart';
-
+import '../../flutter_flow/flutter_flow_dropdown2.dart';
+import '../../modelo/counter.dart';
+import '../../modelo/dependencia.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,8 +24,6 @@ import 'registrar_peticion_model.dart';
 export 'registrar_peticion_model.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'dart:js' as js;
-//import 'package:flutter/material.dart';
-//import 'package:flutter_hooks/flutter_hooks.dart';
 
 class RegistrarPeticionWidget extends StatefulWidget {
   final String? tipoPQRS;
@@ -42,14 +39,16 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+
   final _formKey = GlobalKey<FormState>();
+
   bool _esAnonimo = false;
   bool _opcionenvioDireccion = false;
   bool _opcionenvioEmail = false;
   bool _opcionenvioVentanilla = false;
   bool _opcionenvioWhatsapp = false;
-  bool _hoverArchivoAdjunto = false;
-
+  int posicionArea = 0;
+  Dependencia? areaController;
   String? nombreTipoPQR = 'Petición';
   String nombreArchivo = '';
 
@@ -92,7 +91,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            'Envia un [PQR]',
+            'Envia un $nombreTipoPQR',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Poppins',
                   fontSize: 26.0,
@@ -164,7 +163,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Tipo de [PQR]',
+                                              'Tipo de $nombreTipoPQR',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1923,7 +1922,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              '[PQR]',
+                                              '$nombreTipoPQR',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1951,7 +1950,146 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Indique el lugar donde sucedieron los hechos:',
+                                                'Si lo desea, indique la dependencia a la que le sera dirijida esta $nombreTipoPQR',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 16.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        StreamBuilder<List<Dependencia?>>(
+                                          stream: ControladorDependencia()
+                                              .obtenerDependenciasStream(''),
+                                          builder:
+                                              (BuildContext context, snapshot) {
+                                            if (snapshot.data != null) {
+                                              return Container(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 10,
+                                                                    0, 0),
+                                                        child: Row(
+                                                          children: [
+                                                            Expanded(
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0, 0),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          5,
+                                                                          0,
+                                                                          10),
+                                                                  child: FlutterFlowDropDown2<
+                                                                      Dependencia>(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.95,
+                                                                    height: 45,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          color: Color.fromARGB(
+                                                                              207,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                        ),
+                                                                    hintText:
+                                                                        'Area...',
+                                                                    fillColor: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    elevation:
+                                                                        2,
+                                                                    borderColor:
+                                                                        Colors
+                                                                            .black,
+                                                                    borderWidth:
+                                                                        0,
+                                                                    borderRadius:
+                                                                        8,
+                                                                    margin: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            12,
+                                                                            4,
+                                                                            12,
+                                                                            4),
+                                                                    hidesUnderline:
+                                                                        true,
+                                                                    value: snapshot
+                                                                            .data![
+                                                                        posicionArea],
+                                                                    initialOption:
+                                                                        snapshot
+                                                                            .data![posicionArea],
+                                                                    options: List.generate(
+                                                                        snapshot.data!.length,
+                                                                        (index) => DropdownMenuItem(
+                                                                            value: snapshot.data![index],
+                                                                            child: Text(
+                                                                              snapshot.data![index]!.nombre.toString(),
+                                                                            ))),
+                                                                    onChanged:
+                                                                        (val) {
+                                                                      if (val !=
+                                                                          null) {
+                                                                        setState(
+                                                                            () {
+                                                                          posicionArea = snapshot
+                                                                              .data!
+                                                                              .indexOf(val);
+                                                                          areaController =
+                                                                              val;
+                                                                        });
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )),
+                                                  ],
+                                                ),
+                                              );
+                                            } else {
+                                              return Center(
+                                                child: Container(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                ),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Asunto:',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1966,44 +2104,93 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .dropDownValueController2 ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              options: ['Option 1'],
-                                              onChanged: (val) => setState(() =>
-                                                  _model.dropDownValue2 = val),
-                                              width: 180.0,
-                                              height: 50.0,
-                                              searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 8.0, 8.0, 8.0),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.47,
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .textControllerAsuntoPqrs,
+                                                    autofocus: true,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      hintText: 'Asunto ',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 16.0,
+                                                              ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          width: 1.5,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
                                                       ),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              hintText: 'Please select...',
-                                              searchHintText:
-                                                  'Search for an item...',
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 2.0,
-                                              borderColor: Colors.transparent,
-                                              borderWidth: 0.0,
-                                              borderRadius: 0.0,
-                                              margin: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 4.0, 12.0, 4.0),
-                                              hidesUnderline: true,
-                                              isSearchable: false,
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 1.5,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 1.5,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 1.5,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                      ),
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 16.0,
+                                                        ),
+                                                    maxLines: 1,
+                                                    minLines: 1,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -2047,7 +2234,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText:
-                                                          'Describa su [PQR]..',
+                                                          'Describa su $nombreTipoPQR',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2478,7 +2665,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                             'No deje campos obligatorios vacios');
                                       }
                                     },
-                                    text: 'Enviar [PQR]',
+                                    text: 'Enviar $nombreTipoPQR',
                                     options: FFButtonOptions(
                                       width: 250.0,
                                       height: 50.0,
@@ -2565,9 +2752,24 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
     String descripcion = _model.textControllerDescripcionPqrs?.text ?? '';
     String telefono = _model.textController9.text;
     String? nombreAdjuntoPQRS = window.localStorage['nombreAdjuntoPQRS'];
+    Counter counter =
+        Counter(collectionName: 'counters', documentId: 'contadorPqrs');
+
+// Generar un ID autoincrementado
+    int? newId = await counter.incrementCounter(
+        FirebaseFirestore.instance.collection('counters').doc('contadorPqrs'));
+
+    if (newId == null) {
+      Navigator.pop(context);
+    }
 
     // Crear la instancia de PQR con los valores obtenidos
-    pqrs peticion = pqrs(
+    Pqrs peticion = Pqrs(
+        dependencia: areaController != null ? areaController!.nombre : '',
+        asunto: _model.textControllerAsuntoPqrs.text.isNotEmpty
+            ? _model.textControllerAsuntoPqrs.text
+            : 'Sin Asunto',
+        id: newId,
         nombreDependencia: '',
         primerNombreSolicitante: primerNombre,
         segundoNombreSolicitante: segundoNombre,
@@ -2584,8 +2786,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
         respuesta: respuesta,
         nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
         fechaInt: DateTime.now().millisecondsSinceEpoch,
-        fechaString:
-            DateFormat('d "de" MMMM "de" y', 'es').format(DateTime.now()),
+        fechaString: DateFormat('d - MMMM - y', 'es').format(DateTime.now()),
         esAnonimo: esAnonima);
 
     AlertPQRS(pqr: peticion).showConfirmationAlert(context);
