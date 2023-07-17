@@ -6,20 +6,20 @@ import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 
 import '../../flutter_flow/flutter_flow_theme.dart';
 
-class BarraCargaIdentificacion extends StatefulWidget {
+class BarraCargaAnonimo extends StatefulWidget {
   final int tipo;
   final Color colorBarra;
-  const BarraCargaIdentificacion(
+  const BarraCargaAnonimo(
       {Key? key, required this.tipo, required this.colorBarra});
 
   @override
-  State<BarraCargaIdentificacion> createState() =>
-      _BarraCargaIdentificacionState(this.tipo);
+  State<BarraCargaAnonimo> createState() =>
+      _BarraCargaAnonimoState(this.tipo);
 }
 
-class _BarraCargaIdentificacionState extends State<BarraCargaIdentificacion> {
+class _BarraCargaAnonimoState extends State<BarraCargaAnonimo> {
   final int tipo;
-  _BarraCargaIdentificacionState(this.tipo);
+  _BarraCargaAnonimoState(this.tipo);
 
   Widget build(BuildContext context) {
     return FutureBuilder<List<int>>(
@@ -52,26 +52,26 @@ class _BarraCargaIdentificacionState extends State<BarraCargaIdentificacion> {
     switch (tipo) {
       case 1:
         futures = [
-          ControladorPQRS().getTotalPqrsCountIdentificacion(),
-          ControladorPQRS().getTotalPqrsEnProcesoIdentificaion(),
+          ControladorPQRS().getTotalPqrsCountAnonima(),
+          ControladorPQRS().getTotalPqrsEnProcesoAnonima(),
         ];
         break;
       case 2:
         futures = [
-          ControladorPQRS().getTotalPqrsCountIdentificacion(),
-          ControladorPQRS().getTotalPqrsPendienteIdentificacion(),
+          ControladorPQRS().getTotalPqrsCountAnonima(),
+          ControladorPQRS().getTotalPqrsPendienteAnonima(),
         ];
         break;
       case 3:
         futures = [
-          ControladorPQRS().getTotalPqrsCountIdentificacion(),
-          ControladorPQRS().getTotalPqrsFinalizadoIdentificaion(),
+          ControladorPQRS().getTotalPqrsCountAnonima(),
+          ControladorPQRS().getTotalPqrsFinalizadoAnonima(),
         ];
         break;
       default:
         futures = [
-          ControladorPQRS().getTotalPqrsCountIdentificacion(),
-          ControladorPQRS().getTotalPqrsEnProcesoIdentificaion(),
+          ControladorPQRS().getTotalPqrsCountAnonima(),
+          ControladorPQRS().getTotalPqrsEnProcesoAnonima(),
         ];
     }
     final List<int> results = await Future.wait(futures);

@@ -4,6 +4,7 @@ import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/barra_carga_identificacion.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/graficos_barra_identificacion.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/tarjeta_pqrs_identificacion.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 
 import '../../controlador/controlador_pqrs.dart';
 import '../components/barra_superior.dart';
@@ -241,7 +242,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const VentanPQRSWidget()));
+                                          const VentanPQRSWidgetAnonimo()));
                             },
                             child: Container(
                               width: 185.0,

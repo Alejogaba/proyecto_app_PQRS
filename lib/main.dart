@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 
@@ -10,12 +11,20 @@ import 'firebase_options.dart';
 import 'flutter_flow/internationalization.dart';
 
 import 'index.dart';
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart'; //--1
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  if (kIsWeb) {
+    bool ready = await GRecaptchaV3.ready(
+        "6Le5wysnAAAAABlIaA3rjB6mATXfjfYYrLpi87K5"); //--2
+    print("Is Recaptcha ready? $ready");
+   
+  }
+
   runApp(MyApp());
 }
 
@@ -101,7 +110,7 @@ class _MyAppState extends State<MyApp> {
         handlerFunc: (context, params) => RegistrarPeticionWidget(),
       ),
     );
-    
+
     _router.define(
       '/registraSoporte',
       handler: Handler(

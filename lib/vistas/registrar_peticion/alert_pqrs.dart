@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:quickalert/models/quickalert_type.dart';
@@ -211,35 +212,65 @@ class AlertPQRS {
                           fontSize: 19.0,
                           fontWeight: FontWeight.bold,
                         )),
-                Text(pqr.descripcion.toString(),
-                    style: FlutterFlowTheme.of(context).bodyLarge.override(
-                          fontFamily: 'Poppins',
-                          fontSize: 19.0,
-                          fontWeight: FontWeight.normal,
-                        )),
+                Expanded(
+                  child: Container(
+                    child: Text(pqr.descripcion.toString(),
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 19.0,
+                              fontWeight: FontWeight.normal,
+                            )),
+                  ),
+                ),
               ],
             ),
           ),
-          if(pqr.nombreArchivoAdjunto.toString().isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Text('Archivo adjunto:  ',
-                    style: FlutterFlowTheme.of(context).bodyLarge.override(
-                          fontFamily: 'Poppins',
-                          fontSize: 19.0,
-                          fontWeight: FontWeight.bold,
-                        )),
-                Text(pqr.nombreArchivoAdjunto.toString(),
-                    style: FlutterFlowTheme.of(context).bodyLarge.override(
-                          fontFamily: 'Poppins',
-                          fontSize: 19.0,
-                          fontWeight: FontWeight.normal,
-                        )),
-              ],
+          if (pqr.dependencia.toString().isNotEmpty &&
+              pqr.dependencia != "Seleccionar dependencia...")
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text('Dependencia:  ',
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.bold,
+                          )),
+                  Expanded(
+                    child: Container(
+                      child: Text(pqr.dependencia.toString(),
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.normal,
+                                  )),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+          if (pqr.nombreArchivoAdjunto.toString().isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text('Archivo adjunto:  ',
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.bold,
+                          )),
+                  Text(pqr.nombreArchivoAdjunto.toString(),
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 19.0,
+                            fontWeight: FontWeight.normal,
+                          )),
+                ],
+              ),
+            ),
         ],
       ),
       buttons: [
@@ -267,8 +298,7 @@ class AlertPQRS {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FaIcon(Icons.mail,
-                  color: FlutterFlowTheme.of(context).tertiary),
+              FaIcon(Icons.mail, color: FlutterFlowTheme.of(context).tertiary),
               Padding(
                 padding: const EdgeInsets.only(left: 7.0),
                 child: Text(
@@ -285,7 +315,9 @@ class AlertPQRS {
               String? adjuntoPQRS = window.localStorage['adjuntoPQRS'];
               if (pqr.nombreArchivoAdjunto != null) {
                 if (pqr.nombreArchivoAdjunto!.isNotEmpty) {
-                  await StorageHelper().subirArchivoBase64(adjuntoPQRS!, pqr.nombreArchivoAdjunto.toString(),carpeta: pqr.id.toString());
+                  await StorageHelper().subirArchivoBase64(
+                      adjuntoPQRS!, pqr.nombreArchivoAdjunto.toString(),
+                      carpeta: pqr.id.toString());
                 }
               }
               QuickAlert.show(
@@ -311,11 +343,10 @@ class AlertPQRS {
       title: '¡Envío exitoso!',
       desc: 'El PQR ha sido enviado correctamente.',
       onWillPopActive: true,
-      closeFunction: (){
-        Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomePageWidget()));
+      closeFunction: () {
+        GRecaptchaV3.hideBadge();
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const HomePageWidget()));
       },
       buttons: [
         DialogButton(
@@ -333,11 +364,13 @@ class AlertPQRS {
               ),
             ],
           ),
-          onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomePageWidget()),
-                    ),
+          onPressed: () {
+            GRecaptchaV3.hideBadge();
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePageWidget()),
+            );
+          },
         ),
       ],
     ).show();

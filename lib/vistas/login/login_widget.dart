@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
 import 'package:proyecto_p_q_r_s/flutter_flow/custom_snackbars.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
@@ -72,9 +73,9 @@ class _LoginWidgetState extends State<LoginWidget>
 
   @override
   void initState() {
+    GRecaptchaV3.hideBadge();
     super.initState();
     _model = createModel(context, () => LoginModel());
-
     _model.emailAddressController;
     _model.passwordController;
   }
@@ -276,6 +277,53 @@ class _LoginWidgetState extends State<LoginWidget>
                                       child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
+                                          onFieldSubmitted: (value) async{
+                                            
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            try {
+                                              var user = await AuthHelper
+                                                  .signInWithEmail(context,
+                                                      email: _model
+                                                          .emailAddressController
+                                                          .text
+                                                          .toLowerCase(),
+                                                      password: _model
+                                                          .passwordController
+                                                          .text);
+                                              if (user != null) {
+                                                log('user: $user');
+                                                print("Ingreso Exitoso");
+                                                CustomSnackBars().snackBarOk(
+                                                    context,
+                                                    'Ingreso exitoso',
+                                                    'Ha iniciado sesión corectamente');
+                                              
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const VentanaDashboardWidget()));
+                                              }
+                                            } on FirebaseException catch (e) {
+                                              CustomSnackBars().snackBarError(
+                                                  context,
+                                                  'Error al iniciar sesión',
+                                                  e.message.toString());
+                                            
+
+                                              log(e.toString());
+                                            } catch (e) {
+                                              CustomSnackBars().snackBarError(
+                                                  context,
+                                                  'Error al iniciar sesión',
+                                                  e.toString());
+                                             
+
+                                              log(e.toString());
+                                            }
+                                          }
+                                          },
                                           controller: _model.passwordController,
                                           autofocus: true,
                                           autofillHints: [
@@ -433,9 +481,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     context,
                                                     'Ingreso exitoso',
                                                     'Ha iniciado sesión corectamente');
-                                                SmartSnackBars
-                                                    .showTemplatedSnackbar(
-                                                        context: context);
+                                              
                                                 Navigator.push(
                                                     context,
                                                     MaterialPageRoute(

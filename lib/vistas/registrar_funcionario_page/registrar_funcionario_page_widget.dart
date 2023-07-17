@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 
 import '../../flutter_flow/flutter_flow_icon_button.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
@@ -416,7 +417,7 @@ class _RegistrarFuncionarioPageWidgetState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const VentanPQRSWidget()));
+                                          const VentanPQRSWidgetAnonimo()));
                             },
                             child: Container(
                               width: 185.0,

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -28,6 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
+     GRecaptchaV3.hideBadge();
     _model = createModel(context, () => HomePageModel());
   }
 
@@ -335,7 +337,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPresionado: () {
-                                        print('Button pressed ...');
+                                        
+                                        log('boton queja');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const RegistrarPeticionWidget(tipoPQRS: 'Queja',)));
                                       },
                                       text: 'Envía una queja',
                                       options: FFButtonOptions(

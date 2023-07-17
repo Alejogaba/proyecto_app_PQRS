@@ -1,8 +1,10 @@
 import 'dart:developer';
-
 import 'dart:html';
 
+import 'package:http/http.dart' as http;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/hookContainer.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/alert_pqrs.dart';
@@ -42,7 +44,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
 
   final _formKey = GlobalKey<FormState>();
 
+  String _respuestaRecaptcha = "Sin respuesta";
   bool _esAnonimo = false;
+  String _token = "null";
   bool _opcionenvioDireccion = false;
   bool _opcionenvioEmail = false;
   bool _opcionenvioVentanilla = false;
@@ -51,12 +55,16 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
   Dependencia? areaController;
   String? nombreTipoPQR = 'Petición';
   String nombreArchivo = '';
+  List<Dependencia?> listaTemporalDependencia = [];
+
+  TextEditingController controladorAsunto = TextEditingController();
 
   _RegistrarPeticionWidgetState(this.nombreTipoPQR);
 
   @override
   void initState() {
     super.initState();
+    GRecaptchaV3.showBadge();
     _model = createModel(context, () => RegistrarPeticionModel());
 
     _model.textControllerPrimerNombre ??= TextEditingController();
@@ -98,6 +106,15 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                   fontWeight: FontWeight.bold,
                 ),
           ),
+          leading: IconButton(
+              onPressed: () {
+                GRecaptchaV3.hideBadge();
+                Navigator.of(context).pop();
+              },
+              icon: Icon(
+                Icons.arrow_back_outlined,
+                color: FlutterFlowTheme.of(context).primaryText,
+              )),
           actions: [],
           centerTitle: true,
           elevation: 0.0,
@@ -1967,7 +1984,14 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                               .obtenerDependenciasStream(''),
                                           builder:
                                               (BuildContext context, snapshot) {
+                                            log('Conexion snaphot dependencias: ${snapshot.connectionState} ');
+
                                             if (snapshot.data != null) {
+                                              log('snapshot lenght: ${snapshot.data!.length}');
+                                              if (snapshot.data!.length > 1) {
+                                                listaTemporalDependencia =
+                                                    snapshot.data!;
+                                              }
                                               return Container(
                                                 child: Column(
                                                   mainAxisAlignment:
@@ -2057,6 +2081,22 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                                           posicionArea = snapshot
                                                                               .data!
                                                                               .indexOf(val);
+                                                                          log('Posicion area y valor: $posicionArea ${val.nombre}');
+                                                                          if (posicionArea <
+                                                                              0) {
+                                                                            for (var element
+                                                                                in listaTemporalDependencia) {
+                                                                              log('elemento dependencia: ${element!.nombre}');
+                                                                            }
+                                                                           
+                                                                            posicionArea =
+                                                                                val.index;
+                                                                            if (posicionArea <
+                                                                                0) {
+                                                                              posicionArea = 0;
+                                                                            }
+                                                                          }
+                                                                          log('Posicion area: $posicionArea');
                                                                           areaController =
                                                                               val;
                                                                         });
@@ -2115,12 +2155,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           .width *
                                                       0.47,
                                                   child: TextFormField(
-                                                    controller: _model
-                                                        .textControllerAsuntoPqrs,
+                                                    controller:
+                                                        controladorAsunto,
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      hintText: 'Asunto ',
+                                                      hintText: 'Asunto',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2647,6 +2687,21 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                   FFButtonWidget(
                                     onPresionado: () async {
                                       if (_formKey.currentState!.validate()) {
+                                        try {
+                                          await getToken();
+                                          log('El token obetnido es: $_token');
+                                          final url =
+                                              'https://us-central1-bdpqrs-2623b.cloudfunctions.net/checarRecaptcha'; // Cambia esto con la URL de tu función de Firebase
+                                          final response = await http.post(
+                                              Uri.parse(url),
+                                              body: {'token': _token});
+                                          log('Respuesta token: $response');
+                                          _respuestaRecaptcha =
+                                              response.toString();
+                                        } catch (e) {
+                                          log('Error al obtener token: $e');
+                                        }
+
                                         if (_opcionenvioDireccion ||
                                             _opcionenvioVentanilla ||
                                             _opcionenvioWhatsapp ||
@@ -2760,14 +2815,15 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
         FirebaseFirestore.instance.collection('counters').doc('contadorPqrs'));
 
     if (newId == null) {
+      GRecaptchaV3.hideBadge();
       Navigator.pop(context);
     }
 
     // Crear la instancia de PQR con los valores obtenidos
     Pqrs peticion = Pqrs(
         dependencia: areaController != null ? areaController!.nombre : '',
-        asunto: _model.textControllerAsuntoPqrs.text.isNotEmpty
-            ? _model.textControllerAsuntoPqrs.text
+        asunto: (controladorAsunto.text.length > 3)
+            ? controladorAsunto.text
             : 'Sin Asunto',
         id: newId,
         nombreDependencia: '',
@@ -2791,5 +2847,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
 
     AlertPQRS(pqr: peticion).showConfirmationAlert(context);
     // Llamar a la función guardarPQR con la instancia de PQR
+  }
+
+  Future<void> getToken() async {
+    String token = await GRecaptchaV3.execute('submit') ?? 'null returned';
+    setState(() {
+      _token = token;
+    });
   }
 }

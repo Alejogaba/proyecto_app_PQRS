@@ -1,5 +1,6 @@
 import 'package:proyecto_p_q_r_s/controlador/controlador_dependencia.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/ventan_p_q_r_s_widget.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/ventana_dashboard_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_funcionarios/ventana_funcionarios_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_soporte/ventana_soporte_widget.dart';
@@ -228,7 +229,7 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const VentanPQRSWidget()));
+                                          const VentanPQRSWidgetAnonimo()));
                             },
                             child: Container(
                               width: 185.0,

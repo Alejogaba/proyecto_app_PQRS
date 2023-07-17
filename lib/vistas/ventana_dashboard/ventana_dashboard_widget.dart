@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/grafico_circular.dart';
 
 import '../../modelo/pqrs.dart';
@@ -12,6 +14,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'grafico_circular_anonimo.dart';
 import 'ventana_dashboard_model.dart';
 export 'ventana_dashboard_model.dart';
 
@@ -31,6 +34,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
   @override
   void initState() {
     super.initState();
+    GRecaptchaV3.hideBadge();
     _model = createModel(context, () => VentanaDashboardModel());
 
     _model.textController ??= TextEditingController();
@@ -217,7 +221,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const VentanPQRSWidget()));
+                                        const VentanPQRSWidgetAnonimo()));
                           },
                           child: Container(
                             width: 185.0,
@@ -2084,7 +2088,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'PQRS Identificación',
+                                                        'PQRS Anónimas',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -2299,7 +2303,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 child:
                                                                     FutureBuilder(
                                                                   future: ControladorPQRS()
-                                                                      .getTotalPqrsPendienteIdentificacion(),
+                                                                      .getTotalPqrsPendienteAnonima(),
                                                                   builder: (BuildContext
                                                                           context,
                                                                       AsyncSnapshot<dynamic>
@@ -2406,7 +2410,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 child:
                                                                     FutureBuilder(
                                                                   future: ControladorPQRS()
-                                                                      .getTotalPqrsEnProcesoIdentificaion(),
+                                                                      .getTotalPqrsEnProcesoAnonima(),
                                                                   builder: (BuildContext
                                                                           context,
                                                                       AsyncSnapshot<dynamic>
@@ -2513,7 +2517,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                                 child:
                                                                     FutureBuilder(
                                                                   future: ControladorPQRS()
-                                                                      .getTotalPqrsFinalizadoIdentificaion(),
+                                                                      .getTotalPqrsFinalizadoAnonima(),
                                                                   builder: (BuildContext
                                                                           context,
                                                                       AsyncSnapshot<dynamic>
@@ -2566,7 +2570,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      GraficoCircularIdentificacion()
+                                                      GraficoCircularAnonimo()
                                                     ],
                                                   ),
                                                   Padding(

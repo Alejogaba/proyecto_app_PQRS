@@ -1,4 +1,5 @@
 import 'package:proyecto_p_q_r_s/index.dart';
+import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 
 import '../components/barra_superior.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -218,7 +219,7 @@ class _VentanaSoporteWidgetState extends State<VentanaSoporteWidget> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const VentanPQRSWidget()));
+                                        const VentanPQRSWidgetAnonimo()));
                           },
                           child: Container(
                             width: 185.0,

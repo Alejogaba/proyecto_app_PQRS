@@ -6,16 +6,16 @@ import 'package:proyecto_p_q_r_s/flutter_flow/flutter_flow_theme.dart';
 import 'package:segment_bar/percent_graph_model.dart';
 import 'package:segment_bar/segment_bar.dart';
 
-class GraficoBarraTotalIdentificacion extends StatefulWidget {
-  const GraficoBarraTotalIdentificacion({Key? key});
+class GraficoBarraTotalAnonimo extends StatefulWidget {
+  const GraficoBarraTotalAnonimo({Key? key});
 
   @override
-  State<GraficoBarraTotalIdentificacion> createState() =>
-      _GraficoBarraTotalIdentificacionState();
+  State<GraficoBarraTotalAnonimo> createState() =>
+      _GraficoBarraTotalAnonimoState();
 }
 
-class _GraficoBarraTotalIdentificacionState
-    extends State<GraficoBarraTotalIdentificacion> {
+class _GraficoBarraTotalAnonimoState
+    extends State<GraficoBarraTotalAnonimo> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<int>>(
       future: loadDataFromFirebase(),
@@ -37,10 +37,10 @@ class _GraficoBarraTotalIdentificacionState
 
   Future<List<int>> loadDataFromFirebase() async {
     final List<Future<int>> futures = [
-      ControladorPQRS().getTotalPqrsCountIdentificacion(),
-      ControladorPQRS().getTotalPqrsPendienteIdentificacion(),
-      ControladorPQRS().getTotalPqrsEnProcesoIdentificaion(),
-      ControladorPQRS().getTotalPqrsFinalizadoIdentificaion(),
+      ControladorPQRS().getTotalPqrsCountAnonima(),
+      ControladorPQRS().getTotalPqrsPendienteAnonima(),
+      ControladorPQRS().getTotalPqrsEnProcesoAnonima(),
+      ControladorPQRS().getTotalPqrsFinalizadoAnonima(),
     ];
 
     final List<int> results = await Future.wait(futures);

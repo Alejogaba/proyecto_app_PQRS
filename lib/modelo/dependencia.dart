@@ -4,13 +4,15 @@ class Dependencia {
   String nombre;
   String tel;
   String uid;
+  int index;
 
   Dependencia({
     required this.email,
     required this.jefeOficina,
     required this.nombre,
     required this.tel,
-    this.uid='',
+    this.uid = '',
+    this.index=0
   });
 
   factory Dependencia.fromMap(Map<String, dynamic> map) {
@@ -19,7 +21,8 @@ class Dependencia {
       jefeOficina: map['jefeOficina'],
       nombre: map['nombre'],
       tel: map['tel'],
-      uid: map['uid']??'',
+      uid: map['uid'] ?? '',
+      index: map['index']?? 0
     );
   }
 
@@ -30,6 +33,7 @@ class Dependencia {
       'nombre': nombre,
       'tel': tel,
       'uid': uid,
+      'index': index
     };
   }
 }
