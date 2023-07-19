@@ -38,4 +38,19 @@ class ControladorDependencia {
       });
     }
   }
+
+  Future<String?> guardarDependencia(Dependencia dependencia) async {
+    late String result;
+    await FirebaseFirestore.instance
+        .collection('dependencias') // Nombre de la colección en Firestore
+        .add(dependencia.toMap())
+        .then((value) {
+      print('Dependencia guardada con éxito. ID: ${value.id}');
+      result = value.id;
+    }).catchError((error) {
+      print('Error al guardar la Dependencia: $error');
+      result = '';
+    });
+    return result;
+  }
 }

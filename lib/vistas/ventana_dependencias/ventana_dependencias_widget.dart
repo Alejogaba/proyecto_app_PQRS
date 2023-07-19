@@ -1,4 +1,5 @@
 import 'package:proyecto_p_q_r_s/controlador/controlador_dependencia.dart';
+import 'package:proyecto_p_q_r_s/vistas/registrar_dependencia/registrar_dependencia.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/ventan_p_q_r_s_widget.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventana_dashboard/ventana_dashboard_widget.dart';
@@ -532,6 +533,8 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                     8.0, 20.0, 8.0, 8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -602,16 +605,20 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                         ),
                                       ),
                                     ),
+                                    
                                     FFButtonWidget(
+                                      icon: Icon(Icons.add),
                                       onPresionado: () {
-                                        setState(() {
-                                          
-                                        });
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const RegistrarDependenciaPageWidget()));
                                       },
-                                      text: 'Buscar',
+                                      text: 'Añadir funcionario',
                                       options: FFButtonOptions(
-                                        width: 160.0,
-                                        height: 50.0,
+                                        width: 210.0,
+                                        height: 40.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
@@ -626,7 +633,7 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
-                                              fontSize: 18.0,
+                                              fontSize: 16.0,
                                             ),
                                         borderSide: BorderSide(
                                           color: Colors.transparent,
