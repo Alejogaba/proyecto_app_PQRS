@@ -44,7 +44,11 @@ class ControladorDependencia {
     await FirebaseFirestore.instance
         .collection('dependencias') // Nombre de la colección en Firestore
         .add(dependencia.toMap())
-        .then((value) {
+        .then((value) async {
+      await FirebaseFirestore.instance
+          .collection('dependencias')
+          .doc(value.id)
+          .update(({'uid': value.id}));
       print('Dependencia guardada con éxito. ID: ${value.id}');
       result = value.id;
     }).catchError((error) {

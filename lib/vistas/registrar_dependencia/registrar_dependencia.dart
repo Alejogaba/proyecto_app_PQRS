@@ -168,7 +168,29 @@ class _RegistrarDependenciaPageWidgetState
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          if (_formKey.currentState!.validate()) {
+        },
+        backgroundColor: _errorColor
+            ? Colors.redAccent
+            : FlutterFlowTheme.of(context).primaryColor,
+        elevation: 8,
+        child: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: FaIcon(
+            _errorColor ? Icons.error : FontAwesomeIcons.solidFloppyDisk,
+            color: FlutterFlowTheme.of(context).tertiary,
+            size: 30,
+          ),
+          onPressed: () async {
+            if (_formKey.currentState!.validate()) {
+              setState(() {
+                blur = true;
+              });
+              String? imagenUrl;
+              log('serial: ${textControllerTelefono.text.toString()}');
+
             Counter counter =
         Counter(collectionName: 'counters', documentId: 'contadorDependencias');
         int? newId = await counter.incrementCounter(
@@ -187,69 +209,10 @@ class _RegistrarDependenciaPageWidgetState
           message: 'Dependencia registrada correctamente',
         ),
       );
-          }
+          
           print('FloatingActionButton pressed flloatinn...');
-        },
-        backgroundColor: _errorColor
-            ? Colors.redAccent
-            : FlutterFlowTheme.of(context).primaryColor,
-        elevation: 8,
-        child: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
-          icon: FaIcon(
-            _errorColor ? Icons.error : FontAwesomeIcons.solidFloppyDisk,
-            color: FlutterFlowTheme.of(context).tertiary,
-            size: 30,
-          ),
-          onPressed: () async {
-            if (_formKey.currentState!.validate() && idArea != 0) {
-              setState(() {
-                blur = true;
-              });
-              String? imagenUrl;
-              log('serial: ${textControllerTelefono.text.toString()}');
 
-              if (imageFile != null) {
-              } else {
-                String res = 'error';
-                if (funcionarioEditar != null) {
-                } else {}
-
-                if (res == 'ok') {
-                  Timer(Duration(seconds: 3), () {
-                    setState(() {
-                      blur = false;
-                    });
-                    Navigator.pop(context);
-                  });
-                }
-              }
-            } else if (idArea == 0) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(
-                  "Seleccione el área donde se encuentra el funcionario",
-                  style: FlutterFlowTheme.of(context).bodyText2.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).bodyText2Family,
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).bodyText2Family),
-                      ),
-                ),
-                backgroundColor: Colors.redAccent,
-              ));
-              setState(() {
-                blur = false;
-                _errorColor = true;
-              });
-              Future.delayed(const Duration(milliseconds: 6000), () {
-                setState(() {
-                  _errorColor = false;
-                });
-              });
+             
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(
@@ -832,7 +795,7 @@ class _RegistrarDependenciaPageWidgetState
                                                         'Nombre de la dependencia*',
                                                         10,
                                                         TextInputType.text,
-                                                        inputNumero,
+                                                        null,
                                                         true,
                                                         null,
                                                         _focusNodeNombreDependencia,
@@ -921,7 +884,7 @@ class _RegistrarDependenciaPageWidgetState
                                                         'Teléfono',
                                                         30,
                                                         TextInputType.number,
-                                                        null,
+                                                        inputNumero,
                                                         false,
                                                         null,
                                                         _focusNodeTelefono),
