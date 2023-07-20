@@ -849,17 +849,21 @@ class tarjetaDependencia extends StatelessWidget {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              dependencia.nombre,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                            child: Container(
+                              width:  MediaQuery.of(context).size.width *
+                                                0.325,
+                              child: Text(
+                                dependencia.nombre,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
                             ),
                           ),
                           Row(
@@ -921,17 +925,21 @@ class tarjetaDependencia extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 0.0, 0.0),
-                                child: Text(
-                                  dependencia.email,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        fontSize: 17.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width *
+                                                0.25,
+                                  child: Text(
+                                    dependencia.email,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ],

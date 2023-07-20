@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:proyecto_p_q_r_s/controlador/auth_helper.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_dependencia.dart';
 import 'package:proyecto_p_q_r_s/modelo/dependencia.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
@@ -167,8 +168,7 @@ class _RegistrarDependenciaPageWidgetState
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-        },
+        onPressed: () async {},
         backgroundColor: _errorColor
             ? Colors.redAccent
             : FlutterFlowTheme.of(context).primaryColor,
@@ -191,28 +191,29 @@ class _RegistrarDependenciaPageWidgetState
               String? imagenUrl;
               log('serial: ${textControllerTelefono.text.toString()}');
 
-            Counter counter =
-        Counter(collectionName: 'counters', documentId: 'contadorDependencias');
-        int? newId = await counter.incrementCounter(
-        FirebaseFirestore.instance.collection('counters').doc('contadorDependencias'));
+              Counter counter = Counter(
+                  collectionName: 'counters',
+                  documentId: 'contadorDependencias');
+              int? newId = await counter.incrementCounter(FirebaseFirestore
+                  .instance
+                  .collection('counters')
+                  .doc('contadorDependencias'));
+              AuthHelper a = AuthHelper();
+              Dependencia dependencia = Dependencia(
+                  index: newId ?? 0,
+                  email: a.capitalizarPalabras(textControllerCorreo!.text) ?? '',
+                  jefeOficina: a.capitalizarPalabras(textControllerNombreJefe.text),
+                  nombre: a.capitalizarPalabras(textControllerNombreDoendencia.text),
+                  tel: textControllerTelefono.text);
+              await ControladorDependencia().guardarDependencia(dependencia);
+              showTopSnackBar(
+                Overlay.of(context),
+                CustomSnackBar.success(
+                  message: 'Dependencia registrada correctamente',
+                ),
+              );
 
-            Dependencia dependencia = Dependencia(
-              index: newId ?? 0,
-                email: textControllerCorreo!.text ?? '',
-                jefeOficina: textControllerNombreJefe.text,
-                nombre: textControllerNombreDoendencia.text,
-                tel: textControllerTelefono.text);
-            await ControladorDependencia().guardarDependencia(dependencia);
-            showTopSnackBar(
-        Overlay.of(context),
-        CustomSnackBar.success(
-          message: 'Dependencia registrada correctamente',
-        ),
-      );
-          
-          print('FloatingActionButton pressed flloatinn...');
-
-             
+              print('FloatingActionButton pressed flloatinn...');
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(
