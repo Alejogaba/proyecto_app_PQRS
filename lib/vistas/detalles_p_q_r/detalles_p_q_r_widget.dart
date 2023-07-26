@@ -4,6 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
+import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_delegar_pqr.dart';
+import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_delegar_pqr.dart'
+    as hp;
 import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_respuesta_pqrs.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -579,19 +582,18 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
                       onPresionado: () {
-                        
                         try {
-                        AlertRespuestaPQRS(
-                            contextPadre: context,
-                            iconEnvio:
-                                definirIcono(widget.pqrs.tipoMedioContacto),
-                            mensajeEnvio: definirMensajeEnvio(
-                                widget.pqrs.tipoMedioContacto),
-                            pqr: widget.pqrs).showConfirmationAlert(context);  
+                          AlertRespuestaPQRS(
+                                  contextPadre: context,
+                                  iconEnvio: definirIcono(
+                                      widget.pqrs.tipoMedioContacto),
+                                  mensajeEnvio: definirMensajeEnvio(
+                                      widget.pqrs.tipoMedioContacto),
+                                  pqr: widget.pqrs)
+                              .showConfirmationAlert(context);
                         } catch (e) {
                           log('Error responder: $e');
                         }
-                        
                       },
                       text: 'Responder',
                       icon: Icon(
@@ -625,7 +627,19 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                     child: FFButtonWidget(
                       onPresionado: () {
-                        print('Button pressed ...');
+                        try {
+                          dynamic a = AlertDelegarRespuestaPQRS(
+                              nombreTipoPQR: widget.pqrs.tipoPQRS.toString(),
+                              contextPadre: context,
+                              iconEnvio:
+                                  definirIcono(widget.pqrs.tipoMedioContacto),
+                              mensajeEnvio: definirMensajeEnvio(
+                                  widget.pqrs.tipoMedioContacto),
+                              pqr: widget.pqrs);
+                          hp.AlertDelegarRespuestaPQRS;
+                        } catch (e) {
+                          log('Error responder: $e');
+                        }
                       },
                       text: 'Delegar',
                       icon: Icon(

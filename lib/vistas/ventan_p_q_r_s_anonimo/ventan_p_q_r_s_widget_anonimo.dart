@@ -1932,7 +1932,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                 ),
                                 child: FutureBuilder<List<Pqrs>>(
                                     future: ControladorPQRS().cargarPQRS(
-                                        esAnonima: false,
+                                        esAnonima: true,
                                         estadoPqr: _estadoPqrs,
                                         tipoPqrs: _model.tipoPqrsvalue,
                                         textoBusqueda:
@@ -1940,7 +1940,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                     builder: (BuildContext context, snapshot) {
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {
-                                        return Center(
+                                        return C  enter(
                                             child: Container(
                                                 width: 50,
                                                 height: 50,
