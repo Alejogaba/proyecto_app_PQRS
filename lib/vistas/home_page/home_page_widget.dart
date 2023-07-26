@@ -29,7 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
-     GRecaptchaV3.hideBadge();
+    GRecaptchaV3.hideBadge();
     _model = createModel(context, () => HomePageModel());
   }
 
@@ -246,7 +246,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget(tipoPQRS: 'Petición',)));
+                                                    const RegistrarPeticionWidget(
+                                                      tipoPQRS: 'Petición',
+                                                    )));
                                       },
                                       text: 'Envía una petición',
                                       options: FFButtonOptions(
@@ -337,13 +339,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         0.0, 10.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPresionado: () {
-                                        
                                         log('boton queja');
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget(tipoPQRS: 'Queja',)));
+                                                    const RegistrarPeticionWidget(
+                                                      tipoPQRS: 'Queja',
+                                                    )));
                                       },
                                       text: 'Envía una queja',
                                       options: FFButtonOptions(
@@ -438,7 +441,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget(tipoPQRS: 'Reclamo',)));
+                                                    const RegistrarPeticionWidget(
+                                                      tipoPQRS: 'Reclamo',
+                                                    )));
                                       },
                                       text: 'Envía un reclamo',
                                       options: FFButtonOptions(
@@ -533,7 +538,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget(tipoPQRS: 'Sugerencia',)));
+                                                    const RegistrarPeticionWidget(
+                                                      tipoPQRS: 'Sugerencia',
+                                                    )));
                                       },
                                       text: 'Envía una sugerencia',
                                       options: FFButtonOptions(
@@ -575,7 +582,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   30.0, 30.0, 20.0, 0.0),
                               child: Image.asset(
-                                'assets/images/image-removebg-preview_(1).png',
+                                'assets/images/image-removebg-preview (3).png',
                                 width: 100.0,
                                 height: 120.0,
                                 fit: BoxFit.fitWidth,
@@ -628,7 +635,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const RegistrarPeticionWidget(tipoPQRS: 'Felicitaciones',)));
+                                                    const RegistrarPeticionWidget(
+                                                      tipoPQRS:
+                                                          'Felicitaciones',
+                                                    )));
                                       },
                                       text: 'Envía una felicitacion',
                                       options: FFButtonOptions(
@@ -676,10 +686,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Stack(
-                                    
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(bottom:391.0),
+                                        padding: const EdgeInsets.only(
+                                            bottom: 391.0),
                                         child: Align(
                                           alignment:
                                               AlignmentDirectional(0.0, 1.0),
@@ -702,7 +712,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 width: 0.1,
                                               ),
                                             ),
-                                          
                                           ),
                                         ),
                                       ),

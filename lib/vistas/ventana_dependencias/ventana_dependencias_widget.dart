@@ -605,7 +605,6 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                         ),
                                       ),
                                     ),
-                                    
                                     FFButtonWidget(
                                       icon: Icon(Icons.add),
                                       onPresionado: () {
@@ -615,7 +614,7 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                                 builder: (context) =>
                                                     const RegistrarDependenciaPageWidget()));
                                       },
-                                      text: 'Añadir funcionario',
+                                      text: 'Añadir dependencia',
                                       options: FFButtonOptions(
                                         width: 210.0,
                                         height: 40.0,
@@ -695,7 +694,6 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                   verticalDirection: VerticalDirection.down,
                                   clipBehavior: Clip.none,
                                   children: [
-                                    
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 12, 0, 44),
@@ -722,8 +720,12 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                                     snapshot.data!.length,
                                                     (index) {
                                                   return GestureDetector(
-                                                      onTap: () async {},
-                                                      child: tarjetaDependencia(dependencia: snapshot.data![index]!,),);
+                                                    onTap: () async {},
+                                                    child: tarjetaDependencia(
+                                                      dependencia: snapshot
+                                                          .data![index]!,
+                                                    ),
+                                                  );
                                                 }),
                                               );
                                             } else {
@@ -774,7 +776,8 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
 class tarjetaDependencia extends StatelessWidget {
   final Dependencia dependencia;
   const tarjetaDependencia({
-    Key? key, required this.dependencia,
+    Key? key,
+    required this.dependencia,
   }) : super(key: key);
 
   @override
@@ -850,8 +853,7 @@ class tarjetaDependencia extends StatelessWidget {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Container(
-                              width:  MediaQuery.of(context).size.width *
-                                                0.325,
+                              width: MediaQuery.of(context).size.width * 0.325,
                               child: Text(
                                 dependencia.nombre,
                                 style: FlutterFlowTheme.of(context)
@@ -926,8 +928,8 @@ class tarjetaDependencia extends StatelessWidget {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 0.0, 0.0),
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width *
-                                                0.25,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.25,
                                   child: Text(
                                     dependencia.email,
                                     style: FlutterFlowTheme.of(context)

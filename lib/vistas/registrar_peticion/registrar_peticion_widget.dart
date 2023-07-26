@@ -99,7 +99,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            'Envia un $nombreTipoPQR',
+            'Envia una $nombreTipoPQR',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Poppins',
                   fontSize: 26.0,
@@ -618,9 +618,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      hintText:
+                                                      labelText:
                                                           'Primer apellido*',
-                                                      hintStyle:
+                                                      labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .bodySmall
@@ -710,9 +710,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      hintText:
+                                                      labelText:
                                                           'Segundo apellido',
-                                                      hintStyle:
+                                                      labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .bodySmall
@@ -800,7 +800,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           String>(null),
                                                   options: [
                                                     'Tarjeta de indetidad',
-                                                    'Cédula'
+                                                    'Cédula de Ciudadania'
                                                   ],
                                                   onChanged: (val) => setState(
                                                       () => _model
@@ -865,9 +865,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      hintText:
+                                                      labelText:
                                                           'Número de identificación*',
-                                                      hintStyle:
+                                                      labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .bodySmall
@@ -2088,7 +2088,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                                                 in listaTemporalDependencia) {
                                                                               log('elemento dependencia: ${element!.nombre}');
                                                                             }
-                                                                           
+
                                                                             posicionArea =
                                                                                 val.index;
                                                                             if (posicionArea <

@@ -341,7 +341,7 @@ class AlertPQRS {
     Alert(
       context: context,
       title: '¡Envío exitoso!',
-      desc: 'El PQR ha sido enviado correctamente.',
+      desc: 'El PQRS ha sido enviado correctamente.',
       onWillPopActive: true,
       closeFunction: () {
         GRecaptchaV3.hideBadge();
