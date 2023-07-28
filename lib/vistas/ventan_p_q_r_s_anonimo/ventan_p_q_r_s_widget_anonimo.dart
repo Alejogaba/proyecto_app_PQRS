@@ -41,8 +41,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
     _model = createModel(context, () => VentanPQRSModelAnonimo());
     _model.textControllerBuscar ??= TextEditingController();
     _getTotalPqrs = ControladorPQRS().getTotalPqrsCountAnonima();
-    _getTotalPqrsEnProceso =
-        ControladorPQRS().getTotalPqrsEnProcesoAnonima();
+    _getTotalPqrsEnProceso = ControladorPQRS().getTotalPqrsEnProcesoAnonima();
     _getTotalPqrsSinIniciar = ControladorPQRS().getTotalPqrsPendienteAnonima();
     _getTotalPqrsFinalizados =
         ControladorPQRS().getTotalPqrsFinalizadoAnonima();
@@ -209,7 +208,6 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 18.0,
-                                            
                                           ),
                                     ),
                                   ),
@@ -245,7 +243,8 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                               width: 185.0,
                               height: 60.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
