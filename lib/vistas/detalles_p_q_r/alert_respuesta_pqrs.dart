@@ -145,9 +145,9 @@ class AlertRespuestaPQRS {
                     mensaje: pqr.respuesta.toString());
               } else {
                 print('generar pdf');
-                List<Pqrs> listPqrs = [Pqrs(tipoMedioContacto: 4)];
+                
                 var pdf =
-                    await PdfApi().generarHojaSalida(listPqrs, 'observacion');
+                    await PdfApi().generarHojaSalida(pqr, 'observacion');
 
                 // Genera el archivo PDF en formato Uint8List
                 final Uint8List pdfBytes = await pdf.save();

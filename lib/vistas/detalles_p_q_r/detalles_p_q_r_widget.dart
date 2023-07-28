@@ -579,141 +579,144 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
-                      child: FFButtonWidget(
-                        onPresionado: () {
-                          try {
-                            AlertRespuestaPQRS(
-                                    contextPadre: context,
-                                    iconEnvio: definirIcono(
-                                        widget.pqrs.tipoMedioContacto),
-                                    mensajeEnvio: definirMensajeEnvio(
-                                        widget.pqrs.tipoMedioContacto),
-                                    pqr: widget.pqrs)
-                                .showConfirmationAlert(context);
-                          } catch (e) {
-                            log('Error responder: $e');
-                          }
-                        },
-                        text: 'Responder',
-                        icon: Icon(
-                          Icons.email_outlined,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 300.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF006344),
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                Padding(
+                  padding: const EdgeInsets.only(top:16.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
+                        child: FFButtonWidget(
+                          onPresionado: () {
+                            try {
+                              AlertRespuestaPQRS(
+                                      contextPadre: context,
+                                      iconEnvio: definirIcono(
+                                          widget.pqrs.tipoMedioContacto),
+                                      mensajeEnvio: definirMensajeEnvio(
+                                          widget.pqrs.tipoMedioContacto),
+                                      pqr: widget.pqrs)
+                                  .showConfirmationAlert(context);
+                            } catch (e) {
+                              log('Error responder: $e');
+                            }
+                          },
+                          text: 'Responder',
+                          icon: Icon(
+                            Icons.email_outlined,
+                            size: 15.0,
+                          ),
+                          options: FFButtonOptions(
+                            width: 300.0,
+                            height: 50.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0xFF006344),
+                            textStyle:
+                                FlutterFlowTheme.of(context).titleMedium.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
-                      child: FFButtonWidget(
-                        onPresionado: () {
-                          try {
-                            showAlertDelegar(context);
-                          } catch (e) {
-                            log('Error responder: $e');
-                          }
-                        },
-                        text: 'Delegar',
-                        icon: Icon(
-                          Icons.forward_to_inbox_outlined,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 300.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF054E63),
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
+                        child: FFButtonWidget(
+                          onPresionado: () {
+                            try {
+                              showAlertDelegar(context);
+                            } catch (e) {
+                              log('Error responder: $e');
+                            }
+                          },
+                          text: 'Delegar',
+                          icon: Icon(
+                            Icons.forward_to_inbox_outlined,
+                            size: 15.0,
+                          ),
+                          options: FFButtonOptions(
+                            width: 300.0,
+                            height: 50.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0xFF054E63),
+                            textStyle:
+                                FlutterFlowTheme.of(context).titleMedium.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
-                      child: FFButtonWidget(
-                        onPresionado: () async {
-                          await ControladorPQRS()
-                              .marcarPqrsFinalizada(widget.pqrs.id!);
-                          Get.snackbar('Finzalizado',
-                              '${widget.pqrs.tipoPQRS} marcada como finalizada',
-                              duration: Duration(seconds: 5),
-                              margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
-                              snackStyle: SnackStyle.FLOATING,
-                              backgroundColor: Color.fromARGB(211, 28, 138, 46),
-                              icon: Icon(
-                                Icons.check,
-                                color: Colors.white,
-                              ),
-                              colorText: Color.fromARGB(255, 228, 219, 218));
-                          Navigator.of(context).pop();
-                        },
-                        text: 'Marcar como finalizado',
-                        icon: Icon(
-                          Icons.check_rounded,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 300.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
+                        child: FFButtonWidget(
+                          onPresionado: () async {
+                            await ControladorPQRS()
+                                .marcarPqrsFinalizada(widget.pqrs.id!);
+                            Get.snackbar('Finzalizado',
+                                '${widget.pqrs.tipoPQRS} marcada como finalizada',
+                                duration: Duration(seconds: 5),
+                                margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
+                                snackStyle: SnackStyle.FLOATING,
+                                backgroundColor: Color.fromARGB(211, 28, 138, 46),
+                                icon: Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                ),
+                                colorText: Color.fromARGB(255, 228, 219, 218));
+                            Navigator.of(context).pop();
+                          },
+                          text: 'Marcar como finalizado',
+                          icon: Icon(
+                            Icons.check_rounded,
+                            size: 15.0,
+                          ),
+                          options: FFButtonOptions(
+                            width: 300.0,
+                            height: 50.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).secondary,
+                            textStyle:
+                                FlutterFlowTheme.of(context).titleMedium.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
