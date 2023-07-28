@@ -53,9 +53,9 @@ class _GraficoCircularIdentificacionState
     int section2Value = data[2]; // Valor de la sección 2
     int section3Value = data[3]; // Valor de la sección 3
 
-    double section1Percentage = (section1Value / totalValue) * 100;
-    double section2Percentage = (section2Value / totalValue) * 100;
-    double section3Percentage = (section3Value / totalValue) * 100;
+    double section1Percentage = ((section1Value / totalValue) * 100).roundToDouble();
+    double section2Percentage = ((section2Value / totalValue) * 100).roundToDouble();
+    double section3Percentage = ((section3Value / totalValue) * 100).roundToDouble();
 
     // Construye la gráfica utilizando los datos cargados
     // Ejemplo:
@@ -74,21 +74,20 @@ class _GraficoCircularIdentificacionState
                     value: section1Percentage,
                     color: Colors.red,
                     title: '$section1Percentage%',
-                    radius: 100,
+                  
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   PieChartSectionData(
                     value: section2Percentage,
                     color: Colors.blue,
                     title: '$section2Percentage%',
-                    radius: 100,
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   PieChartSectionData(
                     value: section3Percentage,
                     color: Colors.green,
                     title: '$section3Percentage%',
-                    radius: 100,
+                    
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],

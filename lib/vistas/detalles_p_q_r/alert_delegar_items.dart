@@ -20,54 +20,197 @@ import '../../flutter_flow/flutter_flow_dropdown2.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../modelo/dependencia.dart';
 
-class AlertDelegarRespuestaPQRS extends StatefulWidget {
+class AlertDelegarItems extends StatefulWidget {
   final BuildContext contextPadre;
   final Pqrs pqr;
   final IconData iconEnvio;
-  final String mensajeEnvio;
+  final String nombreDependencia;
   final String nombreTipoPQR;
-   AlertDelegarRespuestaPQRS(
+  int posicion;
+  AlertDelegarItems(
       {Key? key,
       required this.contextPadre,
       required this.iconEnvio,
-      required this.mensajeEnvio,
+      required this.nombreDependencia,
       required this.pqr,
-      required this.nombreTipoPQR}):super(key: key);
+      required this.nombreTipoPQR,
+      required this.posicion})
+      : super(key: key);
 
   @override
-  State<AlertDelegarRespuestaPQRS> createState() =>
-      _AlertDelegarRespuestaPQRSState();
+  State<AlertDelegarItems> createState() => _AlertDelegarItemsState();
 
-   TextEditingController textControllerDescripcionPqrs =
-      new TextEditingController();
-  List<Dependencia?> listaTemporalDependencia = [];
-  int posicionArea = 0;
-  Dependencia? areaController;
-
-  
-}
-
-class _AlertDelegarRespuestaPQRSState extends State<AlertDelegarRespuestaPQRS> {
   TextEditingController textControllerDescripcionPqrs =
       new TextEditingController();
   List<Dependencia?> listaTemporalDependencia = [];
-  int posicionArea = 0;
+  
+  Dependencia? areaController;
+}
+
+class _AlertDelegarItemsState extends State<AlertDelegarItems> {
+  TextEditingController textControllerDescripcionPqrs =
+      new TextEditingController();
+  List<Dependencia?> listaTemporalDependencia = [];
+  
   Dependencia? areaController;
 
-  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-  refrescarPantalla(){
-    setState(() {
-      
-    });
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(5, 15, 5, 5),
+          child: Container(
+            width: 800,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      child: Text(
+                        'Indique la dependencia a la que le sera dirijida esta ${widget.nombreTipoPQR}',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 16.0,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+                StreamBuilder<List<Dependencia?>>(
+                  stream:
+                      ControladorDependencia().obtenerDependenciasStream(''),
+                  builder: (BuildContext context, snapshot) {
+                    log('Conexion snaphot dependencias: ${snapshot.connectionState} ');
+
+                    if (snapshot.data != null) {
+                      log('snapshot lenght: ${snapshot.data!.length}');
+                      if (snapshot.data!.length > 1) {
+                        listaTemporalDependencia = snapshot.data!;
+                      }
+                      return Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 5, 0, 10),
+                                          child:
+                                              FlutterFlowDropDown2<Dependencia>(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.95,
+                                            height: 45,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Color.fromARGB(
+                                                          207, 0, 0, 0),
+                                                    ),
+                                            hintText: 'Area...',
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2,
+                                            borderColor: Colors.black,
+                                            borderWidth: 0,
+                                            borderRadius: 8,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12, 4, 12, 4),
+                                            hidesUnderline: true,
+                                            value: snapshot.data![widget.posicion],
+                                            initialOption:
+                                                snapshot.data![widget.posicion],
+                                            options: List.generate(
+                                                snapshot.data!.length,
+                                                (index) => DropdownMenuItem(
+                                                    value:
+                                                        snapshot.data![index],
+                                                    child: Text(
+                                                      snapshot
+                                                          .data![index]!.nombre
+                                                          .toString(),
+                                                    ))),
+                                            onChanged: (val) async {
+                                              if (val != null) {
+                                                setState(() {
+                                                  
+                                                  widget.posicion = snapshot.data!
+                                                      .indexOf(val);
+                                                  log('Posicion area y valor: $widget.posicion ${val.nombre}');
+                                                  if (widget.posicion < 0) {
+                                                    for (var element
+                                                        in listaTemporalDependencia) {
+                                                      log('elemento dependencia: ${element!.nombre}');
+                                                    }
+
+                                                    widget.posicion = val.index;
+                                                    if (widget.posicion < 0) {
+                                                      widget.posicion = 0;
+                                                    }
+                                                  }
+                                                  log('Posicion area: $widget.posicion');
+                                                  areaController = val;
+                                                });
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return Center(
+                        child: Container(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
   }
 
-  
+  refrescarPantalla() {
+    setState(() {});
+  }
+
   void mostrarAlertDelegar(BuildContext context) {
     Alert(
       context: context,
@@ -156,9 +299,9 @@ class _AlertDelegarRespuestaPQRSState extends State<AlertDelegarRespuestaPQRS> {
                                                   .fromSTEB(12, 4, 12, 4),
                                               hidesUnderline: true,
                                               value:
-                                                  snapshot.data![posicionArea],
+                                                  snapshot.data![widget.posicion],
                                               initialOption:
-                                                  snapshot.data![posicionArea],
+                                                  snapshot.data![widget.posicion],
                                               options: List.generate(
                                                   snapshot.data!.length,
                                                   (index) => DropdownMenuItem(
@@ -171,23 +314,22 @@ class _AlertDelegarRespuestaPQRSState extends State<AlertDelegarRespuestaPQRS> {
                                                       ))),
                                               onChanged: (val) {
                                                 if (val != null) {
-                                                
                                                   //setState
-                                                  posicionArea = snapshot.data!
+                                                  widget.posicion = snapshot.data!
                                                       .indexOf(val);
-                                                  log('Posicion area y valor: $posicionArea ${val.nombre}');
-                                                  if (posicionArea < 0) {
+                                                  log('Posicion area y valor: $widget.posicion ${val.nombre}');
+                                                  if (widget.posicion < 0) {
                                                     for (var element
                                                         in listaTemporalDependencia) {
                                                       log('elemento dependencia: ${element!.nombre}');
                                                     }
 
-                                                    posicionArea = val.index;
-                                                    if (posicionArea < 0) {
-                                                      posicionArea = 0;
+                                                    widget.posicion = val.index;
+                                                    if (widget.posicion < 0) {
+                                                      widget.posicion = 0;
                                                     }
                                                   }
-                                                  log('Posicion area: $posicionArea');
+                                                  log('Posicion area: $widget.posicion');
                                                   areaController = val;
                                                 }
                                               },
@@ -263,18 +405,15 @@ class _AlertDelegarRespuestaPQRSState extends State<AlertDelegarRespuestaPQRS> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 7.0),
-                child: Text(widget.mensajeEnvio,
+                child: Text(widget.nombreDependencia,
                     style: TextStyle(
                         color: FlutterFlowTheme.of(context).tertiary)),
               ),
             ],
           ),
-          onPressed: () async {
-          },
+          onPressed: () async {},
         ),
       ],
     ).show();
   }
 }
-
-

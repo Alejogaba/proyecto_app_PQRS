@@ -1940,7 +1940,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                     builder: (BuildContext context, snapshot) {
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {
-                                        return C  enter(
+                                        return Center(
                                             child: Container(
                                                 width: 50,
                                                 height: 50,
