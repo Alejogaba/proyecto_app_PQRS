@@ -37,62 +37,6 @@ class AlertRespuestaPQRS {
       context: context,
       title: 'Escriba su respuesta',
       content: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(5, 15, 5, 5),
-            child: Container(
-              width: 800,
-              child: TextFormField(
-                controller: textControllerDescripcionPqrs,
-                autofocus: true,
-                obscureText: false,
-                decoration: InputDecoration(
-                  hintText: 'Indique su respuesta a esta solicitud....',
-                  hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
-                        fontFamily: 'Poppins',
-                        fontSize: 16.0,
-                      ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      width: 1.5,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      width: 1.5,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).error,
-                      width: 1.5,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).error,
-                      width: 1.5,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Poppins',
-                      fontSize: 16.0,
-                    ),
-                maxLines: 12,
-                minLines: 6,
-              ),
-            ),
-          )
-        ],
       ),
       buttons: [
         DialogButton(
@@ -145,7 +89,7 @@ class AlertRespuestaPQRS {
                     mensaje: pqr.respuesta.toString());
               } else {
                 print('generar pdf');
-                
+                List<Pqrs> listPqrs = [Pqrs(tipoMedioContacto: 4)];
                 var pdf =
                     await PdfApi().generarHojaSalida(pqr, 'observacion');
 

@@ -53,9 +53,9 @@ class _GraficoCircularIdentificacionState
     int section2Value = data[2]; // Valor de la sección 2
     int section3Value = data[3]; // Valor de la sección 3
 
-    double section1Percentage = (section1Value / totalValue) * 100;
-    double section2Percentage = (section2Value / totalValue) * 100;
-    double section3Percentage = (section3Value / totalValue) * 100;
+    double section1Percentage = ((section1Value / totalValue) * 100).roundToDouble();
+    double section2Percentage = ((section2Value / totalValue) * 100).roundToDouble();
+    double section3Percentage = ((section3Value / totalValue) * 100).roundToDouble();
 
     // Construye la gráfica utilizando los datos cargados
     // Ejemplo:

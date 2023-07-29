@@ -66,9 +66,9 @@ class _GraficoBarraTotalIdentificacionState
       width: MediaQuery.of(context).size.width * 0.43,
       child: SegmentBar(
         segmentData: [
-          SegmentBarModel(value: section1Percentage, color: FlutterFlowTheme.of(context).primary, label: (section1Percentage>0) ? 'Sin Iniciar: $section1Percentage%' : ''),
-          SegmentBarModel(value: section2Percentage, color:  Color(0xFF12B07E), label: (section2Percentage>0) ? 'En Proceso: $section2Percentage%':''),
-          SegmentBarModel(value: section3Percentage, color: FlutterFlowTheme.of(context).secondary, label: (section3Percentage>0) ?  "Finalizados: $section3Percentage%" : ''),
+          SegmentBarModel(value: section1Percentage, color: FlutterFlowTheme.of(context).primary, label: (section1Percentage>0) ? 'Sin Iniciar: ${section1Percentage.toStringAsFixed(1)}%' : ''),
+          SegmentBarModel(value: section2Percentage, color:  Color(0xFF12B07E), label: (section2Percentage>0) ? 'En Proceso: ${section2Percentage.toStringAsFixed(1)}%':''),
+          SegmentBarModel(value: section3Percentage, color: FlutterFlowTheme.of(context).secondary, label: (section3Percentage>0) ?  "Finalizados: ${section3Percentage.toStringAsFixed(1)}%" : ''),
         ],
       ),
     );

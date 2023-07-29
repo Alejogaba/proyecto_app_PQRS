@@ -57,4 +57,25 @@ class ControladorDependencia {
     });
     return result;
   }
+
+  Future<Dependencia?> buscarDepedenciaPorNombre(String nombreDependencia) async {
+    try {
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('dependencias')
+          .where('nombre', isEqualTo: nombreDependencia)
+          .limit(1)
+          .get();
+
+      if (querySnapshot.size > 0) {
+        final docSnapshot = querySnapshot.docs[0];
+        final caso = Dependencia.fromMap(docSnapshot.data());
+        return caso;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Error al buscar dependencia individual por nombre: $e');
+      return null;
+    }
+  }
 }
