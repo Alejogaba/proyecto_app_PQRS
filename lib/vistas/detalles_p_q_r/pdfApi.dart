@@ -23,7 +23,8 @@ class PdfApi {
   Future<Document> generarHojaSalida(Pqrs pqr, String observacion,
       {String numConsecutivo = 'GTI - 000', bcontext}) async {
     final Document pdf = Document();
-    double alturaPrimeraFila=3;
+    double alturaPrimeraFila = 3;
+    double alturaFilas = 1;
     double separacionAltura = 1;
     _logo1 = (await rootBundle.load('assets/images/logo-jagua-1.jpg'))
         .buffer
@@ -53,18 +54,18 @@ class PdfApi {
               bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
             )),
             child: Container(
-                    alignment: pw.Alignment.center,
-                    padding: const pw.EdgeInsets.only(bottom: 0),
-                    height: 80,
-                    child: _logo1 != null
-                        ? pw.Image(MemoryImage(_logo1!) as pw.ImageProvider)
-                        : pw.PdfLogo(),
-                  ),
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: _logo1 != null
+                  ? pw.Image(MemoryImage(_logo1!) as pw.ImageProvider)
+                  : pw.PdfLogo(),
+            ),
           )),
           Expanded(
               child: Container(
             padding: const EdgeInsets.all(10),
-             height: alturaPrimeraFila * PdfPageFormat.cm,
+            height: alturaPrimeraFila * PdfPageFormat.cm,
             decoration: BoxDecoration(
                 border: Border(
               left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
@@ -73,127 +74,246 @@ class PdfApi {
               bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
             )),
             child: Container(
-                    alignment: pw.Alignment.center,
-                    padding: const pw.EdgeInsets.only(bottom: 0),
-                    height: 80,
-                    child: Text('REGISTRO DE QUEJA, RECLAMO, SUGERENCIA O FELICITACIÓN',
-                      style:
-                          TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center),
-                  ),
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: Text(
+                  'REGISTRO DE QUEJA, RECLAMO, SUGERENCIA O FELICITACIÓN',
+                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center),
+            ),
           )),
           Expanded(
               child: Container(
-            padding: const EdgeInsets.all(2),
-             height: alturaPrimeraFila * PdfPageFormat.cm,
-            decoration: BoxDecoration(
-                border: Border(
-              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              
-            )),
-            child: Container(
+                  padding: const EdgeInsets.all(2),
+                  height: alturaPrimeraFila * PdfPageFormat.cm,
+                  decoration: BoxDecoration(
+                      border: Border(
+                    left: BorderSide(
+                        width: 0.5, color: PdfColor.fromHex("000000")),
+                    right: BorderSide(
+                        width: 0.5, color: PdfColor.fromHex("000000")),
+                    top: BorderSide(
+                        width: 0.5, color: PdfColor.fromHex("000000")),
+                    bottom: BorderSide(
+                        width: 0.5, color: PdfColor.fromHex("000000")),
+                  )),
+                  child: Container(
                     alignment: pw.Alignment.topLeft,
                     padding: const pw.EdgeInsets.only(bottom: 0),
                     height: 80,
                     child: Text('Radicación: ${pqr.descripcion}',
-                    overflow: TextOverflow.clip,
-                      style:
-                          TextStyle(fontSize: 9, fontWeight: FontWeight.normal),
-                      textAlign: TextAlign.justify),
-                  )
-          )),
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                            fontSize: 9, fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.justify),
+                  ))),
         ]),
         SizedBox(height: separacionAltura * PdfPageFormat.cm),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-          buildTextJustificado(
-            "1. DATOS PETICIONARIO",
-            10,
-            FontWeight.normal),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(padding: const EdgeInsets.only(left: 82, right: 10),
-              child:Container(
-                alignment: Alignment.center,
-            height: 27,
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-                border: Border(
-              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              
-            )),
-            child: Container(
-                    alignment: pw.Alignment.center,
-                   
-                    child: Text('Fecha: ${pqr.fechaString}',
-                    overflow: TextOverflow.clip,
-                      style:
-                          TextStyle(fontSize: 11, fontWeight: FontWeight.normal),
-                      textAlign: TextAlign.center),
-                  )), ), 
-            Padding(padding: const EdgeInsets.only(right: 20),
-              child:Container(
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-                border: Border(
-              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              
-            )),
-            child: Row(children: [
-Container(
-                    alignment: pw.Alignment.topLeft,
-                    child: Text('ANÓNIMO',
-                    overflow: TextOverflow.clip,
-                      style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
-                      textAlign: TextAlign.center),
+              buildTextJustificado(
+                  "1. DATOS PETICIONARIO", 10, FontWeight.normal),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 150, right: 10),
+                  child: Container(
+                      alignment: Alignment.center,
+                      height: 27,
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(3),
+                          border: Border(
+                            left: BorderSide(
+                                width: 0.5, color: PdfColor.fromHex("000000")),
+                            right: BorderSide(
+                                width: 0.5, color: PdfColor.fromHex("000000")),
+                            top: BorderSide(
+                                width: 0.5, color: PdfColor.fromHex("000000")),
+                            bottom: BorderSide(
+                                width: 0.5, color: PdfColor.fromHex("000000")),
+                          )),
+                      child: Container(
+                        alignment: pw.Alignment.center,
+                        child: Text('Fecha: ${pqr.fechaString}',
+                            overflow: TextOverflow.clip,
+                            style: TextStyle(
+                                fontSize: 11, fontWeight: FontWeight.normal),
+                            textAlign: TextAlign.center),
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3),
+                        border: Border(
+                          left: BorderSide(
+                              width: 0.5, color: PdfColor.fromHex("000000")),
+                          right: BorderSide(
+                              width: 0.5, color: PdfColor.fromHex("000000")),
+                          top: BorderSide(
+                              width: 0.5, color: PdfColor.fromHex("000000")),
+                          bottom: BorderSide(
+                              width: 0.5, color: PdfColor.fromHex("000000")),
+                        )),
+                    child: Row(children: [
+                      Container(
+                        alignment: pw.Alignment.topLeft,
+                        child: Text('ANÓNIMO',
+                            overflow: TextOverflow.clip,
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.normal),
+                            textAlign: TextAlign.center),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 4, left: 4),
+                        child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3),
+                                border: Border(
+                                  left: BorderSide(
+                                      width: 0.5,
+                                      color: PdfColor.fromHex("000000")),
+                                  right: BorderSide(
+                                      width: 0.5,
+                                      color: PdfColor.fromHex("000000")),
+                                  top: BorderSide(
+                                      width: 0.5,
+                                      color: PdfColor.fromHex("000000")),
+                                  bottom: BorderSide(
+                                      width: 0.5,
+                                      color: PdfColor.fromHex("000000")),
+                                )),
+                            child: Container(
+                              height: 11,
+                              width: 11,
+                              alignment: pw.Alignment.center,
+                              padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
+                              child: Text(pqr.esAnonimo ? 'X' : '',
+                                  overflow: TextOverflow.clip,
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.normal),
+                                  textAlign: TextAlign.center),
+                            )),
+                      ),
+                    ]),
                   ),
-                 Padding(padding: const EdgeInsets.only(right: 4,left: 4),
-              child:Container(
-            padding: const EdgeInsets.all(4),
+                ),
+              ]),
+            ]),
+        SizedBox(height: 0.2 * PdfPageFormat.cm),
+        Row(children: [
+          Container(
+            width: 200,
+            padding: const EdgeInsets.all(10),
+            height: alturaFilas * PdfPageFormat.cm,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
                 border: Border(
               left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
               right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
               top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
               bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              
             )),
             child: Container(
-              height: 11,
-              width: 11,
-                    alignment: pw.Alignment.center,
-                    padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),  
-                    child: Text(pqr.esAnonimo ? 'X':'',
-                    overflow: TextOverflow.clip,
-                      style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
-                      textAlign: TextAlign.center),
-                  )
-                  ), ), 
-            ]),
-            
-            ), ),
-           ]),
-          
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: Text('NOMBRES Y APELLIDOS:',
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center),
+            ),
+          ),
+          Expanded(
+              child: Container(
+            padding: const EdgeInsets.all(10),
+            height: alturaFilas * PdfPageFormat.cm,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+            )),
+            child: Container(
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: Text('${pqr.primerNombreSolicitante} ${pqr.segundoNombreSolicitante} ${pqr.primerApellidoSolicitante} ${pqr.segundoApellidoSolicitante} ',
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center),
+            ),
+          )),
         ]),
-         SizedBox(height: 0.2 * PdfPageFormat.cm),
-        
+        Row(children: [
+          Container(
+            width: 200,
+            padding: const EdgeInsets.all(10),
+            height: alturaFilas * PdfPageFormat.cm,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+            )),
+            child: Container(
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: Text('Documento de Identidad:',
+                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center),
+            ),
+          ),
+          Container(
+            width: 200,
+            padding: const EdgeInsets.all(10),
+            height: alturaFilas * PdfPageFormat.cm,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+            )),
+            child: Container(
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: Text('${pqr.tipoIdSolicitante}',
+                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center),
+            ),
+          ),
+          Expanded(
+              child: Container(
+            padding: const EdgeInsets.all(10),
+            height: alturaFilas * PdfPageFormat.cm,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+            )),
+            child: Container(
+              alignment: pw.Alignment.center,
+              padding: const pw.EdgeInsets.only(bottom: 0),
+              height: 80,
+              child: Text('${pqr.idSolicitante}',
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center),
+            ),
+          )),
+        ]),
+        buildTextJustificado(
+                  "1. DATOS PETICIONARIO", 10, FontWeight.normal),
         SizedBox(height: separacionAltura * PdfPageFormat.cm),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
