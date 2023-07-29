@@ -201,9 +201,12 @@ class _RegistrarDependenciaPageWidgetState
               AuthHelper a = AuthHelper();
               Dependencia dependencia = Dependencia(
                   index: newId ?? 0,
-                  email: a.capitalizarPalabras(textControllerCorreo!.text) ?? '',
-                  jefeOficina: a.capitalizarPalabras(textControllerNombreJefe.text),
-                  nombre: a.capitalizarPalabras(textControllerNombreDoendencia.text),
+                  email:
+                      a.capitalizarPalabras(textControllerCorreo!.text) ?? '',
+                  jefeOficina:
+                      a.capitalizarPalabras(textControllerNombreJefe.text),
+                  nombre: a
+                      .capitalizarPalabras(textControllerNombreDoendencia.text),
                   tel: textControllerTelefono.text);
               await ControladorDependencia().guardarDependencia(dependencia);
               showTopSnackBar(
@@ -477,7 +480,7 @@ class _RegistrarDependenciaPageWidgetState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const VentanaFuncionariosWidget()));
+                                          const VentanaDependenciasWidget()));
                             },
                             child: Container(
                               width: 185.0,
@@ -794,7 +797,7 @@ class _RegistrarDependenciaPageWidgetState
                                                         textControllerNombreDoendencia,
                                                         'Ej. Oficina de las TIC',
                                                         'Nombre de la dependencia*',
-                                                        10,
+                                                        30,
                                                         TextInputType.text,
                                                         null,
                                                         true,
