@@ -1,4 +1,5 @@
 
+import 'package:flutter/services.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s/barra_carga_identificacion.dart';
@@ -538,6 +539,8 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                     controller: _model.textControllerBuscar,
                                     autofocus: true,
                                     obscureText: false,
+                                     keyboardType: TextInputType.number,
+                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       hintText: 'Consultar Ticket...',
                                       hintStyle: FlutterFlowTheme.of(context)
@@ -557,7 +560,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: Color.fromARGB(211, 0, 0, 0),
                                           width: 1.0,
                                         ),
                                         borderRadius:
@@ -565,7 +568,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                       ),
                                       errorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: Color.fromARGB(214, 0, 0, 0),
                                           width: 1.0,
                                         ),
                                         borderRadius:
@@ -573,7 +576,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: Color.fromARGB(177, 255, 0, 0),
                                           width: 1.0,
                                         ),
                                         borderRadius:
