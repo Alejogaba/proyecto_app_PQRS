@@ -185,9 +185,6 @@ class _RegistrarDependenciaPageWidgetState
           ),
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              setState(() {
-                blur = true;
-              });
               String? imagenUrl;
               log('serial: ${textControllerTelefono.text.toString()}');
 

@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:language_tool/language_tool.dart';
+import 'package:proyecto_p_q_r_s/controlador/utilidades.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/hookContainer.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/alert_pqrs.dart';
@@ -1983,7 +1984,6 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                             ),
                                           ],
                                         ),
-                                        
                                         StreamBuilder<List<Dependencia?>>(
                                           stream: ControladorDependencia()
                                               .obtenerDependenciasStream(''),
@@ -2007,41 +2007,43 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(13, 10,
-                                                                    0, 13),
+                                                                .fromSTEB(13,
+                                                                    10, 0, 13),
                                                         child: Row(
                                                           children: [
                                                             Expanded(
-                                                              child: SearchField<Dependencia>(
-                                          suggestions: listaTemporalDependencia
-                                              .map(
-                                                (e) => SearchFieldListItem<
-                                                    Dependencia>(
-                                                  e!.nombre,
-                                                  item: e,
-                                                  // Use child to show Custom Widgets in the suggestions
-                                                  // defaults to Text widget
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Row(
-                                                      children: [
-                                                        /*
+                                                              child: SearchField<
+                                                                  Dependencia>(
+                                                                suggestions:
+                                                                    listaTemporalDependencia
+                                                                        .map(
+                                                                          (e) =>
+                                                                              SearchFieldListItem<Dependencia>(
+                                                                            e!.nombre,
+                                                                            item:
+                                                                                e,
+                                                                            // Use child to show Custom Widgets in the suggestions
+                                                                            // defaults to Text widget
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(8.0),
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  /*
             CircleAvatar(
               backgroundImage: NetworkImage(e.flag),
             ),*/
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Text(e.nombre),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
-                                              .toList(),
-                                        ),
+                                                                                  SizedBox(
+                                                                                    width: 10,
+                                                                                  ),
+                                                                                  Text(e.nombre),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        )
+                                                                        .toList(),
+                                                              ),
                                                             ),
                                                           ],
                                                         )),
@@ -2799,27 +2801,28 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
       GRecaptchaV3.hideBadge();
       Navigator.pop(context);
     }
+    Utilidades util = Utilidades();
 
     // Crear la instancia de PQR con los valores obtenidos
     Pqrs peticion = Pqrs(
         dependencia: areaController != null ? areaController!.nombre : '',
         asunto: (controladorAsunto.text.length > 3)
-            ? controladorAsunto.text
+            ? util.capitalizarPalabras(controladorAsunto.text)
             : 'Sin Asunto',
         id: newId,
         nombreDependencia: '',
-        primerNombreSolicitante: primerNombre,
-        segundoNombreSolicitante: segundoNombre,
-        primerApellidoSolicitante: primerApellido,
-        segundoApellidoSolicitante: segundoApellido,
+        primerNombreSolicitante: util.capitalizarPalabras(primerNombre),
+        segundoNombreSolicitante: util.capitalizarPalabras(segundoNombre),
+        primerApellidoSolicitante: util.capitalizarPalabras(primerApellido),
+        segundoApellidoSolicitante: util.capitalizarPalabras(segundoApellido),
         tipoIdSolicitante: tipoIdentificacion,
         idSolicitante: numeroIdentificacion,
         tipoPQRS: this.nombreTipoPQR,
         tipoMedioContacto: int.parse(tipomedioContacto),
         numTelefono: telefono,
-        medioContacto: medioContacto,
+        medioContacto: util.capitalizarPalabras(medioContacto),
         direccion: '',
-        descripcion: descripcion,
+        descripcion: util.capitalizarParrafo(descripcion),
         respuesta: respuesta,
         nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
         fechaInt: DateTime.now().millisecondsSinceEpoch,

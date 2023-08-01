@@ -10,6 +10,21 @@ class Utilidades {
     }
     return palabras.join(' ');
   }
+  String capitalizarParrafo(String texto) {
+  // Capitalizar la primera letra de la primera palabra
+  texto = texto.trim();
+  if (texto.isNotEmpty) {
+    texto = texto[0].toUpperCase() + texto.substring(1);
+  }
+
+  // Capitalizar la primera letra después de puntos seguidos o aparte
+  texto = texto.replaceAllMapped(RegExp(r'(\.\s+|\.\n+|\n+)'), (match) {
+    return match.group(0).toString().toUpperCase();
+  });
+
+  return texto;
+}
+
    String definirTipoEnvio(int tipoMedioRespuesta) {
     switch (tipoMedioRespuesta) {
       case 1:

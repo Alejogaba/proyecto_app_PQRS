@@ -1495,8 +1495,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                             border: Border.all(
                                                               color: (_estadoPqrs ==
                                                                       1)
-                                                                  ? Color(
-                                                                      0xFF140101)
+                                                                  ? Color.fromARGB(255, 231, 223, 223)
                                                                   : Colors
                                                                       .transparent,
                                                               width: 2.0,
@@ -1578,8 +1577,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                             border: Border.all(
                                                               color: (_estadoPqrs ==
                                                                       2)
-                                                                  ? Color(
-                                                                      0xFF140101)
+                                                                  ? Color.fromARGB(255, 236, 224, 224)
                                                                   : Colors
                                                                       .transparent,
                                                               width: 2.0,
@@ -1661,8 +1659,7 @@ class _VentanPQRSWidgetState extends State<VentanPQRSWidget> {
                                                             border: Border.all(
                                                               color: (_estadoPqrs ==
                                                                       3)
-                                                                  ? Color(
-                                                                      0xFF140101)
+                                                                  ? Color.fromARGB(255, 232, 220, 220)
                                                                   : Colors
                                                                       .transparent,
                                                               width: 2.0,

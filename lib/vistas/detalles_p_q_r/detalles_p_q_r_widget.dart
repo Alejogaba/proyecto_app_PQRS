@@ -14,6 +14,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../controlador/controlador_dependencia.dart';
+import '../../flutter_flow/custom_snackbars.dart';
 import '../../modelo/dependencia.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -85,9 +86,15 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      if(widget.pqrs.estado==2)
+                      FaIcon(FontAwesomeIcons.clock,
+                    color: FlutterFlowTheme.of(context).primaryText),
+                    if(widget.pqrs.estado==3)
+                      FaIcon(Icons.check_rounded, size: 37,
+                    color: FlutterFlowTheme.of(context).primaryText),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                         child: Text(
                           widget.pqrs.tipoPQRS.toString(),
                           style: FlutterFlowTheme.of(context)
@@ -574,6 +581,37 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 ],
                               ),
                             ),
+                            if(widget.pqrs.estado>1&&widget.pqrs.respuesta.toString().trim().isNotEmpty)
+                            Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 0.0),
+                            child: Text(
+                              'Respuesta:',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ),
+                          if(widget.pqrs.estado>1&&widget.pqrs.respuesta.toString().trim().isNotEmpty)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 8.0, 20.0, 0.0),
+                            child: Text(
+                              widget.pqrs.respuesta.toString(),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 21.0,
+                                  ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -585,6 +623,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      if(widget.pqrs.estado<3)
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
@@ -630,6 +669,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                           ),
                         ),
                       ),
+                      if(widget.pqrs.estado==1)
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
@@ -668,24 +708,18 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                           ),
                         ),
                       ),
+                      if(widget.pqrs.estado<3)
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
                         child: FFButtonWidget(
                           onPresionado: () async {
                             await ControladorPQRS()
-                                .marcarPqrsFinalizada(widget.pqrs.id!);
-                            Get.snackbar('Finzalizado',
-                                '${widget.pqrs.tipoPQRS} marcada como finalizada',
-                                duration: Duration(seconds: 5),
-                                margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
-                                snackStyle: SnackStyle.FLOATING,
-                                backgroundColor: Color.fromARGB(211, 28, 138, 46),
-                                icon: Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                ),
-                                colorText: Color.fromARGB(255, 228, 219, 218));
+                                .marcarPqrsFinalizada(widget.pqrs.id!,(widget.pqrs.respuesta!=null&&widget.pqrs.respuesta.toString().trim().isNotEmpty) ? widget.pqrs.respuesta! : 'Sin respuesta/No aplica');
+                            CustomSnackBars().snackBarOk(
+                                                    context,
+                                                    'Finalizada',
+                                                    '${widget.pqrs.tipoPQRS} marcada como finalizada/leída');
                             Navigator.of(context).pop();
                           },
                           text: 'Marcar como finalizado',

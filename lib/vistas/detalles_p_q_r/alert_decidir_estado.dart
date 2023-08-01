@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
@@ -11,7 +12,9 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../controlador/controlador_pqrs.dart';
 import '../../controlador/storage_helper.dart';
+import '../../flutter_flow/custom_snackbars.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
+import '../ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 
 class AlertDecidirEstadoPQRS {
   final BuildContext contextPadre;
@@ -50,10 +53,13 @@ class AlertDecidirEstadoPQRS {
         DialogButton(
           color: Color(0xFF054E63),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FaIcon(FontAwesomeIcons.clock,
-                  color: FlutterFlowTheme.of(context).tertiary),
+              Padding(
+                padding: const EdgeInsets.only(right:8.0),
+                child: FaIcon(FontAwesomeIcons.clock,
+                    color: FlutterFlowTheme.of(context).tertiary),
+              ),
               Text(
                 'En Proceso',
                 style: TextStyle(color: FlutterFlowTheme.of(context).tertiary),
@@ -61,28 +67,37 @@ class AlertDecidirEstadoPQRS {
             ],
           ),
           onPressed: () async {
-            await ControladorPQRS().marcarPqrsEnProceso(pqr.id!);
-            Get.snackbar('En proceso', 'Esta ${pqr.tipoPQRS} queda en proceso',
-                duration: Duration(seconds: 5),
-                margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
-                snackStyle: SnackStyle.FLOATING,
-                backgroundColor: Color(0xFF054E63),
-                icon: Icon(
-                  Icons.check,
-                  color: Colors.white,
-                ),
-                colorText: Color.fromARGB(255, 228, 219, 218));
-            Navigator.of(contextPadre).pop();
+            await ControladorPQRS().marcarPqrsEnProceso(pqr.id!,pqr.respuesta??'Sin respuesta/No aplica');
+                 CustomSnackBars().snackBarOk(
+                                                    context,
+                                                    'En proceso',
+                                                    'Esta ${pqr.tipoPQRS} queda en proceso');
+            if (pqr.esAnonimo) {
+                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidgetAnonimo()));
+                } else {
+                   Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidget()));
+                }
           },
         ),
         DialogButton(
           color: Color.fromARGB(211, 28, 138, 46),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FaIcon(
-                iconEnvio,
-                color: FlutterFlowTheme.of(context).tertiary,
+              Padding(
+                padding: const EdgeInsets.only(right:4.0),
+                child: FaIcon(
+                  iconEnvio,
+                  color: FlutterFlowTheme.of(context).tertiary,
+                ),
               ),
               Text('Finalizado',
                   style:
@@ -90,20 +105,25 @@ class AlertDecidirEstadoPQRS {
             ],
           ),
           onPressed: () async {
-            await ControladorPQRS().marcarPqrsFinalizada(pqr.id!);
-            Get.snackbar(
-                'Finzalizado', '${pqr.tipoPQRS} marcada como finalizada',
-                duration: Duration(seconds: 5),
-                margin: EdgeInsets.fromLTRB(4, 8, 4, 0),
-                snackStyle: SnackStyle.FLOATING,
-                backgroundColor: Color.fromARGB(211, 28, 138, 46),
-                icon: Icon(
-                  Icons.check,
-                  color: Colors.white,
-                ),
-                colorText: Color.fromARGB(255, 228, 219, 218));
-                Navigator.of(contextPadre).pop();
-                Navigator.of(context).pop();
+            await ControladorPQRS().marcarPqrsFinalizada(pqr.id!,pqr.respuesta??'Sin respuesta/No aplica');
+                CustomSnackBars().snackBarOk(
+                                                    context,
+                                                    'Finalizada',
+                                                    '${pqr.tipoPQRS} marcada como finalizada/leída');
+                if (pqr.esAnonimo) {
+                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidgetAnonimo()));
+                } else {
+                   Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidget()));
+                }
+                
           },
         ),
       ],
