@@ -151,6 +151,7 @@ class AlertRespuestaPQRS {
 
                 // Genera el archivo PDF en formato Uint8List
                 final Uint8List pdfBytes = await pdf.save();
+                
 
                 // Crea un objeto Blob con los datos del PDF
                 final blob = Blob([pdfBytes], 'application/pdf');
@@ -175,15 +176,16 @@ class AlertRespuestaPQRS {
 
                 // Libera la URL creada para el objeto Blob
                 Url.revokeObjectUrl(url);
-              }
-            }
-            /*
+            
             AlertDecidirEstadoPQRS(
                     contextPadre: contextPadre,
                     iconEnvio: iconEnvio,
                     mensajeEnvio: mensajeEnvio,
                     pqr: pqr)
-                .showConfirmationAlert(context);*/
+                .showConfirmationAlert(context);
+              }
+            }
+            
           },
         ),
       ],

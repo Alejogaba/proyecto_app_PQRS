@@ -4,7 +4,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../modelo/pqrs.dart';
 
 class ControladorPQRS {
-  Future<void> marcarPqrsFinalizada(int iDticket) async {
+  Future<void> marcarPqrsFinalizada(int iDticket,String respuesta) async {
     final QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('pqrs')
         .where('id', isEqualTo: iDticket)
@@ -13,11 +13,11 @@ class ControladorPQRS {
     final List<DocumentSnapshot> documents = snapshot.docs;
 
     for (final DocumentSnapshot document in documents) {
-      await document.reference.update({'estado': 3});
+      await document.reference.update({'estado': 3,'respuesta':respuesta});
     }
   }
 
-  Future<void> marcarPqrsEnProceso(int iDticket) async {
+  Future<void> marcarPqrsEnProceso(int iDticket,String respuesta) async {
     final QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('pqrs')
         .where('id', isEqualTo: iDticket)
@@ -26,7 +26,7 @@ class ControladorPQRS {
     final List<DocumentSnapshot> documents = snapshot.docs;
 
     for (final DocumentSnapshot document in documents) {
-      await document.reference.update({'estado': 2});
+      await document.reference.update({'estado': 2,'respuesta':respuesta});
     }
   }
 

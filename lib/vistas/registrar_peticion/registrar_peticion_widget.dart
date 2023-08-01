@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 import 'dart:html';
 
@@ -5,9 +6,12 @@ import 'package:http/http.dart' as http;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
+import 'package:language_tool/language_tool.dart';
+import 'package:proyecto_p_q_r_s/controlador/utilidades.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/hookContainer.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 import 'package:proyecto_p_q_r_s/vistas/registrar_peticion/alert_pqrs.dart';
+import 'package:searchfield/searchfield.dart';
 
 import '../../controlador/controlador_dependencia.dart';
 import '../../flutter_flow/custom_snackbars.dart';
@@ -55,6 +59,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
   Dependencia? areaController;
   String? nombreTipoPQR = 'Petición';
   String nombreArchivo = '';
+  Timer? _debounceTimer;
   List<Dependencia?> listaTemporalDependencia = [];
 
   TextEditingController controladorAsunto = TextEditingController();
@@ -82,7 +87,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
   @override
   void dispose() {
     _model.dispose();
-
+    _debounceTimer?.cancel();
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -2002,108 +2007,42 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 10,
-                                                                    0, 0),
+                                                                .fromSTEB(13,
+                                                                    10, 0, 13),
                                                         child: Row(
                                                           children: [
                                                             Expanded(
-                                                              child: Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0, 0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          5,
-                                                                          0,
-                                                                          10),
-                                                                  child: FlutterFlowDropDown2<
-                                                                      Dependencia>(
-                                                                    width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.95,
-                                                                    height: 45,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          color: Color.fromARGB(
-                                                                              207,
-                                                                              0,
-                                                                              0,
-                                                                              0),
-                                                                        ),
-                                                                    hintText:
-                                                                        'Area...',
-                                                                    fillColor: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    elevation:
-                                                                        2,
-                                                                    borderColor:
-                                                                        Colors
-                                                                            .black,
-                                                                    borderWidth:
-                                                                        0,
-                                                                    borderRadius:
-                                                                        8,
-                                                                    margin: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            12,
-                                                                            4,
-                                                                            12,
-                                                                            4),
-                                                                    hidesUnderline:
-                                                                        true,
-                                                                    value: snapshot
-                                                                            .data![
-                                                                        posicionArea],
-                                                                    initialOption:
-                                                                        snapshot
-                                                                            .data![posicionArea],
-                                                                    options: List.generate(
-                                                                        snapshot.data!.length,
-                                                                        (index) => DropdownMenuItem(
-                                                                            value: snapshot.data![index],
-                                                                            child: Text(
-                                                                              snapshot.data![index]!.nombre.toString(),
-                                                                            ))),
-                                                                    onChanged:
-                                                                        (val) {
-                                                                      if (val !=
-                                                                          null) {
-                                                                        setState(
-                                                                            () {
-                                                                          posicionArea = snapshot
-                                                                              .data!
-                                                                              .indexOf(val);
-                                                                          log('Posicion area y valor: $posicionArea ${val.nombre}');
-                                                                          if (posicionArea <
-                                                                              0) {
-                                                                            for (var element
-                                                                                in listaTemporalDependencia) {
-                                                                              log('elemento dependencia: ${element!.nombre}');
-                                                                            }
-
-                                                                            posicionArea =
-                                                                                val.index;
-                                                                            if (posicionArea <
-                                                                                0) {
-                                                                              posicionArea = 0;
-                                                                            }
-                                                                          }
-                                                                          log('Posicion area: $posicionArea');
-                                                                          areaController =
-                                                                              val;
-                                                                        });
-                                                                      }
-                                                                    },
-                                                                  ),
-                                                                ),
+                                                              child: SearchField<
+                                                                  Dependencia>(
+                                                                suggestions:
+                                                                    listaTemporalDependencia
+                                                                        .map(
+                                                                          (e) =>
+                                                                              SearchFieldListItem<Dependencia>(
+                                                                            e!.nombre,
+                                                                            item:
+                                                                                e,
+                                                                            // Use child to show Custom Widgets in the suggestions
+                                                                            // defaults to Text widget
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(8.0),
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  /*
+            CircleAvatar(
+              backgroundImage: NetworkImage(e.flag),
+            ),*/
+                                                                                  SizedBox(
+                                                                                    width: 10,
+                                                                                  ),
+                                                                                  Text(e.nombre),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        )
+                                                                        .toList(),
                                                               ),
                                                             ),
                                                           ],
@@ -2268,6 +2207,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           .width *
                                                       0.47,
                                                   child: TextFormField(
+                                                    onChanged: (value) async {
+                                                      await _onTextChanged();
+                                                    },
                                                     controller: _model
                                                         .textControllerDescripcionPqrs,
                                                     autofocus: true,
@@ -2763,6 +2705,47 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
     );
   }
 
+  _onTextChanged() async {
+    if (_debounceTimer?.isActive ?? false) {
+      _debounceTimer?.cancel();
+    }
+    _debounceTimer = Timer(Duration(milliseconds: 500), () async {
+      // Realizar la acción después de que el usuario haya dejado de escribir por 500 ms (0.5 segundos)
+      print('Texto después de inactividad');
+      final tool = LanguageTool(language: 'es');
+      final result =
+          await tool.check(_model.textControllerDescripcionPqrs.text);
+      markMistakes(result, _model.textControllerDescripcionPqrs.text);
+      result.forEach(print);
+    });
+  }
+
+  /// prints the given [sentence] with all mistakes marked red.
+  void markMistakes(List<WritingMistake> result, String sentence) {
+    var text = sentence;
+    // Color codes for the terminal.
+    const red = '\u001b[31m';
+    const reset = '\u001b[0m';
+
+    var addedChars = 0;
+
+    for (final mistake in result) {
+      text = text.replaceRange(
+        mistake.offset + addedChars,
+        mistake.offset + mistake.length + addedChars,
+        red +
+            text.substring(
+              mistake.offset + addedChars,
+              mistake.offset + mistake.length + addedChars,
+            ) +
+            reset,
+      );
+      addedChars += 9;
+    }
+
+    log(text);
+  }
+
   void handleFileUpload(dynamic event) {
     final file = event['target']['files'][0];
     final reader = js.JsObject(js.context['FileReader']);
@@ -2818,27 +2801,28 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
       GRecaptchaV3.hideBadge();
       Navigator.pop(context);
     }
+    Utilidades util = Utilidades();
 
     // Crear la instancia de PQR con los valores obtenidos
     Pqrs peticion = Pqrs(
         dependencia: areaController != null ? areaController!.nombre : '',
         asunto: (controladorAsunto.text.length > 3)
-            ? controladorAsunto.text
+            ? util.capitalizarPalabras(controladorAsunto.text)
             : 'Sin Asunto',
         id: newId,
         nombreDependencia: '',
-        primerNombreSolicitante: primerNombre,
-        segundoNombreSolicitante: segundoNombre,
-        primerApellidoSolicitante: primerApellido,
-        segundoApellidoSolicitante: segundoApellido,
+        primerNombreSolicitante: util.capitalizarPalabras(primerNombre),
+        segundoNombreSolicitante: util.capitalizarPalabras(segundoNombre),
+        primerApellidoSolicitante: util.capitalizarPalabras(primerApellido),
+        segundoApellidoSolicitante: util.capitalizarPalabras(segundoApellido),
         tipoIdSolicitante: tipoIdentificacion,
         idSolicitante: numeroIdentificacion,
         tipoPQRS: this.nombreTipoPQR,
         tipoMedioContacto: int.parse(tipomedioContacto),
         numTelefono: telefono,
-        medioContacto: medioContacto,
+        medioContacto: util.capitalizarPalabras(medioContacto),
         direccion: '',
-        descripcion: descripcion,
+        descripcion: util.capitalizarParrafo(descripcion),
         respuesta: respuesta,
         nombreArchivoAdjunto: nombreAdjuntoPQRS ?? '',
         fechaInt: DateTime.now().millisecondsSinceEpoch,

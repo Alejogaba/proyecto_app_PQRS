@@ -572,7 +572,7 @@ class _VentanaFuncionariosWidgetState extends State<VentanaFuncionariosWidget> {
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0x00000000),
+                                                    color: Color.fromARGB(180, 0, 0, 0),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:

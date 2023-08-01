@@ -569,7 +569,7 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0x00000000),
+                                                color: Color.fromARGB(172, 0, 0, 0),
                                                 width: 1.0,
                                               ),
                                               borderRadius:

@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/modelo/pqrs.dart';
 
@@ -533,6 +534,8 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                     controller: _model.textControllerBuscar,
                                     autofocus: true,
                                     obscureText: false,
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       hintText: 'Consultar Ticket...',
                                       hintStyle: FlutterFlowTheme.of(context)
@@ -552,7 +555,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: Color.fromARGB(161, 0, 0, 0),
                                           width: 1.0,
                                         ),
                                         borderRadius:
@@ -1524,8 +1527,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                                                   Border.all(
                                                                 color: (_estadoPqrs ==
                                                                         1)
-                                                                    ? Color(
-                                                                        0xFF140101)
+                                                                    ? Color.fromARGB(255, 232, 222, 222)
                                                                     : Colors
                                                                         .transparent,
                                                                 width: 2.0,
@@ -1607,8 +1609,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                                                   Border.all(
                                                                 color: (_estadoPqrs ==
                                                                         2)
-                                                                    ? Color(
-                                                                        0xFF140101)
+                                                                    ? Color.fromARGB(255, 219, 202, 202)
                                                                     : Colors
                                                                         .transparent,
                                                                 width: 2.0,
@@ -1691,8 +1692,7 @@ class _VentanPQRSWidgetAnonimoState extends State<VentanPQRSWidgetAnonimo> {
                                                                   Border.all(
                                                                 color: (_estadoPqrs ==
                                                                         3)
-                                                                    ? Color(
-                                                                        0xFF140101)
+                                                                    ? Color.fromARGB(255, 232, 222, 222)
                                                                     : Colors
                                                                         .transparent,
                                                                 width: 2.0,

@@ -75,6 +75,8 @@ dependencies:
   snackbar: ^1.0.2
   top_snackbar_flutter: ^3.1.0
   g_recaptcha_v3: ^0.0.5
+  searchfield: ^0.8.3
+  language_tool: ^2.1.1
  
 
 

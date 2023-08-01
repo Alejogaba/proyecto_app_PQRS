@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/services.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
@@ -531,6 +532,8 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                     onChanged: (value){setState(() {
                                       
                                     });},
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     controller: _model.textController,
                                     autofocus: true,
                                     obscureText: false,
@@ -553,7 +556,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: Color.fromARGB(177, 0, 0, 0),
                                           width: 1.0,
                                         ),
                                         borderRadius:
