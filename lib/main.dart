@@ -22,7 +22,6 @@ void main() async {
     bool ready = await GRecaptchaV3.ready(
         "6Le5wysnAAAAABlIaA3rjB6mATXfjfYYrLpi87K5"); //--2
     print("Is Recaptcha ready? $ready");
-   
   }
 
   runApp(MyApp());
@@ -79,7 +78,7 @@ class _MyAppState extends State<MyApp> {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             if (AuthHelper.estaLogeado()) {
-              return VentanPQRSWidget();
+              return VentanaDashboardWidget();
             } else {
               return HomePageWidget();
             }
