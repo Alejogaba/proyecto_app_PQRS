@@ -484,7 +484,7 @@ class _RegistrarDependenciaPageWidgetState
                               height: 60.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                    .accent3,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
@@ -501,7 +501,7 @@ class _RegistrarDependenciaPageWidgetState
                                     child: FaIcon(
                                       FontAwesomeIcons.solidIdCard,
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                          .secondaryText,
                                       size: 22.0,
                                     ),
                                   ),
@@ -515,7 +515,7 @@ class _RegistrarDependenciaPageWidgetState
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -553,7 +553,7 @@ class _RegistrarDependenciaPageWidgetState
                               width: 180.0,
                               height: 60.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent3,
+                                color: FlutterFlowTheme.of(context).secondaryBackground,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
@@ -570,7 +570,7 @@ class _RegistrarDependenciaPageWidgetState
                                     child: FaIcon(
                                       FontAwesomeIcons.building,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryText,
                                       size: 22.0,
                                     ),
                                   ),
@@ -584,7 +584,7 @@ class _RegistrarDependenciaPageWidgetState
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .primaryText,
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.normal,
                                           ),

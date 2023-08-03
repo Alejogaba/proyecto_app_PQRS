@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:html';
 
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -89,6 +90,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
     _model.dispose();
     _debounceTimer?.cancel();
     _unfocusNode.dispose();
+    window.localStorage.clear();
     super.dispose();
   }
 
@@ -805,7 +807,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           String>(null),
                                                   options: [
                                                     'Tarjeta de indetidad',
-                                                    'Cédula de Ciudadania'
+                                                    'Cédula de Ciudadania',
+                                                    'Cédula de Extranjeria',
+                                                        'NIT'
                                                   ],
                                                   onChanged: (val) => setState(
                                                       () => _model
@@ -865,6 +869,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           .width *
                                                       0.47,
                                                   child: TextFormField(
+                                                    maxLength: 10,
+                                                     keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                                     controller: _model
                                                         .textControllerNumeroIdentificacion,
                                                     autofocus: true,
@@ -1030,7 +1037,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Indique y diligencie el medio de envio para la respuesta (Solo una opción):',
+                                                'Indique y diligencie el medio de envio para la respuesta (Solo una opción)*:',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1074,6 +1081,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                             _opcionenvioDireccion =
                                                                 false;
                                                           } else {
+                                                            _model
+                                                                .textController7
+                                                                .text = '';
+                                                            _model
+                                                                .textController8
+                                                                .text = '';
                                                             _opcionenvioDireccion =
                                                                 true;
                                                           }
@@ -1114,6 +1127,10 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                       _opcionenvioDireccion =
                                                           false;
                                                     } else {
+                                                      _model.textController7
+                                                          .text = '';
+                                                      _model.textController8
+                                                          .text = '';
                                                       _opcionenvioDireccion =
                                                           true;
                                                     }
@@ -1277,6 +1294,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                             _opcionenvioEmail =
                                                                 false;
                                                           } else {
+                                                            _model
+                                                                .textController6
+                                                                .text = '';
+                                                            _model
+                                                                .textController8
+                                                                .text = '';
                                                             _opcionenvioEmail =
                                                                 true;
                                                           }
@@ -1317,6 +1340,10 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     if (_opcionenvioEmail) {
                                                       _opcionenvioEmail = false;
                                                     } else {
+                                                      _model.textController6
+                                                          .text = '';
+                                                      _model.textController8
+                                                          .text = '';
                                                       _opcionenvioEmail = true;
                                                     }
                                                   });
@@ -1485,6 +1512,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                             _opcionenvioWhatsapp =
                                                                 false;
                                                           } else {
+                                                            _model
+                                                                .textController6
+                                                                .text = '';
+                                                            _model
+                                                                .textController7
+                                                                .text = '';
                                                             _opcionenvioWhatsapp =
                                                                 true;
                                                           }
@@ -1526,6 +1559,10 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                       _opcionenvioWhatsapp =
                                                           false;
                                                     } else {
+                                                      _model.textController6
+                                                          .text = '';
+                                                      _model.textController7
+                                                          .text = '';
                                                       _opcionenvioWhatsapp =
                                                           true;
                                                     }
@@ -1564,6 +1601,13 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           .width *
                                                       0.47,
                                                   child: TextFormField(
+                                                    maxLength: 10,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    inputFormatters: [
+                                                      FilteringTextInputFormatter
+                                                          .digitsOnly
+                                                    ],
                                                     controller:
                                                         _model.textController8,
                                                     autofocus: true,
@@ -1653,7 +1697,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                               !value.startsWith(
                                                                   '3')) &&
                                                           _opcionenvioWhatsapp) {
-                                                        return 'Ingrese un número de teléfono valido';
+                                                        return 'Ingrese un número de teléfono válido';
                                                       }
 
                                                       return null;
@@ -1797,6 +1841,13 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                                 .width *
                                                             0.47,
                                                     child: TextFormField(
+                                                      maxLength: 10,
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .digitsOnly
+                                                      ],
                                                       controller: _model
                                                           .textController9,
                                                       autofocus: true,
@@ -1881,9 +1932,18 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                                     'Poppins',
                                                                 fontSize: 16.0,
                                                               ),
-                                                      validator: _model
-                                                          .textController8Validator
-                                                          .asValidator(context),
+                                                      validator: (value) {
+                                                        if (value!.isEmpty &&
+                                                            _opcionenvioWhatsapp) {
+                                                          return 'No deje este campo vacío.';
+                                                        }
+                                                        if ((value.length <
+                                                                7) &&
+                                                            _opcionenvioWhatsapp) {
+                                                          return 'Ingrese un número de teléfono fijo o celular válido';
+                                                        }
+                                                        return null;
+                                                      },
                                                     ),
                                                   ),
                                                 ),
@@ -1972,7 +2032,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Si lo desea, indique la dependencia a la que le sera dirijida esta $nombreTipoPQR',
+                                                'Si lo desea, indique la dependencia a la que le sera dirijida esta $nombreTipoPQR:',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -2099,7 +2159,8 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     autofocus: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      hintText: 'Asunto',
+                                                      hintText:
+                                                          'Escriba el asunto de su $nombreTipoPQR...',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2181,7 +2242,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Descripción: Haga un relato claro y precisode los hechos:',
+                                                'Descripción: Haga un relato claro y preciso de los hechos*:',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

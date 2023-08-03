@@ -479,8 +479,8 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                         12.0, 3.0, 0.0, 7.0),
                                     child: InkWell(
                                       onTap: () {
-                                        StorageHelper().descargarArchivo(
-                                            'NPkcT3fnkQSTAiDhBSrn', 'descarga');
+                                        StorageHelper().descargarArchivo(widget.pqrs.id!,
+                                            widget.pqrs.nombreArchivoAdjunto.toString(), 'descarga');
                                       },
                                       child: Container(
                                         width:

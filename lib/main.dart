@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             if (AuthHelper.estaLogeado()) {
-              return VentanPQRSWidget();
+              return VentanaDashboardWidget();
             } else {
               return HomePageWidget();
             }

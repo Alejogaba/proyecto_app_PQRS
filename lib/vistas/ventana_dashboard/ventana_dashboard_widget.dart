@@ -1877,7 +1877,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                           height: 8.0,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Colors.red,
+                                                            color:  FlutterFlowTheme.of(context).primary,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -1931,7 +1931,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color:
-                                                                  Colors.blue,
+                                                                  Color(0xFF12B07E),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -1985,8 +1985,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             height: 8.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Colors
-                                                                  .green,
+                                                              color:  FlutterFlowTheme.of(context).info,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -2599,7 +2598,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                           height: 8.0,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Colors.red,
+                                                            color:  FlutterFlowTheme.of(context).primary,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -2653,7 +2652,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color:
-                                                                  Colors.blue,
+                                                                    Color(0xFF12B07E),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -2707,8 +2706,7 @@ class _VentanaDashboardWidgetState extends State<VentanaDashboardWidget> {
                                                             height: 8.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Colors
-                                                                  .green,
+                                                              color: FlutterFlowTheme.of(context).info,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(

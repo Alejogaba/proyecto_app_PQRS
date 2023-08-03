@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
+import 'package:proyecto_p_q_r_s/flutter_flow/flutter_flow_theme.dart';
 
 class GraficoCircularIdentificacion extends StatefulWidget {
   const GraficoCircularIdentificacion({key});
@@ -72,19 +73,19 @@ class _GraficoCircularIdentificacionState
                   PieChartSectionData(
                     showTitle: true,
                     value: section1Percentage,
-                    color: Colors.red,
+                    color: FlutterFlowTheme.of(context).primary,
                     title: '${section1Percentage.toStringAsFixed(1)}%',
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   PieChartSectionData(
                     value: section2Percentage,
-                    color: Colors.blue,
+                    color:  Color(0xFF12B07E),
                     title: '${section2Percentage.toStringAsFixed(1)}%',
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   PieChartSectionData(
                     value: section3Percentage,
-                    color: Colors.green,
+                    color:  FlutterFlowTheme.of(context).info,
                     title: '${section3Percentage.toStringAsFixed(1)}%',
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),

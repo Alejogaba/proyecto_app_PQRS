@@ -52,7 +52,7 @@ class HoverContainer extends HookWidget {
                   print('tipo  archivo: $tipoArchivo');
                   dynamic tamArchivo =
                       await controllerDropzone!.getFileSize(ev);
-                  print('tamno  archivo: ' +
+                  print('tamaño  archivo: ' +
                       bytesToMegabytes(tamArchivo).toString());
 
                   if (!isAllowed) {

@@ -4,6 +4,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 
+import '../../flutter_flow/flutter_flow_theme.dart';
+
 class GraficoCircularAnonimo extends StatefulWidget {
   const GraficoCircularAnonimo({key});
 
@@ -71,19 +73,19 @@ class _GraficoCircularAnonimoState
                   PieChartSectionData(
                     showTitle: true,
                     value: section1Percentage,
-                    color: Colors.red,
+                    color:  FlutterFlowTheme.of(context).primary,
                     title: '$section1Percentage%',
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   PieChartSectionData(
                     value: section2Percentage,
-                    color: Colors.blue,
+                    color:  Color(0xFF12B07E),
                     title: '$section2Percentage%',
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   PieChartSectionData(
                     value: section3Percentage,
-                    color: Colors.green,
+                    color:  FlutterFlowTheme.of(context).info,
                     title: '$section3Percentage%',  
                     titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   ),
