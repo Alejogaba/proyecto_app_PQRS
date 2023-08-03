@@ -794,7 +794,7 @@ class _RegistrarDependenciaPageWidgetState
                                                         textControllerNombreDoendencia,
                                                         'Ej. Oficina de las TIC',
                                                         'Nombre de la dependencia*',
-                                                        30,
+                                                        60,
                                                         TextInputType.text,
                                                         null,
                                                         true,
@@ -1157,7 +1157,7 @@ class _RegistrarDependenciaPageWidgetState
     );
   }
 
-  Future<String> registrarFuncionario(BuildContext context, String? imagenUrl,
+  Future<String> registrarDependencia(BuildContext context, String? imagenUrl,
       {bool editar = false}) async {
     Future pickImageFromGallery() async {
       print("starting get image");
@@ -1328,7 +1328,7 @@ class _RegistrarDependenciaPageWidgetState
       );
     }
 
-    Future<void> cargarFuncionarioDropdown(int idArea) async {
+    Future<void> cargarDependenciaDropdown(int idArea) async {
       log('idAre: $idArea');
 
       log('Cargando area...');

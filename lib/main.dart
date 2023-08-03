@@ -22,7 +22,6 @@ void main() async {
     bool ready = await GRecaptchaV3.ready(
         "6Le5wysnAAAAABlIaA3rjB6mATXfjfYYrLpi87K5"); //--2
     print("Is Recaptcha ready? $ready");
-   
   }
 
   runApp(MyApp());

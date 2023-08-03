@@ -1,4 +1,3 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -186,18 +185,20 @@ class tarjetaPqrsAnonimo extends StatelessWidget {
     if (tipoPeticion != null) {
       switch (tipoPeticion) {
         case 'Petición':
-          return 'https://www.reincorporacion.gov.co/es/atencion/PublishingImages/Paginas/pqrsd/Informes-de-PQRS-D.png';
+          return '../../../assets/images/iconoPeticion.jpeg';
         case 'Queja':
-          return 'https://www.reincorporacion.gov.co/es/atencion/PublishingImages/Paginas/pqrsd/Informes-de-PQRS-D.png';
+          return '../../../assets/images/iconoQueja.jpeg';
         case 'Reclamo':
-          return 'https://www.reincorporacion.gov.co/es/atencion/PublishingImages/Paginas/pqrsd/Informes-de-PQRS-D.png';
+          return '../../../assets/images/iconoReclamo.jpeg';
         case 'Sugerencia':
-          return 'https://www.reincorporacion.gov.co/es/atencion/PublishingImages/Paginas/pqrsd/Informes-de-PQRS-D.png';
+          return '../../../assets/images/iconoSugerencia.jpeg';
+        case 'Felicitaciónes':
+          return '../../../assets/images/iconoFelicitacion.jpeg';
         default:
-          return 'https://cdn-icons-png.flaticon.com/512/148/148766.png';
+          return '../../../assets/images/iconoFelicitacion.jpeg';
       }
     } else {
-      return 'https://cdn-icons-png.flaticon.com/512/148/148766.png';
+      return '../../../assets/images/iconoError.png';
     }
   }
 }
