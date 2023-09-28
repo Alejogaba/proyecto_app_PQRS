@@ -193,9 +193,9 @@ class tarjetaPqrsIdentificacion extends StatelessWidget {
         case 'Sugerencia':
           return '../../../assets/images/iconoSugerencia.jpeg';
         case 'Felicitaciónes':
-          return '../../../assets/images/iconoFelicitacion.jpeg';
+          return '../../../assets/images/iconoFelicitacion.jpg';
         default:
-          return '../../../assets/images/iconoFelicitacion.jpeg';
+          return '../../../assets/images/iconoFelicitacion.jpg';
       }
     } else {
       return '../../../assets/images/iconoError.png';
