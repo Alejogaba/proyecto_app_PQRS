@@ -965,7 +965,7 @@ class _RegistrarFuncionarioPageWidgetState
                                             } else {
                                               return Container();
                                             }
-                                          },
+                                          }, future: null,
                                         ),
                                       ],
                                     ),
