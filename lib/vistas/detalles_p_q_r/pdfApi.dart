@@ -104,7 +104,7 @@ class PdfApi {
                     alignment: pw.Alignment.topLeft,
                     padding: const pw.EdgeInsets.only(bottom: 0),
                     height: 80,
-                    child: Text('Radicación: ${pqr.descripcion}',
+                    child: Text('Radicación: ',
                         overflow: TextOverflow.clip,
                         style: TextStyle(
                             fontSize: 9, fontWeight: FontWeight.normal),
@@ -246,7 +246,8 @@ class PdfApi {
               alignment: pw.Alignment.center,
               padding: const pw.EdgeInsets.only(bottom: 0),
               height: 80,
-              child: Text('${pqr.primerNombreSolicitante} ${pqr.segundoNombreSolicitante} ${pqr.primerApellidoSolicitante} ${pqr.segundoApellidoSolicitante} ',
+              child: Text(
+                  '${pqr.primerNombreSolicitante} ${pqr.segundoNombreSolicitante} ${pqr.primerApellidoSolicitante} ${pqr.segundoApellidoSolicitante} ',
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
                   textAlign: TextAlign.center),
             ),
@@ -314,9 +315,9 @@ class PdfApi {
             ),
           )),
         ]),
-         SizedBox(height: 0.4 * PdfPageFormat.cm),
+        SizedBox(height: 0.4 * PdfPageFormat.cm),
         buildTextJustificado(
-                  "2. DATOS DE CONTACTO DEL PETICIONARIO", 12, FontWeight.normal),
+            "2. DATOS DE CONTACTO DEL PETICIONARIO", 12, FontWeight.normal),
         Row(children: [
           Container(
             width: 200,
@@ -333,7 +334,8 @@ class PdfApi {
               alignment: pw.Alignment.center,
               padding: const pw.EdgeInsets.only(bottom: 0),
               height: 80,
-              child: Text('${Utilidades().definirTipoEnvio(pqr.tipoMedioContacto)}:',
+              child: Text(
+                  '${Utilidades().definirTipoEnvio(pqr.tipoMedioContacto)}:',
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
                   textAlign: TextAlign.center),
             ),
@@ -402,8 +404,7 @@ class PdfApi {
           )),
         ]),
         SizedBox(height: 0.4 * PdfPageFormat.cm),
-        buildTextJustificado(
-                  "3. PETICIÓN", 12, FontWeight.normal),
+        buildTextJustificado("3. PETICIÓN", 12, FontWeight.normal),
         Row(children: [
           Container(
             width: 200,
@@ -462,7 +463,7 @@ class PdfApi {
               alignment: pw.Alignment.centerLeft,
               padding: const pw.EdgeInsets.only(left: 10),
               height: 90,
-              child: Text('Descripción: Haga un relato claro y preciso de los hechos:',
+              child: Text('Descripción: ',
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
                   textAlign: TextAlign.left),
             ),
@@ -470,7 +471,6 @@ class PdfApi {
         ]),
         Row(children: [
           Expanded(
-          
               child: Container(
             padding: const EdgeInsets.all(4),
             height: 7 * PdfPageFormat.cm,
@@ -499,23 +499,29 @@ class PdfApi {
             height: 1.8 * PdfPageFormat.cm,
             decoration: BoxDecoration(
                 border: Border(
-              left: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              right: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              top: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-              bottom: BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
-            ),
-            borderRadius: BorderRadius.circular(10)),
+                  left:
+                      BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+                  right:
+                      BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+                  top:
+                      BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+                  bottom:
+                      BorderSide(width: 0.5, color: PdfColor.fromHex("000000")),
+                ),
+                borderRadius: BorderRadius.circular(10)),
             child: Container(
               alignment: pw.Alignment.topLeft,
               padding: const pw.EdgeInsets.only(bottom: 0),
               height: 75,
-              child: Text('${pqr.descripcion}',
-                  style: TextStyle(fontSize: 9, fontWeight: FontWeight.normal, color: PdfColor.fromHex('B5B2B2')),
+              child: Text('RESPUESTA: \n${pqr.respuesta}',
+                  style: TextStyle(
+                      fontSize: 9,
+                      fontWeight: FontWeight.normal,
+                      color: PdfColor.fromHex('#0a0a0a')),
                   textAlign: TextAlign.left),
             ),
           )),
         ]),
-        
       ],
     ));
 
@@ -546,7 +552,6 @@ class PdfApi {
     double altura = 10;
     return pw.Column(
       children: [
-       
         pw.Row(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
@@ -560,10 +565,7 @@ class PdfApi {
                     ? pw.Image(MemoryImage(_logo2!))
                     : pw.PdfLogo(),
               ),
-              
-            
             ]),
-            
           ],
         ),
         if (context.pageNumber > 1) pw.SizedBox(height: 20)
