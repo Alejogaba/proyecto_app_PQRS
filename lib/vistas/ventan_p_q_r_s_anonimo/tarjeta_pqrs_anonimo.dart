@@ -193,9 +193,9 @@ class tarjetaPqrsAnonimo extends StatelessWidget {
         case 'Sugerencia':
           return '../../../assets/images/iconoSugerencia.jpeg';
         case 'Felicitaciónes':
-          return 'assets/images/iconoFelicitacion.jpg';
+          return 'assets/images/iconoFelicitacion.png';
         default:
-          return 'assets/images/iconoFelicitacion.jpg';
+          return 'assets/images/iconoFelicitacion.png';
       }
     } else {
       return 'assets/images/iconoError.png';
