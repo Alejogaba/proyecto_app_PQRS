@@ -185,20 +185,20 @@ class tarjetaPqrsIdentificacion extends StatelessWidget {
     if (tipoPeticion != null) {
       switch (tipoPeticion) {
         case 'Petición':
-          return '../../../assets/images/iconoPeticion.jpeg';
+          return 'assets/images/iconoPeticion.jpeg';
         case 'Queja':
-          return '../../../assets/images/iconoQueja.jpeg';
+          return 'assets/images/iconoQueja.jpeg';
         case 'Reclamo':
-          return '../../../assets/images/iconoReclamo.jpeg';
+          return 'assets/images/iconoReclamo.jpeg';
         case 'Sugerencia':
-          return '../../../assets/images/iconoSugerencia.jpeg';
+          return 'assets/images/iconoSugerencia.jpeg';
         case 'Felicitaciónes':
-          return '../../../assets/images/iconoFelicitacion.jpeg';
+          return 'assets/images/iconoFelicitacion.png';
         default:
-          return '../../../assets/images/iconoFelicitacion.jpeg';
+          return 'assets/images/iconoFelicitacion.png';
       }
     } else {
-      return '../../../assets/images/iconoError.png';
+      return 'assets/images/iconoError.png';
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:html';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -135,8 +136,16 @@ class AlertRespuestaPQRS {
             pqr.respuesta = textControllerDescripcionPqrs.text;
             // await ControladorPQRS().actualizarPQR(pqr);
             if (pqr.tipoMedioContacto == 3) {
+              print('generar pdf');
+
+              var pdf = await PdfApi().generarHojaSalida(pqr, 'observacion');
+
+              // Genera el archivo PDF en formato Uint8List
+              final Uint8List pdfBytes = await pdf.save();
+              String? url =
+                  await uploadFileToFirebaseStorage(pdfBytes, 'Respuesta.pdf');
               sendWhatsAppMessage(
-                  pqr.numTelefono.toString(), pqr.respuesta.toString());
+                  pqr.numTelefono.toString(), '${pqr.respuesta.toString()} \n Puede descargar una copia de su PQRS en el siguiente enlace: $url');
             } else {
               if (pqr.tipoMedioContacto == 2) {
                 SendMail(
@@ -145,13 +154,11 @@ class AlertRespuestaPQRS {
                     mensaje: pqr.respuesta.toString());
               } else {
                 print('generar pdf');
-                
-                var pdf =
-                    await PdfApi().generarHojaSalida(pqr, 'observacion');
+
+                var pdf = await PdfApi().generarHojaSalida(pqr, 'observacion');
 
                 // Genera el archivo PDF en formato Uint8List
                 final Uint8List pdfBytes = await pdf.save();
-                
 
                 // Crea un objeto Blob con los datos del PDF
                 final blob = Blob([pdfBytes], 'application/pdf');
@@ -176,16 +183,15 @@ class AlertRespuestaPQRS {
 
                 // Libera la URL creada para el objeto Blob
                 Url.revokeObjectUrl(url);
-            
-            AlertDecidirEstadoPQRS(
-                    contextPadre: contextPadre,
-                    iconEnvio: iconEnvio,
-                    mensajeEnvio: mensajeEnvio,
-                    pqr: pqr)
-                .showConfirmationAlert(context);
+
+                AlertDecidirEstadoPQRS(
+                        contextPadre: contextPadre,
+                        iconEnvio: iconEnvio,
+                        mensajeEnvio: mensajeEnvio,
+                        pqr: pqr)
+                    .showConfirmationAlert(context);
               }
             }
-            
           },
         ),
       ],
@@ -263,6 +269,31 @@ class AlertRespuestaPQRS {
       await launchUrl(whatsappUri);
     } else {
       throw 'No se pudo abrir WhatsApp.';
+    }
+  }
+
+  Future<String?> uploadFileToFirebaseStorage(
+      Uint8List fileBytes, String fileName) async {
+    try {
+      // Obtén una referencia al almacenamiento de Firebase
+      final FirebaseStorage storage = FirebaseStorage.instance;
+
+      // Crea una referencia al archivo en Firebase Storage
+      final Reference storageReference = storage.ref().child(fileName);
+
+      // Sube el archivo
+      final UploadTask uploadTask = storageReference.putData(fileBytes);
+
+      // Espera a que se complete la carga
+      await uploadTask.whenComplete(() => print('Archivo subido'));
+
+      // Obtiene el enlace de descarga del archivo subido
+      final String downloadUrl = await storageReference.getDownloadURL();
+
+      return downloadUrl;
+    } catch (e) {
+      print('Error al subir el archivo: $e');
+      return null;
     }
   }
 }
