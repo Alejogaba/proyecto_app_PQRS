@@ -11,6 +11,7 @@ import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_delegar_items.dart'
     as hp;
 import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_respuesta_pqrs.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../controlador/controlador_dependencia.dart';
@@ -62,7 +63,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
           preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.06),
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.07),
           child: AppBar(
             leading: IconButton(
               icon: Icon(
@@ -86,12 +87,13 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if(widget.pqrs.estado==2)
-                      FaIcon(FontAwesomeIcons.clock,
-                    color: FlutterFlowTheme.of(context).primaryText),
-                    if(widget.pqrs.estado==3)
-                      FaIcon(Icons.check_rounded, size: 37,
-                    color: FlutterFlowTheme.of(context).primaryText),
+                      if (widget.pqrs.estado == 2)
+                        FaIcon(FontAwesomeIcons.clock,
+                            color: FlutterFlowTheme.of(context).primaryText),
+                      if (widget.pqrs.estado == 3)
+                        FaIcon(Icons.check_rounded,
+                            size: 37,
+                            color: FlutterFlowTheme.of(context).primaryText),
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
@@ -479,8 +481,11 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                         12.0, 3.0, 0.0, 7.0),
                                     child: InkWell(
                                       onTap: () {
-                                        StorageHelper().descargarArchivo(widget.pqrs.id!,
-                                            widget.pqrs.nombreArchivoAdjunto.toString(), 'descarga');
+                                        StorageHelper().descargarArchivo(
+                                            widget.pqrs.id!,
+                                            widget.pqrs.nombreArchivoAdjunto
+                                                .toString(),
+                                            'descarga');
                                       },
                                       child: Container(
                                         width:
@@ -581,174 +586,192 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                                 ],
                               ),
                             ),
-                            if(widget.pqrs.estado>1&&widget.pqrs.respuesta.toString().trim().isNotEmpty)
+                          if (widget.pqrs.estado > 1 &&
+                              widget.pqrs.respuesta
+                                  .toString()
+                                  .trim()
+                                  .isNotEmpty)
                             Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
-                            child: Text(
-                              'Respuesta:',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 0.0),
+                              child: Text(
+                                'Respuesta:',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
                             ),
-                          ),
-                          if(widget.pqrs.estado>1&&widget.pqrs.respuesta.toString().trim().isNotEmpty)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 8.0, 20.0, 0.0),
-                            child: Text(
-                              widget.pqrs.respuesta.toString(),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 21.0,
-                                  ),
+                          if (widget.pqrs.estado > 1 &&
+                              widget.pqrs.respuesta
+                                  .toString()
+                                  .trim()
+                                  .isNotEmpty)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 8.0, 20.0, 0.0),
+                              child: Text(
+                                widget.pqrs.respuesta.toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 21.0,
+                                    ),
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top:16.0),
+                  padding: const EdgeInsets.only(top: 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if(widget.pqrs.estado<3)
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
-                        child: FFButtonWidget(
-                          onPresionado: () {
-                            try {
-                              AlertRespuestaPQRS(
-                                      contextPadre: context,
-                                      iconEnvio: definirIcono(
-                                          widget.pqrs.tipoMedioContacto),
-                                      mensajeEnvio: definirMensajeEnvio(
-                                          widget.pqrs.tipoMedioContacto),
-                                      pqr: widget.pqrs)
-                                  .showConfirmationAlert(context);
-                            } catch (e) {
-                              log('Error responder: $e');
-                            }
-                          },
-                          text: 'Responder',
-                          icon: Icon(
-                            Icons.email_outlined,
-                            size: 15.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 300.0,
-                            height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF006344),
-                            textStyle:
-                                FlutterFlowTheme.of(context).titleMedium.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                      if (widget.pqrs.estado < 3)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 16.0),
+                          child: FFButtonWidget(
+                            onPresionado: () {
+                              try {
+                                AlertRespuestaPQRS(
+                                        contextPadre: context,
+                                        iconEnvio: definirIcono(
+                                            widget.pqrs.tipoMedioContacto),
+                                        mensajeEnvio: definirMensajeEnvio(
+                                            widget.pqrs.tipoMedioContacto),
+                                        pqr: widget.pqrs)
+                                    .showConfirmationAlert(context);
+                              } catch (e) {
+                                log('Error responder: $e');
+                              }
+                            },
+                            text: 'Responder',
+                            icon: Icon(
+                              Icons.email_outlined,
+                              size: 15.0,
+                            ),
+                            options: FFButtonOptions(
+                              width: 300.0,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF006344),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      if(widget.pqrs.estado==1)
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
-                        child: FFButtonWidget(
-                          onPresionado: () {
-                            try {
-                              showAlertDelegar(context);
-                            } catch (e) {
-                              log('Error responder: $e');
-                            }
-                          },
-                          text: 'Delegar',
-                          icon: Icon(
-                            Icons.forward_to_inbox_outlined,
-                            size: 15.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 300.0,
-                            height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF054E63),
-                            textStyle:
-                                FlutterFlowTheme.of(context).titleMedium.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                      if (widget.pqrs.estado == 1)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 16.0),
+                          child: FFButtonWidget(
+                            onPresionado: () {
+                              try {
+                                showAlertDelegar(context);
+                              } catch (e) {
+                                log('Error responder: $e');
+                              }
+                            },
+                            text: 'Delegar',
+                            icon: Icon(
+                              Icons.forward_to_inbox_outlined,
+                              size: 15.0,
+                            ),
+                            options: FFButtonOptions(
+                              width: 300.0,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF054E63),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      if(widget.pqrs.estado<3)
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 16.0),
-                        child: FFButtonWidget(
-                          onPresionado: () async {
-                            await ControladorPQRS()
-                                .marcarPqrsFinalizada(widget.pqrs.id!,(widget.pqrs.respuesta!=null&&widget.pqrs.respuesta.toString().trim().isNotEmpty) ? widget.pqrs.respuesta! : 'Sin respuesta/No aplica');
-                            CustomSnackBars().snackBarOk(
-                                                    context,
-                                                    'Finalizada',
-                                                    '${widget.pqrs.tipoPQRS} marcada como finalizada/leída');
-                            Navigator.of(context).pop();
-                          },
-                          text: 'Marcar como finalizado',
-                          icon: Icon(
-                            Icons.check_rounded,
-                            size: 15.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 300.0,
-                            height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).secondary,
-                            textStyle:
-                                FlutterFlowTheme.of(context).titleMedium.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                      if (widget.pqrs.estado < 3)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 16.0),
+                          child: FFButtonWidget(
+                            onPresionado: () async {
+                              await ControladorPQRS().marcarPqrsFinalizada(
+                                  widget.pqrs.id!,
+                                  (widget.pqrs.respuesta != null &&
+                                          widget.pqrs.respuesta
+                                              .toString()
+                                              .trim()
+                                              .isNotEmpty)
+                                      ? widget.pqrs.respuesta!
+                                      : 'Sin respuesta/No aplica');
+                              CustomSnackBars().snackBarOk(
+                                  context,
+                                  'Finalizada',
+                                  '${widget.pqrs.tipoPQRS} marcada como finalizada/leída');
+                              Navigator.of(context).pop();
+                            },
+                            text: 'Marcar como finalizado',
+                            icon: Icon(
+                              Icons.check_rounded,
+                              size: 15.0,
+                            ),
+                            options: FFButtonOptions(
+                              width: 300.0,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).secondary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                 ),
@@ -762,26 +785,24 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
 
   void showAlertDelegar(BuildContext context) async {
     int posicionArea = 0;
-    Dependencia? dependencia =
-                                                      await ControladorDependencia()
-                                                          .buscarDepedenciaPorNombre(
-                                                              widget.pqrs.dependencia.toString());
-                                                  if (dependencia != null) {
-                                                    posicionArea =
-                                                        dependencia.index;
-                                                  }
+    Dependencia? dependencia = await ControladorDependencia()
+        .buscarDepedenciaPorNombre(widget.pqrs.dependencia.toString());
+    if (dependencia != null) {
+      posicionArea = dependencia.index;
+    }
     Alert(
       context: context,
       title: 'Escoja la dependencia',
       content: StatefulBuilder(// You need this, notice the parameters below:
           builder: (BuildContext context, StateSetter setState) {
         return AlertDelegarItems(
-            contextPadre: context,
-            iconEnvio: FontAwesomeIcons.envelope,
-            nombreDependencia: 'hola',
-            pqr: widget.pqrs,
-            nombreTipoPQR: widget.pqrs.tipoPQRS.toString(),
-            posicion: posicionArea,);
+          contextPadre: context,
+          iconEnvio: FontAwesomeIcons.envelope,
+          nombreDependencia: 'hola',
+          pqr: widget.pqrs,
+          nombreTipoPQR: widget.pqrs.tipoPQRS.toString(),
+          posicion: posicionArea,
+        );
       }),
       buttons: [
         DialogButton(
@@ -821,11 +842,17 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
             ],
           ),
           onPressed: () async {
-            AlertDecidirEstadoPQRS(
+            final prefs = await SharedPreferences.getInstance();
+            String? email = prefs.getString('EmailDependencia');
+            if (email == null) {
+              email = dependencia!.email.toString();
+            }
+            log('Holaaaa' + email.toString());
+            /*  AlertDecidirEstadoPQRS(
                 contextPadre: context,
                 iconEnvio: FontAwesomeIcons.envelope,
                 mensajeEnvio: 'si',
-                pqr: widget.pqrs);
+                pqr: widget.pqrs);*/
           },
         ),
       ],

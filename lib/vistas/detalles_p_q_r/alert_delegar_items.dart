@@ -11,6 +11,7 @@ import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/pdfApi.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:searchfield/searchfield.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../controlador/controlador_dependencia.dart';
@@ -19,6 +20,7 @@ import '../../controlador/storage_helper.dart';
 import '../../flutter_flow/flutter_flow_dropdown2.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../modelo/dependencia.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AlertDelegarItems extends StatefulWidget {
   final BuildContext contextPadre;
@@ -43,7 +45,7 @@ class AlertDelegarItems extends StatefulWidget {
   TextEditingController textControllerDescripcionPqrs =
       new TextEditingController();
   List<Dependencia?> listaTemporalDependencia = [];
-  
+
   Dependencia? areaController;
 }
 
@@ -51,7 +53,7 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
   TextEditingController textControllerDescripcionPqrs =
       new TextEditingController();
   List<Dependencia?> listaTemporalDependencia = [];
-  
+
   Dependencia? areaController;
 
   @override
@@ -90,6 +92,37 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                     ),
                   ],
                 ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Dependencia solicitada por el usuario: ',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 11.0,
+                                ),
+                          ),
+                          Text(
+                            '${widget.nombreDependencia}',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 StreamBuilder<List<Dependencia?>>(
                   stream:
                       ControladorDependencia().obtenerDependenciasStream(''),
@@ -107,82 +140,40 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    13, 10, 0, 13),
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      child: Align(
-                                        alignment: AlignmentDirectional(0, 0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 0, 10),
-                                          child:
-                                              FlutterFlowDropDown2<Dependencia>(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.95,
-                                            height: 45,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: Color.fromARGB(
-                                                          207, 0, 0, 0),
-                                                    ),
-                                            hintText: 'Area...',
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2,
-                                            borderColor: Colors.black,
-                                            borderWidth: 0,
-                                            borderRadius: 8,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12, 4, 12, 4),
-                                            hidesUnderline: true,
-                                            value: snapshot.data![widget.posicion],
-                                            initialOption:
-                                                snapshot.data![widget.posicion],
-                                            options: List.generate(
-                                                snapshot.data!.length,
-                                                (index) => DropdownMenuItem(
-                                                    value:
-                                                        snapshot.data![index],
-                                                    child: Text(
-                                                      snapshot
-                                                          .data![index]!.nombre
-                                                          .toString(),
-                                                    ))),
-                                            onChanged: (val) async {
-                                              if (val != null) {
-                                                setState(() {
-                                                  
-                                                  widget.posicion = snapshot.data!
-                                                      .indexOf(val);
-                                                  log('Posicion area y valor: $widget.posicion ${val.nombre}');
-                                                  if (widget.posicion < 0) {
-                                                    for (var element
-                                                        in listaTemporalDependencia) {
-                                                      log('elemento dependencia: ${element!.nombre}');
-                                                    }
-
-                                                    widget.posicion = val.index;
-                                                    if (widget.posicion < 0) {
-                                                      widget.posicion = 0;
-                                                    }
-                                                  }
-                                                  log('Posicion area: $widget.posicion');
-                                                  areaController = val;
-                                                });
-                                              }
-                                            },
-                                          ),
-                                        ),
+                                      child: SearchField<Dependencia>(
+                                        onSuggestionTap: (p0) async{
+                                          final prefs = await SharedPreferences.getInstance();
+                                          prefs.setString('EmailDependencia',p0.item!.email);
+                                          log('On suggestionTap: ${p0.item!.email}');
+                                        },
+                                        suggestions: listaTemporalDependencia
+                                            .map(
+                                              (e) => SearchFieldListItem<
+                                                  Dependencia>(
+                                                e!.nombre,
+                                                item: e,
+                                                // Use child to show Custom Widgets in the suggestions
+                                                // defaults to Text widget
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Text(e.nombre),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                            .toList(),
                                       ),
                                     ),
                                   ],
@@ -298,10 +289,10 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                                               margin: EdgeInsetsDirectional
                                                   .fromSTEB(12, 4, 12, 4),
                                               hidesUnderline: true,
-                                              value:
-                                                  snapshot.data![widget.posicion],
-                                              initialOption:
-                                                  snapshot.data![widget.posicion],
+                                              value: snapshot
+                                                  .data![widget.posicion],
+                                              initialOption: snapshot
+                                                  .data![widget.posicion],
                                               options: List.generate(
                                                   snapshot.data!.length,
                                                   (index) => DropdownMenuItem(
@@ -315,7 +306,8 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                                               onChanged: (val) {
                                                 if (val != null) {
                                                   //setState
-                                                  widget.posicion = snapshot.data!
+                                                  widget.posicion = snapshot
+                                                      .data!
                                                       .indexOf(val);
                                                   log('Posicion area y valor: $widget.posicion ${val.nombre}');
                                                   if (widget.posicion < 0) {
