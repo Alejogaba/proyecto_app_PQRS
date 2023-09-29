@@ -143,15 +143,29 @@ class AlertRespuestaPQRS {
               // Genera el archivo PDF en formato Uint8List
               final Uint8List pdfBytes = await pdf.save();
               String? url =
-                  await uploadFileToFirebaseStorage(pdfBytes, 'Respuesta.pdf');
-              sendWhatsAppMessage(
-                  pqr.numTelefono.toString(), '${pqr.respuesta.toString()} \n Puede descargar una copia de su PQRS en el siguiente enlace: $url');
+                  await uploadFileToFirebaseStorage(pdfBytes, '${pqr.id}.pdf');
+              sendWhatsAppMessage('57${pqr.medioContacto.toString().trim()}',
+                  'Saludos de parte de la Alcaldía municipal de la Paz, a continuación en el siguiente enlace encontrara una copia y respuesta a su ${pqr.tipoPQRS} que usted realizo el día ${pqr.fechaString} con número de radicado #${pqr.id} : \n$url');
+               AlertDecidirEstadoPQRS(
+                        contextPadre: contextPadre,
+                        iconEnvio: iconEnvio,
+                        mensajeEnvio: mensajeEnvio,
+                        pqr: pqr)
+                    .showConfirmationAlert(context);
             } else {
               if (pqr.tipoMedioContacto == 2) {
+                print('generar pdf');
+
+              var pdf = await PdfApi().generarHojaSalida(pqr, 'observacion');
+
+              // Genera el archivo PDF en formato Uint8List
+              final Uint8List pdfBytes = await pdf.save();
+              String? url =
+                  await uploadFileToFirebaseStorage(pdfBytes, '${pqr.id}.pdf');
                 SendMail(
                     destinatario: pqr.medioContacto.toString(),
-                    asunto: 'Respuesta a su ${pqr.tipoPQRS} con N°${pqr.id}',
-                    mensaje: pqr.respuesta.toString());
+                    asunto: 'Respuesta a su ${pqr.tipoPQRS} con N° de radicado #${pqr.id}',
+                    mensaje: 'Saludos de parte de la Alcaldía municipal de la Paz, a continuación en el siguiente enlace encontrara una copia y respuesta a su ${pqr.tipoPQRS} que usted realizo el día ${pqr.fechaString} con número de radicado #${pqr.id} : \n$url');
               } else {
                 print('generar pdf');
 
@@ -235,12 +249,6 @@ class AlertRespuestaPQRS {
       final mailto = Mailto(
         to: [
           destinatario,
-        ],
-        cc: [
-          'Alejogaba@gmail.com',
-        ],
-        bcc: [
-          'Alejogaba_1116@hotmail.com',
         ],
         subject: asunto,
         body: mensaje,
