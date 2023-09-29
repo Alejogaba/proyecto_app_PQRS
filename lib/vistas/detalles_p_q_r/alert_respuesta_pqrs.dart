@@ -144,8 +144,8 @@ class AlertRespuestaPQRS {
               final Uint8List pdfBytes = await pdf.save();
               String? url =
                   await uploadFileToFirebaseStorage(pdfBytes, '${pqr.id}.pdf');
-              sendWhatsAppMessage('57${pqr.medioContacto.toString().trim()}',
-                  'Saludos de parte de la Alcaldía municipal de la Paz, a continuación en el siguiente enlace encontrara una copia y respuesta a su ${pqr.tipoPQRS} que usted realizo el día ${pqr.fechaString} con número de radicado #${pqr.id} : \n$url');
+              sendWhatsAppMessage('${pqr.medioContacto.toString().trim()}',
+                  'Saludos de parte de la Alcaldía municipal de la Paz, esta es la respuesta a respuesta a su ${pqr.tipoPQRS} que usted realizo el día ${pqr.fechaString} con número de radicado #${pqr.id}:\n\n"${pqr.respuesta}"\n\nA continuación en el siguiente enlace encontrara una copia en formato PDF: \n$url');
                AlertDecidirEstadoPQRS(
                         contextPadre: contextPadre,
                         iconEnvio: iconEnvio,
@@ -165,7 +165,7 @@ class AlertRespuestaPQRS {
                 SendMail(
                     destinatario: pqr.medioContacto.toString(),
                     asunto: 'Respuesta a su ${pqr.tipoPQRS} con N° de radicado #${pqr.id}',
-                    mensaje: 'Saludos de parte de la Alcaldía municipal de la Paz, a continuación en el siguiente enlace encontrara una copia y respuesta a su ${pqr.tipoPQRS} que usted realizo el día ${pqr.fechaString} con número de radicado #${pqr.id} : \n$url');
+                    mensaje: 'Saludos de parte de la Alcaldía municipal de la Paz, esta es la respuesta a respuesta a su ${pqr.tipoPQRS} que usted realizo el día ${pqr.fechaString} con número de radicado #${pqr.id}:\n\n"${pqr.respuesta}"\n\nA continuación en el siguiente enlace encontrara una copia en formato PDF: \n$url');
               } else {
                 print('generar pdf');
 
@@ -250,6 +250,7 @@ class AlertRespuestaPQRS {
         to: [
           destinatario,
         ],
+        cc: ['pqrd@lapazrobles-cesar.gov.co'],
         subject: asunto,
         body: mensaje,
       );

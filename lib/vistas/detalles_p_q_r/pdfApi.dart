@@ -513,7 +513,7 @@ class PdfApi {
               alignment: pw.Alignment.topLeft,
               padding: const pw.EdgeInsets.only(bottom: 0),
               height: 75,
-              child: Text('RESPUESTA: \n${pqr.respuesta}',
+              child: Text('RESPUESTA:\n${pqr.respuesta}',
                   style: TextStyle(
                       fontSize: 9,
                       fontWeight: FontWeight.normal,
