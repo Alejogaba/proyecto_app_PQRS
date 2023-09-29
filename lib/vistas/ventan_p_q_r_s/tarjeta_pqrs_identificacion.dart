@@ -192,7 +192,7 @@ class tarjetaPqrsIdentificacion extends StatelessWidget {
           return 'https://i.imgur.com/leiyZrb.jpg';
         case 'Sugerencia':
           return 'https://i.imgur.com/lFn1xfr.jpg';
-        case 'Felicitaciónes':
+        case 'Felicitaciones':
           return 'https://i.imgur.com/2ja1B5F.jpg';
         default:
           return 'https://i.imgur.com/CwiPtpP.png';
