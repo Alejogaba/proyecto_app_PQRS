@@ -569,7 +569,8 @@ class _VentanaDependenciasWidgetState extends State<VentanaDependenciasWidget> {
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color.fromARGB(172, 0, 0, 0),
+                                                color: Color.fromARGB(
+                                                    172, 0, 0, 0),
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -839,8 +840,8 @@ class tarjetaDependencia extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Image.asset(
-                            'assets/images/4974985.png',
+                          child: Image.network(
+                            dependencia.enlace,
                             fit: BoxFit.cover,
                           ),
                         ),
