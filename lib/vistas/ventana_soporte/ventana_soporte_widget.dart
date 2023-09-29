@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:mailto/mailto.dart';
 import 'package:proyecto_p_q_r_s/index.dart';
 import 'package:proyecto_p_q_r_s/vistas/ventan_p_q_r_s_anonimo/ventan_p_q_r_s_widget_anonimo.dart';
 
@@ -9,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ventana_soporte_model.dart';
 export 'ventana_soporte_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VentanaSoporteWidget extends StatefulWidget {
   const VentanaSoporteWidget({Key? key}) : super(key: key);
@@ -595,12 +599,7 @@ class _VentanaSoporteWidgetState extends State<VentanaSoporteWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const DetallesSoporteWidget()));
+                                    onTap: () {SendMail(destinatario: 'vidalandres_98@hotmail.com', asunto: 'Requiero soporte técnico', mensaje: '');
                                     },
                                     child: Container(
                                       height: 60.0,
@@ -657,5 +656,23 @@ class _VentanaSoporteWidgetState extends State<VentanaSoporteWidget> {
         ),
       ),
     );
+  }
+  Future<void> SendMail(
+      {required String destinatario,
+      required String asunto,
+      required String mensaje}) async {
+    try {
+      final mailto = Mailto(
+        to: [
+          destinatario,
+        ],
+        subject: asunto,
+        body: mensaje,
+      );
+
+      await launch('$mailto');
+    } catch (e) {
+      log('message: $e');
+    }
   }
 }

@@ -172,12 +172,6 @@ class AlertRespuestaPQRS {
         to: [
           destinatario,
         ],
-        cc: [
-          'Alejogaba@gmail.com',
-        ],
-        bcc: [
-          'Alejogaba_1116@hotmail.com',
-        ],
         subject: asunto,
         body: mensaje,
       );
