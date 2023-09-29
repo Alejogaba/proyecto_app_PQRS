@@ -809,7 +809,7 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                     'Tarjeta de indetidad',
                                                     'Cédula de Ciudadania',
                                                     'Cédula de Extranjeria',
-                                                        'NIT'
+                                                    'NIT'
                                                   ],
                                                   onChanged: (val) => setState(
                                                       () => _model
@@ -870,8 +870,12 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                       0.47,
                                                   child: TextFormField(
                                                     maxLength: 10,
-                                                     keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    inputFormatters: [
+                                                      FilteringTextInputFormatter
+                                                          .digitsOnly
+                                                    ],
                                                     controller: _model
                                                         .textControllerNumeroIdentificacion,
                                                     autofocus: true,
@@ -1601,6 +1605,29 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                           .width *
                                                       0.47,
                                                   child: TextFormField(
+                                                    onChanged: (value) {
+                                                      // Ejecuta la función 3 segundos después
+                                                      if (value.length == 10) {
+                                                        Future.delayed(
+                                                            Duration(
+                                                                seconds: 2),
+                                                            () {
+                                                          // La función que se ejecutará
+                                                          if (_model
+                                                              .textController9
+                                                              .text
+                                                              .isEmpty) {
+                                                            setState(() {
+                                                              _model.textController9
+                                                                      .text =
+                                                                  _model
+                                                                      .textController8
+                                                                      .text;
+                                                            });
+                                                          }
+                                                        });
+                                                      }
+                                                    },
                                                     maxLength: 10,
                                                     keyboardType:
                                                         TextInputType.number,
@@ -1933,13 +1960,9 @@ class _RegistrarPeticionWidgetState extends State<RegistrarPeticionWidget> {
                                                                 fontSize: 16.0,
                                                               ),
                                                       validator: (value) {
-                                                        if (value!.isEmpty &&
-                                                            _opcionenvioWhatsapp) {
-                                                          return 'No deje este campo vacío.';
-                                                        }
-                                                        if ((value.length <
-                                                                7) &&
-                                                            _opcionenvioWhatsapp) {
+                                                        if (value!.isNotEmpty &&
+                                                            (value.length <
+                                                                7)) {
                                                           return 'Ingrese un número de teléfono fijo o celular válido';
                                                         }
                                                         return null;

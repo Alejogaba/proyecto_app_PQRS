@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:html';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:proyecto_p_q_r_s/controlador/controlador_pqrs.dart';
 import 'package:proyecto_p_q_r_s/controlador/storage_helper.dart';
@@ -10,6 +11,7 @@ import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_delegar_items.dart'
 import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_delegar_items.dart'
     as hp;
 import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/alert_respuesta_pqrs.dart';
+import 'package:proyecto_p_q_r_s/vistas/detalles_p_q_r/pdfApi.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -185,47 +187,49 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 0.0, 5.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 0.0, 20.0, 0.0),
-                                  child: Text(
-                                    'Dependencia solicitada:',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                          if (widget.pqrs.dependencia != null &&
+                              widget.pqrs.dependencia!.trim().isNotEmpty)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 20.0, 0.0),
+                                    child: Text(
+                                      'Dependencia solicitada:',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      3.0, 0.0, 20.0, 0.0),
-                                  child: Text(
-                                    '${widget.pqrs.dependencia.toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.normal,
-                                        ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        3.0, 0.0, 20.0, 0.0),
+                                    child: Text(
+                                      widget.pqrs.dependencia!,
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 5.0),
@@ -277,47 +281,49 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 0.0, 5.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 0.0, 20.0, 0.0),
-                                  child: Text(
-                                    'Número de telefono:',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                          if (widget.pqrs.numTelefono != null &&
+                              widget.pqrs.numTelefono!.trim().isNotEmpty)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 20.0, 0.0),
+                                    child: Text(
+                                      'Número de telefono:',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 20.0, 0.0),
-                                  child: Text(
-                                    '${widget.pqrs.numTelefono.toString()}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.normal,
-                                        ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 20.0, 0.0),
+                                    child: Text(
+                                      '${widget.pqrs.numTelefono.toString()}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 5.0),
@@ -798,7 +804,7 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
         return AlertDelegarItems(
           contextPadre: context,
           iconEnvio: FontAwesomeIcons.envelope,
-          nombreDependencia: 'hola',
+          nombreDependencia: widget.pqrs.dependencia,
           pqr: widget.pqrs,
           nombreTipoPQR: widget.pqrs.tipoPQRS.toString(),
           posicion: posicionArea,
@@ -842,17 +848,59 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
             ],
           ),
           onPressed: () async {
-            final prefs = await SharedPreferences.getInstance();
-            String? email = prefs.getString('EmailDependencia');
-            if (email == null) {
-              email = dependencia!.email.toString();
+            try {
+              final prefs = await SharedPreferences.getInstance();
+              String? email = prefs.getString('EmailDependencia');
+              String? nombreDependencia = prefs.getString('NombreDependencia');
+              late String urlAdjunto;
+              if (email == null) {
+                email = dependencia!.email.toString();
+                nombreDependencia = dependencia.nombre.toString();
+              }
+              log('Holaaaa' + email.toString());
+              log('Holaaaa' + nombreDependencia.toString());
+              ControladorPQRS().marcarPqrsDelegadoEnProceso(
+                  widget.pqrs.id!,
+                  nombreDependencia!,
+                  '${widget.pqrs.tipoPQRS} delegada a $nombreDependencia');
+              print('generar pdf');
+
+              var pdf =
+                  await PdfApi().generarHojaSalida(widget.pqrs, 'observacion');
+              widget.pqrs.respuesta =
+                  '';
+              // Genera el archivo PDF en formato Uint8List
+              final Uint8List pdfBytes = await pdf.save();
+              String? url = await uploadFileToFirebaseStorage(
+                  pdfBytes, '${widget.pqrs.id}.pdf');
+              log('url Archivo: ${url.toString()}');
+              if (widget.pqrs.nombreArchivoAdjunto != null &&
+                  widget.pqrs.nombreArchivoAdjunto!.trim().isNotEmpty) {
+                String idm2 = widget.pqrs.nombreArchivoAdjunto
+                    .toString()
+                    .replaceAll('.jpg', '.png');
+                urlAdjunto =
+                    '\n\nArchivo adjunto en relación a este caso: https://firebasestorage.googleapis.com/v0/b/bdpqrs-2623b.appspot.com/o/pqrs%2F${widget.pqrs.id}%2F$idm2?alt=media&token=';
+              } else {
+                urlAdjunto = '';
+              }
+              await sendMail(
+                  destinatario: email,
+                  asunto:
+                      '${widget.pqrs.tipoPQRS} con número de radicado #${widget.pqrs.id}',
+                  mensaje:
+                      'Saludos $nombreDependencia, delego ante ustedes la siguiente ${widget.pqrs.tipoPQRS}:\n\n"${widget.pqrs.descripcion}"$urlAdjunto\n\nA continuación en el siguiente enlace tendra una copia en formato PDF con los detalles de esta ${widget.pqrs.tipoPQRS}:\n$url');
+              widget.pqrs.respuesta =
+                  '${widget.pqrs.tipoPQRS} delegada a $nombreDependencia';
+              AlertDecidirEstadoPQRS(
+                  contextPadre: context,
+                  iconEnvio: FontAwesomeIcons.envelope,
+                  mensajeEnvio: 'si',
+                  pqr: widget.pqrs).showConfirmationAlert(context);
+            } catch (e) {
+              log(e.toString());
+              e.printError();
             }
-            log('Holaaaa' + email.toString());
-            /*  AlertDecidirEstadoPQRS(
-                contextPadre: context,
-                iconEnvio: FontAwesomeIcons.envelope,
-                mensajeEnvio: 'si',
-                pqr: widget.pqrs);*/
           },
         ),
       ],
@@ -891,6 +939,50 @@ class _DetallesPQRWidgetState extends State<DetallesPQRWidget> {
         return 'Enviar respuesta al WhatsApp';
       default:
         return 'Reclamar en ventanilla';
+    }
+  }
+
+  Future<void> sendMail(
+      {required String destinatario,
+      required String asunto,
+      required String mensaje}) async {
+    try {
+      final mailto = Mailto(
+        to: [
+          destinatario,
+        ],
+        subject: asunto,
+        body: mensaje,
+      );
+
+      await launch('$mailto');
+    } catch (e) {
+      log('message: $e');
+    }
+  }
+
+  Future<String?> uploadFileToFirebaseStorage(
+      Uint8List fileBytes, String fileName) async {
+    try {
+      // Obtén una referencia al almacenamiento de Firebase
+      final FirebaseStorage storage = FirebaseStorage.instance;
+
+      // Crea una referencia al archivo en Firebase Storage
+      final Reference storageReference = storage.ref().child(fileName);
+
+      // Sube el archivo
+      final UploadTask uploadTask = storageReference.putData(fileBytes);
+
+      // Espera a que se complete la carga
+      await uploadTask.whenComplete(() => print('Archivo subido'));
+
+      // Obtiene el enlace de descarga del archivo subido
+      final String downloadUrl = await storageReference.getDownloadURL();
+
+      return downloadUrl;
+    } catch (e) {
+      print('Error al subir el archivo: $e');
+      return null;
     }
   }
 }

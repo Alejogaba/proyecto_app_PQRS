@@ -26,7 +26,7 @@ class AlertDelegarItems extends StatefulWidget {
   final BuildContext contextPadre;
   final Pqrs pqr;
   final IconData iconEnvio;
-  final String nombreDependencia;
+  final String? nombreDependencia;
   final String nombreTipoPQR;
   int posicion;
   AlertDelegarItems(
@@ -92,6 +92,7 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                     ),
                   ],
                 ),
+                if(widget.nombreDependencia!=null&&widget.nombreDependencia!.trim().isNotEmpty)
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -106,7 +107,7 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Poppins',
-                                  fontSize: 11.0,
+                                  fontSize: 12.0,
                                 ),
                           ),
                           Text(
@@ -115,7 +116,7 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                                 .bodyMedium
                                 .override(
                                     fontFamily: 'Poppins',
-                                    fontSize: 11.0,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -149,6 +150,7 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                                         onSuggestionTap: (p0) async{
                                           final prefs = await SharedPreferences.getInstance();
                                           prefs.setString('EmailDependencia',p0.item!.email);
+                                          prefs.setString('NombreDependencia',p0.item!.nombre);
                                           log('On suggestionTap: ${p0.item!.email}');
                                         },
                                         suggestions: listaTemporalDependencia
@@ -395,9 +397,10 @@ class _AlertDelegarItemsState extends State<AlertDelegarItems> {
                 widget.iconEnvio,
                 color: FlutterFlowTheme.of(context).tertiary,
               ),
+              
               Padding(
                 padding: const EdgeInsets.only(left: 7.0),
-                child: Text(widget.nombreDependencia,
+                child: Text(widget.nombreDependencia!,
                     style: TextStyle(
                         color: FlutterFlowTheme.of(context).tertiary)),
               ),

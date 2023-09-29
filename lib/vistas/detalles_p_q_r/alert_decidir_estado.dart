@@ -33,6 +33,26 @@ class AlertDecidirEstadoPQRS {
 
   void showConfirmationAlert(BuildContext context) {
     Alert(
+      closeFunction:  () async {
+            await ControladorPQRS().marcarPqrsEnProceso(pqr.id!,pqr.respuesta??'Sin respuesta/No aplica');
+                 CustomSnackBars().snackBarOk(
+                                                    context,
+                                                    'En proceso',
+                                                    'Esta ${pqr.tipoPQRS} queda en proceso');
+            if (pqr.esAnonimo) {
+                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidgetAnonimo()));
+                } else {
+                   Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VentanPQRSWidget()));
+                }
+          },
       context: context,
       title: '¿Que desea hacer?',
       content: Column(

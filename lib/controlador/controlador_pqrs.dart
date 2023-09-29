@@ -30,6 +30,19 @@ class ControladorPQRS {
     }
   }
 
+  Future<void> marcarPqrsDelegadoEnProceso(int iDticket,String dependencia, String respuesta) async {
+    final QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('pqrs')
+        .where('id', isEqualTo: iDticket)
+        .get();
+
+    final List<DocumentSnapshot> documents = snapshot.docs;
+
+    for (final DocumentSnapshot document in documents) {
+      await document.reference.update({'estado': 2,'dependencia':dependencia,'respuesta':respuesta});
+    }
+  }
+
   Future<String?> guardarPQR(Pqrs pqr) async {
     late String result;
     await FirebaseFirestore.instance
