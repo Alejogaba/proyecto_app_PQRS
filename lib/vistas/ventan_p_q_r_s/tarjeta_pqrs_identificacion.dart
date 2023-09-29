@@ -40,7 +40,7 @@ class tarjetaPqrsIdentificacion extends StatelessWidget {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 1, 1, 1),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: Image.asset(
+                  child: Image.network(
                     definirImagenPqr(pqrs.tipoPQRS),
                     width: 65,
                     height: 65,
@@ -185,20 +185,20 @@ class tarjetaPqrsIdentificacion extends StatelessWidget {
     if (tipoPeticion != null) {
       switch (tipoPeticion) {
         case 'Petición':
-          return 'assets/images/iconoPeticion.jpeg';
+          return 'https://i.imgur.com/1nGDuXK.jpg';
         case 'Queja':
-          return 'assets/images/iconoQueja.jpeg';
+          return 'https://i.imgur.com/yltcJ34.jpg';
         case 'Reclamo':
-          return 'assets/images/iconoReclamo.jpeg';
+          return 'https://i.imgur.com/leiyZrb.jpg';
         case 'Sugerencia':
-          return 'assets/images/iconoSugerencia.jpeg';
+          return 'https://i.imgur.com/lFn1xfr.jpg';
         case 'Felicitaciónes':
-          return 'assets/images/iconoFelicitacion.png';
+          return 'https://i.imgur.com/2ja1B5F.jpg';
         default:
-          return 'assets/images/iconoFelicitacion.png';
+          return 'https://i.imgur.com/CwiPtpP.png';
       }
     } else {
-      return 'assets/images/iconoError.png';
+      return 'https://i.imgur.com/eQzKSO3.png';
     }
   }
 }
